@@ -132,6 +132,7 @@ class BookTypeManageInterFrm extends JFrame {
         this.bookTypeDescTxt.setText((String)bookTypeTable.getValueAt(row,2));
     }
 
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - siyuan zheng
@@ -174,10 +175,7 @@ class BookTypeManageInterFrm extends JFrame {
         {
             scrollPane1.setAutoscrolls(true);
             scrollPane1.addMouseListener(new MouseAdapter() {
-                //@Override
-                //public void mousePressed(MouseEvent e) {
-                    //scrollPane1MousePressed(e);
-                //}
+
             });
 
             //---- bookTypeTable ----

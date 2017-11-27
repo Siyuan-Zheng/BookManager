@@ -10,6 +10,20 @@ public class Book {
     private String bookDesc;
     private int bookTypeId;
 
+    public Book() {
+        super();
+    }
+
+    public Book(String bookName, String author, String sex, float price, String bookDesc, int bookTypeId) {
+        super();
+        this.bookName = bookName;
+        this.author = author;
+        this.sex = sex;
+        this.price = price;
+        this.bookDesc = bookDesc;
+        this.bookTypeId = bookTypeId;
+    }
+
     public int getId() {
         return id;
     }

@@ -13,7 +13,7 @@ new FormModel {
 				"y": 45
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField1"
+				name: "bookNameTxt"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 100
 				"y": 40
@@ -27,7 +27,7 @@ new FormModel {
 				"y": 45
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField2"
+				name: "authorTxt"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 330
 				"y": 40
@@ -41,7 +41,7 @@ new FormModel {
 				"y": 125
 			} )
 			add( new FormComponent( "javax.swing.JRadioButton" ) {
-				name: "radioButton1"
+				name: "jrb_male"
 				"text": "男"
 				"$buttonGroup": new FormReference( "buttonGroup1" )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -49,7 +49,7 @@ new FormModel {
 				"y": 120
 			} )
 			add( new FormComponent( "javax.swing.JRadioButton" ) {
-				name: "radioButton2"
+				name: "jrb_female"
 				"text": "女"
 				"$buttonGroup": new FormReference( "buttonGroup1" )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -64,7 +64,7 @@ new FormModel {
 				"y": 130
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField3"
+				name: "priceTxt"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 335
 				"y": 125
@@ -92,7 +92,7 @@ new FormModel {
 				"y": 270
 			} )
 			add( new FormComponent( "javax.swing.JTextArea" ) {
-				name: "textArea1"
+				name: "bookDescTxt"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 110
 				"y": 265
@@ -102,6 +102,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button1"
 				"text": "添加"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 50
 				"y": 425
@@ -109,12 +110,13 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button2"
 				"text": "重置"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 150
 				"y": 425
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 40 )
+			"location": new java.awt.Point( 5, 50 )
 			"size": new java.awt.Dimension( 505, 510 )
 		} )
 		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {

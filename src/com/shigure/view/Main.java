@@ -39,16 +39,16 @@ class Main extends JFrame {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - siyuan zheng
-        menuBar1 = new JMenuBar();
-        menu1 = new JMenu();
-        menu2 = new JMenu();
-        jmiBookTypeAdd = new JMenuItem();
-        jmiBookTypeManage = new JMenuItem();
-        menu3 = new JMenu();
-        jmiBookAdd = new JMenuItem();
-        menuItem3 = new JMenuItem();
-        menuItem1 = new JMenuItem();
-        label1 = new JLabel();
+        JMenuBar menuBar1 = new JMenuBar();
+        JMenu menu1 = new JMenu();
+        JMenu menu2 = new JMenu();
+        JMenuItem jmiBookTypeAdd = new JMenuItem();
+        JMenuItem jmiBookTypeManage = new JMenuItem();
+        JMenu menu3 = new JMenu();
+        JMenuItem jmiBookAdd = new JMenuItem();
+        JMenuItem menuItem3 = new JMenuItem();
+        JMenuItem menuItem1 = new JMenuItem();
+        JLabel label1 = new JLabel();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -68,12 +68,12 @@ class Main extends JFrame {
 
                     //---- jmiBookTypeAdd ----
                     jmiBookTypeAdd.setText("\u6dfb\u52a0\u56fe\u4e66\u7c7b\u522b");
-                    jmiBookTypeAdd.addActionListener(e -> jmiBookTypeAddActionPerformed(e));
+                    jmiBookTypeAdd.addActionListener(this::jmiBookTypeAddActionPerformed);
                     menu2.add(jmiBookTypeAdd);
 
                     //---- jmiBookTypeManage ----
                     jmiBookTypeManage.setText("\u56fe\u4e66\u7c7b\u522b\u7ef4\u62a4");
-                    jmiBookTypeManage.addActionListener(e -> jmiBookTypeManageActionPerformed(e));
+                    jmiBookTypeManage.addActionListener(this::jmiBookTypeManageActionPerformed);
                     menu2.add(jmiBookTypeManage);
                 }
                 menu1.add(menu2);
@@ -84,7 +84,6 @@ class Main extends JFrame {
 
                     //---- jmiBookAdd ----
                     jmiBookAdd.setText("\u6dfb\u52a0\u56fe\u4e66");
-                    //jmiBookAddActionPerformed(e);
                     jmiBookAdd.addActionListener(this::jmiBookAddActionPerformed);
                     menu3.add(jmiBookAdd);
 
@@ -125,19 +124,5 @@ class Main extends JFrame {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
-    private JDesktopPane table;
-
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - siyuan zheng
-    private JMenuBar menuBar1;
-    private JMenu menu1;
-    private JMenu menu2;
-    private JMenuItem jmiBookTypeAdd;
-    private JMenuItem jmiBookTypeManage;
-    private JMenu menu3;
-    private JMenuItem jmiBookAdd;
-    private JMenuItem menuItem3;
-    private JMenuItem menuItem1;
-    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
