@@ -179,6 +179,7 @@ class BookTypeManageInterFrm extends JFrame {
             });
 
             //---- bookTypeTable ----
+            
             bookTypeTable.setModel(new DefaultTableModel(
                 new Object[][] {
                 },
