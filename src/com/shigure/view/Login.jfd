@@ -1,0 +1,141 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "title"
+				"text": "学生成绩管理系统"
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 28 )
+				"foreground": new java.awt.Color( 204, 204, 204, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 310
+				"y": 75
+				"width": 260
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "userNameLabel"
+				"text": "用户名"
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 16 )
+				"foreground": new java.awt.Color( 204, 204, 204, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 190
+				"y": 175
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "passwordLabel"
+				"text": "密码"
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 16 )
+				"foreground": new java.awt.Color( 204, 204, 204, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 205
+				"y": 235
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "userNameField"
+				"cursor": new java.awt.Cursor( 2 )
+				"background": new java.awt.Color( 204, 204, 204, 255 )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"foreground": new java.awt.Color( 51, 51, 51, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 260
+				"y": 175
+				"width": 290
+				"height": 25
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordField"
+				"background": new java.awt.Color( 204, 204, 204, 255 )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"foreground": new java.awt.Color( 51, 51, 51, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 260
+				"y": 235
+				"width": 290
+				"height": 24
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "registerButton"
+				"text": "注册"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"background": new java.awt.Color( 102, 102, 102, 255 )
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 14 )
+				"foreground": new java.awt.Color( 204, 204, 204, 255 )
+				"autoscrolls": true
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 260
+				"y": 335
+				"width": 90
+				"height": 30
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "loginButton"
+				"text": "登陆"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"background": new java.awt.Color( 102, 102, 102, 255 )
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 14 )
+				"foreground": new java.awt.Color( 204, 204, 204, 255 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 465
+				"y": 335
+				"width": 90
+				"height": 30
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "studentCheck"
+				"text": "学生"
+				"contentAreaFilled": false
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 14 )
+				"$buttonGroup": new FormReference( "buttonGroup1" )
+				"background": new java.awt.Color( 102, 102, 102, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 310
+				"y": 285
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "teacherCheck"
+				"text": "教师"
+				"contentAreaFilled": false
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 14 )
+				"$buttonGroup": new FormReference( "buttonGroup1" )
+				"background": new java.awt.Color( 102, 102, 102, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 435
+				"y": 285
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "titleIcon"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/ManagerIcon.png" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 235
+				"y": 70
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "background"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/LoginBackground.jpg" )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"y": 0
+				"width": 770
+				"height": 495
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 145, 125 )
+			"size": new java.awt.Dimension( 770, 525 )
+		} )
+		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
+			name: "buttonGroup1"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 666 )
+		} )
+	}
+}
