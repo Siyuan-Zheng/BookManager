@@ -26,7 +26,13 @@ class Main extends JFrame {
     private void jmiBookTypeAddActionPerformed(ActionEvent e) {
         BookTypeInterFrm bookTypeInterFrm = new BookTypeInterFrm();
         bookTypeInterFrm.setVisible(true);
-        //bookTypeInterFrm.add(this.table);
+        //this.table.add(bookTypeInterFrm);
+    }
+
+    private void jmiBookAddActionPerformed(ActionEvent e) {
+        BookAddInterFrm BookAddInterFrm = new BookAddInterFrm();
+        BookAddInterFrm.setVisible(true);
+        //this.table.add(BookAddInterFrm);
     }
 
 
@@ -39,6 +45,8 @@ class Main extends JFrame {
         jmiBookTypeAdd = new JMenuItem();
         jmiBookTypeManage = new JMenuItem();
         menu3 = new JMenu();
+        jmiBookAdd = new JMenuItem();
+        menuItem3 = new JMenuItem();
         menuItem1 = new JMenuItem();
         label1 = new JLabel();
 
@@ -73,6 +81,16 @@ class Main extends JFrame {
                 //======== menu3 ========
                 {
                     menu3.setText("\u56fe\u4e66\u9986\u7ba1\u7406");
+
+                    //---- jmiBookAdd ----
+                    jmiBookAdd.setText("\u6dfb\u52a0\u56fe\u4e66");
+                    //jmiBookAddActionPerformed(e);
+                    jmiBookAdd.addActionListener(this::jmiBookAddActionPerformed);
+                    menu3.add(jmiBookAdd);
+
+                    //---- menuItem3 ----
+                    menuItem3.setText("\u56fe\u4e66\u7ef4\u62a4");
+                    menu3.add(menuItem3);
                 }
                 menu1.add(menu3);
 
@@ -117,6 +135,8 @@ class Main extends JFrame {
     private JMenuItem jmiBookTypeAdd;
     private JMenuItem jmiBookTypeManage;
     private JMenu menu3;
+    private JMenuItem jmiBookAdd;
+    private JMenuItem menuItem3;
     private JMenuItem menuItem1;
     private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

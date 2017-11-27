@@ -37,6 +37,16 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 						name: "menu3"
 						"text": "图书馆管理"
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "jmiBookAdd"
+							"text": "添加图书"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jmiBookAddActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jmiBookAddActionPerformed", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "menuItem3"
+							"text": "图书维护"
+						} )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItem1"
@@ -45,7 +55,7 @@ new FormModel {
 				} )
 			}
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 120, 100 )
+			"location": new java.awt.Point( 5, 110 )
 			"size": new java.awt.Dimension( 400, 300 )
 		} )
 	}

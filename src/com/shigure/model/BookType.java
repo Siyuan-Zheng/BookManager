@@ -46,4 +46,9 @@ public class BookType {
     public void setBookTypeDesc(String bookTypeDesc) {
         this.bookTypeDesc = bookTypeDesc;
     }
+
+    @Override
+    public String toString() {
+        return this.getBookTypeName();
+    }
 }

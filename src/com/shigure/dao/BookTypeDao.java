@@ -18,7 +18,7 @@ public class BookTypeDao {
         return pstmt.executeUpdate();
     }
 
-    public ResultSet bookTypeList(Connection con, BookType bookType) throws Exception{
+    public static ResultSet bookTypeList(Connection con, BookType bookType) throws Exception{
         StringBuilder sb = new StringBuilder("select * from t_bookType");
         if(StringUtil.isNotEmpty(bookType.getBookTypeName())){
             sb.append(" and bookTypeName like '%").append(bookType.getBookTypeName()).append("%'");
