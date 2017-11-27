@@ -1,2 +1,2 @@
 # StudentManager
-学生成绩管理系统
+图书管理系统
