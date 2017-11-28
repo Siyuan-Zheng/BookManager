@@ -133,6 +133,8 @@ class BookTypeManageInterFrm extends JFrame {
     }
 
 
+
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - siyuan zheng
@@ -174,12 +176,9 @@ class BookTypeManageInterFrm extends JFrame {
         //======== scrollPane1 ========
         {
             scrollPane1.setAutoscrolls(true);
-            scrollPane1.addMouseListener(new MouseAdapter() {
 
-            });
 
             //---- bookTypeTable ----
-            
             bookTypeTable.setModel(new DefaultTableModel(
                 new Object[][] {
                 },
