@@ -8,7 +8,7 @@ new FormModel {
 			"defaultCloseOperation": 3
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "title"
-				"text": "学生成绩管理系统"
+				"text": "图书信息管理系统"
 				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 28 )
 				"foreground": new java.awt.Color( 204, 204, 204, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -37,9 +37,9 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "userNameField"
 				"cursor": new java.awt.Cursor( 2 )
-				"background": new java.awt.Color( 204, 204, 204, 255 )
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				"foreground": new java.awt.Color( 51, 51, 51, 255 )
+				"foreground": new java.awt.Color( 204, 204, 204, 255 )
+				"background": new java.awt.Color( 70, 73, 74, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 260
 				"y": 175
@@ -48,65 +48,69 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JPasswordField" ) {
 				name: "passwordField"
-				"background": new java.awt.Color( 204, 204, 204, 255 )
+				"background": new java.awt.Color( 70, 73, 74, 255 )
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				"foreground": new java.awt.Color( 51, 51, 51, 255 )
+				"foreground": new java.awt.Color( 204, 204, 204, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 260
 				"y": 235
 				"width": 290
-				"height": 24
+				"height": 25
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "registerButton"
 				"text": "注册"
-				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"background": new java.awt.Color( 102, 102, 102, 255 )
 				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 14 )
 				"foreground": new java.awt.Color( 204, 204, 204, 255 )
 				"autoscrolls": true
+				"contentAreaFilled": false
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 235
 				"y": 335
 				"width": 90
-				"height": 30
+				"height": 35
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "loginButton"
 				"text": "登陆"
-				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"background": new java.awt.Color( 102, 102, 102, 255 )
 				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 14 )
 				"foreground": new java.awt.Color( 204, 204, 204, 255 )
+				"contentAreaFilled": false
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 465
 				"y": 335
 				"width": 90
-				"height": 30
+				"height": 35
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
 				name: "studentCheck"
-				"text": "学生"
+				"text": "读者"
 				"contentAreaFilled": false
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 14 )
 				"$buttonGroup": new FormReference( "buttonGroup1" )
 				"background": new java.awt.Color( 102, 102, 102, 255 )
+				"foreground": new java.awt.Color( 204, 204, 204, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 310
 				"y": 285
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
 				name: "teacherCheck"
-				"text": "教师"
+				"text": "管理员"
 				"contentAreaFilled": false
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 14 )
 				"$buttonGroup": new FormReference( "buttonGroup1" )
 				"background": new java.awt.Color( 102, 102, 102, 255 )
+				"foreground": new java.awt.Color( 204, 204, 204, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 435
 				"y": 285
@@ -129,7 +133,7 @@ new FormModel {
 				"height": 495
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 145, 125 )
+			"location": new java.awt.Point( 175, 125 )
 			"size": new java.awt.Dimension( 770, 525 )
 		} )
 		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
@@ -139,4 +143,3 @@ new FormModel {
 		} )
 	}
 }
-
