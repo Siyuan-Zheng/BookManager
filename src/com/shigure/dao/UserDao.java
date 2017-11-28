@@ -25,10 +25,12 @@ public class UserDao {
     }
 
     public int userRegister(Connection con, User user) throws Exception {
-        String sql = "INSERT INTO t_user VALUES(NULL,?,?)";
+        String sql = "INSERT INTO t_user VALUES(NULL,?,?,?,?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1, user.getUserName());
         pstmt.setString(2, user.getPassword());
+        pstmt.setString(3, user.getRealName());
+        pstmt.setString(4, user.getTelPhone());
         return pstmt.executeUpdate();
     }
 }

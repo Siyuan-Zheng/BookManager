@@ -26,31 +26,35 @@ public class Login extends JFrame {
     }
 
     private void button1ActionPerformed(ActionEvent e) {
-        String userRegisterName = this.userNameField.getText();
-        String userRegisterPassword = new String(this.passwordField.getPassword());
-        if (StringUtil.isEmpty(userRegisterName)) {
-            JOptionPane.showMessageDialog(null, "用户名不能为空");
-            return;
-        }
-        User user = new User(userRegisterName, userRegisterPassword);
-        Connection con = null;
-        try {
-            con = getConnection();
-            int n = userDao.userRegister(con, user);
-            if (n == 1) {
-                JOptionPane.showMessageDialog(null, "注册成功");
-            } else {
-                JOptionPane.showMessageDialog(null, "注册失败");
-            }
-
-        } catch (Exception e1) {
-            e1.printStackTrace();
-            JOptionPane.showMessageDialog(null, "注册失败");
-        } finally {
-            free(con);
-        }
+        new Register().setVisible(true);
+//        String userRegisterName = this.userNameField.getText();
+//        String userRegisterPassword = new String(this.passwordField.getPassword());
+//        if (StringUtil.isEmpty(userRegisterName)) {
+//            JOptionPane.showMessageDialog(null, "用户名不能为空");
+//            return;
+//        }
+//        User user = new User(userRegisterName, userRegisterPassword);
+//        Connection con = null;
+//        try {
+//            con = getConnection();
+//            int n = userDao.userRegister(con, user);
+//            if (n == 1) {
+//                JOptionPane.showMessageDialog(null, "注册成功");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "注册失败");
+//            }
+//
+//        } catch (Exception e1) {
+//            e1.printStackTrace();
+//            JOptionPane.showMessageDialog(null, "注册失败");
+//        } finally {
+//            free(con);
+//        }
     }
     private void button2ActionPerformed(ActionEvent e) {
+
+        boolean manager = this.managerCheck.isSelected();
+        boolean reader = this.readerCheck.isSelected();
 
         String userName = userNameField.getText();
         String password =new String(passwordField.getPassword());
@@ -62,15 +66,20 @@ public class Login extends JFrame {
             JOptionPane.showMessageDialog(null,"密码不能为空");
             return;
         }
-        User user = new User(userName,password);
+        User user = new User(userName,password,null,null);
         Connection con = null;
         try {
             con = getConnection();
             User currentUser=userDao.login(con,user);
             if(currentUser!=null) {
-                JOptionPane.showMessageDialog(null, "登录成功");
+                if( manager ){
                 this.dispose();
-                new Main().setVisible(true);
+                new BookManagerDashBoard().setVisible(true);
+                }else if( reader ){
+                    JOptionPane.showMessageDialog(null,"读者");
+                }else {
+                    JOptionPane.showMessageDialog(null,"请选择用户类型");
+                }
             }
             else {
                 JOptionPane.showMessageDialog(null,"登录失败");
@@ -97,8 +106,8 @@ public class Login extends JFrame {
         passwordField = new JPasswordField();
         registerButton = new JButton();
         loginButton = new JButton();
-        studentCheck = new JCheckBox();
-        teacherCheck = new JCheckBox();
+        readerCheck = new JCheckBox();
+        managerCheck = new JCheckBox();
         titleIcon = new JLabel();
         background = new JLabel();
 
@@ -169,25 +178,25 @@ public class Login extends JFrame {
         contentPane.add(loginButton);
         loginButton.setBounds(465, 335, 90, 35);
 
-        //---- studentCheck ----
-        studentCheck.setText("\u8bfb\u8005");
-        studentCheck.setContentAreaFilled(false);
-        studentCheck.setBorder(null);
-        studentCheck.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
-        studentCheck.setBackground(new Color(102, 102, 102));
-        studentCheck.setForeground(new Color(204, 204, 204));
-        contentPane.add(studentCheck);
-        studentCheck.setBounds(new Rectangle(new Point(310, 285), studentCheck.getPreferredSize()));
+        //---- readerCheck ----
+        readerCheck.setText("\u8bfb\u8005");
+        readerCheck.setContentAreaFilled(false);
+        readerCheck.setBorder(null);
+        readerCheck.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        readerCheck.setBackground(new Color(102, 102, 102));
+        readerCheck.setForeground(new Color(204, 204, 204));
+        contentPane.add(readerCheck);
+        readerCheck.setBounds(new Rectangle(new Point(310, 285), readerCheck.getPreferredSize()));
 
-        //---- teacherCheck ----
-        teacherCheck.setText("\u7ba1\u7406\u5458");
-        teacherCheck.setContentAreaFilled(false);
-        teacherCheck.setBorder(null);
-        teacherCheck.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
-        teacherCheck.setBackground(new Color(102, 102, 102));
-        teacherCheck.setForeground(new Color(204, 204, 204));
-        contentPane.add(teacherCheck);
-        teacherCheck.setBounds(new Rectangle(new Point(435, 285), teacherCheck.getPreferredSize()));
+        //---- managerCheck ----
+        managerCheck.setText("\u7ba1\u7406\u5458");
+        managerCheck.setContentAreaFilled(false);
+        managerCheck.setBorder(null);
+        managerCheck.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        managerCheck.setBackground(new Color(102, 102, 102));
+        managerCheck.setForeground(new Color(204, 204, 204));
+        contentPane.add(managerCheck);
+        managerCheck.setBounds(new Rectangle(new Point(435, 285), managerCheck.getPreferredSize()));
 
         //---- titleIcon ----
         titleIcon.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/ManagerIcon.png")));
@@ -218,8 +227,8 @@ public class Login extends JFrame {
 
         //---- buttonGroup1 ----
         ButtonGroup buttonGroup1 = new ButtonGroup();
-        buttonGroup1.add(studentCheck);
-        buttonGroup1.add(teacherCheck);
+        buttonGroup1.add(readerCheck);
+        buttonGroup1.add(managerCheck);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -232,8 +241,8 @@ public class Login extends JFrame {
     private JPasswordField passwordField;
     private JButton registerButton;
     private JButton loginButton;
-    private JCheckBox studentCheck;
-    private JCheckBox teacherCheck;
+    private JCheckBox readerCheck;
+    private JCheckBox managerCheck;
     private JLabel titleIcon;
     private JLabel background;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

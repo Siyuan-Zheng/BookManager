@@ -90,7 +90,7 @@ new FormModel {
 				"height": 35
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
-				name: "studentCheck"
+				name: "readerCheck"
 				"text": "读者"
 				"contentAreaFilled": false
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -103,7 +103,7 @@ new FormModel {
 				"y": 285
 			} )
 			add( new FormComponent( "javax.swing.JCheckBox" ) {
-				name: "teacherCheck"
+				name: "managerCheck"
 				"text": "管理员"
 				"contentAreaFilled": false
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -133,7 +133,7 @@ new FormModel {
 				"height": 495
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 175, 125 )
+			"location": new java.awt.Point( 185, 130 )
 			"size": new java.awt.Dimension( 770, 525 )
 		} )
 		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {

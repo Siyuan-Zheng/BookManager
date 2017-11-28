@@ -5,11 +5,31 @@ public class User {
     private int id;
     private String userName;
     private String password;
+    private String realName;
+    private String telPhone;
 
-    public User(String userName, String password) {
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getTelPhone() {
+        return telPhone;
+    }
+
+    public void setTelPhone(String telPhone) {
+        this.telPhone = telPhone;
+    }
+
+    public User(String userName, String password, String realName, String telPhone) {
         super();
         this.userName = userName;
         this.password = password;
+        this.realName = realName;
+        this.telPhone = telPhone;
     }
 
     public User() {

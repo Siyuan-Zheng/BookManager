@@ -5,7 +5,6 @@ public class Book {
     private int id;
     private String bookName;
     private String author;
-    private String sex;
     private float price;
     private String bookDesc;
     private int bookTypeId;
@@ -14,11 +13,10 @@ public class Book {
         super();
     }
 
-    public Book(String bookName, String author, String sex, float price, String bookDesc, int bookTypeId) {
+    public Book(String bookName, String author,  float price, String bookDesc, int bookTypeId) {
         super();
         this.bookName = bookName;
         this.author = author;
-        this.sex = sex;
         this.price = price;
         this.bookDesc = bookDesc;
         this.bookTypeId = bookTypeId;
@@ -48,13 +46,6 @@ public class Book {
         this.author = author;
     }
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
 
     public float getPrice() {
         return price;

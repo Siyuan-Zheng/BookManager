@@ -33,7 +33,6 @@ class BookAddInterFrm extends JFrame {
         initComponents();
         this.setLocation(200,50);
         this.fillBookType();
-        this.jrb_male.setSelected(true);
         this.jcb_BookType.setSelectedIndex(0);
     }
 
@@ -59,7 +58,6 @@ class BookAddInterFrm extends JFrame {
     private void button2ActionPerformed(ActionEvent e) {
         this.bookNameTxt.setText("");
         this.authorTxt.setText("");
-        this.jrb_male.setSelected(true);
         this.priceTxt.setText("");
         this.jcb_BookType.setSelectedIndex(0);
         this.bookDescTxt.setText("");
@@ -84,17 +82,12 @@ class BookAddInterFrm extends JFrame {
             return;
         }
 
-        String sex = "";
-        if(this.jrb_male.isSelected()){
-            sex = "男";
-        }else if(this.jrb_female.isSelected()){
-            sex = "女";
-        }
+
 
         BookType bookType = (BookType) this.jcb_BookType.getSelectedItem();
         int bookTypeId = bookType.getId();
 
-        Book book = new Book(bookName,author,sex,Float.parseFloat(price),bookDesc,bookTypeId);
+        Book book = new Book(bookName,author,Float.parseFloat(price),bookDesc,bookTypeId);
 
         Connection con = null;
 
@@ -121,9 +114,6 @@ class BookAddInterFrm extends JFrame {
         bookNameTxt = new JTextField();
         label2 = new JLabel();
         authorTxt = new JTextField();
-        label3 = new JLabel();
-        jrb_male = new JRadioButton();
-        jrb_female = new JRadioButton();
         label4 = new JLabel();
         priceTxt = new JTextField();
         label5 = new JLabel();
@@ -132,72 +122,107 @@ class BookAddInterFrm extends JFrame {
         bookDescTxt = new JTextArea();
         button1 = new JButton();
         button2 = new JButton();
+        label3 = new JLabel();
 
         //======== this ========
+        setResizable(false);
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
         label1.setText("\u56fe\u4e66\u540d\u79f0");
+        label1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label1.setForeground(new Color(51, 51, 51));
         contentPane.add(label1);
-        label1.setBounds(new Rectangle(new Point(35, 45), label1.getPreferredSize()));
+        label1.setBounds(new Rectangle(new Point(45, 65), label1.getPreferredSize()));
+
+        //---- bookNameTxt ----
+        bookNameTxt.setBorder(null);
+        bookNameTxt.setBackground(new Color(204, 204, 204));
+        bookNameTxt.setForeground(new Color(51, 51, 51));
         contentPane.add(bookNameTxt);
-        bookNameTxt.setBounds(100, 40, 145, bookNameTxt.getPreferredSize().height);
+        bookNameTxt.setBounds(115, 60, 145, 25);
 
         //---- label2 ----
         label2.setText("\u56fe\u4e66\u4f5c\u8005");
+        label2.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label2.setForeground(new Color(51, 51, 51));
         contentPane.add(label2);
-        label2.setBounds(new Rectangle(new Point(275, 45), label2.getPreferredSize()));
+        label2.setBounds(new Rectangle(new Point(320, 65), label2.getPreferredSize()));
+
+        //---- authorTxt ----
+        authorTxt.setBorder(null);
+        authorTxt.setBackground(new Color(204, 204, 204));
+        authorTxt.setForeground(new Color(51, 51, 51));
         contentPane.add(authorTxt);
-        authorTxt.setBounds(330, 40, 125, authorTxt.getPreferredSize().height);
-
-        //---- label3 ----
-        label3.setText("\u6027\u522b");
-        contentPane.add(label3);
-        label3.setBounds(new Rectangle(new Point(45, 125), label3.getPreferredSize()));
-
-        //---- jrb_male ----
-        jrb_male.setText("\u7537");
-        contentPane.add(jrb_male);
-        jrb_male.setBounds(new Rectangle(new Point(115, 120), jrb_male.getPreferredSize()));
-
-        //---- jrb_female ----
-        jrb_female.setText("\u5973");
-        contentPane.add(jrb_female);
-        jrb_female.setBounds(new Rectangle(new Point(180, 120), jrb_female.getPreferredSize()));
+        authorTxt.setBounds(395, 60, 145, 25);
 
         //---- label4 ----
         label4.setText("\u56fe\u4e66\u4ef7\u683c");
+        label4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label4.setForeground(new Color(51, 51, 51));
         contentPane.add(label4);
-        label4.setBounds(new Rectangle(new Point(275, 130), label4.getPreferredSize()));
+        label4.setBounds(new Rectangle(new Point(45, 150), label4.getPreferredSize()));
+
+        //---- priceTxt ----
+        priceTxt.setBorder(null);
+        priceTxt.setBackground(new Color(204, 204, 204));
+        priceTxt.setForeground(new Color(51, 51, 51));
         contentPane.add(priceTxt);
-        priceTxt.setBounds(335, 125, 125, priceTxt.getPreferredSize().height);
+        priceTxt.setBounds(115, 145, 145, 25);
 
         //---- label5 ----
         label5.setText("\u56fe\u4e66\u7c7b\u522b");
+        label5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label5.setForeground(new Color(51, 51, 51));
         contentPane.add(label5);
-        label5.setBounds(new Rectangle(new Point(45, 195), label5.getPreferredSize()));
+        label5.setBounds(320, 150, label5.getPreferredSize().width, 17);
+
+        //---- jcb_BookType ----
+        jcb_BookType.setBackground(new Color(204, 204, 204));
+        jcb_BookType.setForeground(new Color(51, 51, 51));
+        jcb_BookType.setBorder(null);
         contentPane.add(jcb_BookType);
-        jcb_BookType.setBounds(120, 190, 115, jcb_BookType.getPreferredSize().height);
+        jcb_BookType.setBounds(395, 145, 145, 25);
 
         //---- label6 ----
         label6.setText("\u56fe\u4e66\u63cf\u8ff0");
+        label6.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label6.setForeground(new Color(51, 51, 51));
         contentPane.add(label6);
-        label6.setBounds(new Rectangle(new Point(40, 270), label6.getPreferredSize()));
+        label6.setBounds(new Rectangle(new Point(45, 225), label6.getPreferredSize()));
+
+        //---- bookDescTxt ----
+        bookDescTxt.setBorder(null);
+        bookDescTxt.setForeground(new Color(51, 51, 51));
+        bookDescTxt.setBackground(new Color(204, 204, 204));
         contentPane.add(bookDescTxt);
-        bookDescTxt.setBounds(110, 265, 345, 120);
+        bookDescTxt.setBounds(115, 220, 425, 120);
 
         //---- button1 ----
         button1.setText("\u6dfb\u52a0");
+        button1.setContentAreaFilled(false);
+        button1.setBorder(null);
+        button1.setForeground(new Color(51, 51, 51));
+        button1.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
         button1.addActionListener(e -> button1ActionPerformed(e));
         contentPane.add(button1);
-        button1.setBounds(new Rectangle(new Point(50, 425), button1.getPreferredSize()));
+        button1.setBounds(450, 375, 90, 35);
 
         //---- button2 ----
         button2.setText("\u91cd\u7f6e");
+        button2.setBorder(null);
+        button2.setContentAreaFilled(false);
+        button2.setForeground(new Color(51, 51, 51));
+        button2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
         button2.addActionListener(e -> button2ActionPerformed(e));
         contentPane.add(button2);
-        button2.setBounds(new Rectangle(new Point(150, 425), button2.getPreferredSize()));
+        button2.setBounds(115, 375, 90, 35);
+
+        //---- label3 ----
+        label3.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/timg.jpg")));
+        contentPane.add(label3);
+        label3.setBounds(0, 0, 585, 470);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -214,11 +239,6 @@ class BookAddInterFrm extends JFrame {
         }
         pack();
         setLocationRelativeTo(getOwner());
-
-        //---- buttonGroup1 ----
-        ButtonGroup buttonGroup1 = new ButtonGroup();
-        buttonGroup1.add(jrb_male);
-        buttonGroup1.add(jrb_female);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -228,9 +248,6 @@ class BookAddInterFrm extends JFrame {
     private JTextField bookNameTxt;
     private JLabel label2;
     private JTextField authorTxt;
-    private JLabel label3;
-    private JRadioButton jrb_male;
-    private JRadioButton jrb_female;
     private JLabel label4;
     private JTextField priceTxt;
     private JLabel label5;
@@ -239,5 +256,6 @@ class BookAddInterFrm extends JFrame {
     private JTextArea bookDescTxt;
     private JButton button1;
     private JButton button2;
+    private JLabel label3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

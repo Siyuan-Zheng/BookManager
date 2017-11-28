@@ -132,6 +132,10 @@ class BookTypeManageInterFrm extends JFrame {
         this.bookTypeDescTxt.setText((String)bookTypeTable.getValueAt(row,2));
     }
 
+    private void scrollPane1MousePressed(MouseEvent e) {
+        // TODO add your code here
+    }
+
 
 
 
@@ -176,7 +180,14 @@ class BookTypeManageInterFrm extends JFrame {
         //======== scrollPane1 ========
         {
             scrollPane1.setAutoscrolls(true);
-
+            scrollPane1.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    scrollPane1MousePressed(e);
+                    scrollPane1MousePressed(e);
+                    scrollPane1MousePressed(e);
+                }
+            });
 
             //---- bookTypeTable ----
             bookTypeTable.setModel(new DefaultTableModel(

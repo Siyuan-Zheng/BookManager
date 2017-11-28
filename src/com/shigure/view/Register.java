@@ -4,17 +4,87 @@
 
 package com.shigure.view;
 
+import com.shigure.dao.UserDao;
+import com.shigure.model.User;
+import com.shigure.util.StringUtil;
+
 import java.awt.*;
+import java.awt.event.*;
+import java.sql.Connection;
+import java.util.Objects;
 import javax.swing.*;
 import javax.swing.border.*;
+
+import static com.shigure.util.DbUtil.free;
+import static com.shigure.util.DbUtil.getConnection;
 //import com.jgoodies.forms.factories.*;
 
 /**
  * @author siyuan zheng
  */
 public class Register extends JFrame {
+    UserDao userDao = new UserDao();
     public Register() {
         initComponents();
+    }
+
+    private void jb_resetActionPerformed(ActionEvent e) {
+        this.userNameTxt.setText("");
+        this.passwordTxt.setText("");
+        this.confPasswordTxt.setText("");
+        this.realNameTxt.setText("");
+        this.telPhoneTxt.setText("");
+    }
+
+    private void jb_registerActionPerformed(ActionEvent e) {
+        String userRegisterName = this.userNameTxt.getText();
+        String userRegisterPassword = new String(this.passwordTxt.getPassword());
+        String userConfPassword = new String(this.confPasswordTxt.getPassword());
+        String userRealName = this.realNameTxt.getText();
+        String userTelPhone = this.telPhoneTxt.getText();
+        if (StringUtil.isEmpty(userRegisterName)) {
+            JOptionPane.showMessageDialog(null, "用户名不能为空");
+            return;
+        }
+        if (StringUtil.isEmpty(userRegisterPassword)) {
+            JOptionPane.showMessageDialog(null, "密码不能为空");
+            return;
+        }
+        if (StringUtil.isEmpty(userConfPassword)) {
+            JOptionPane.showMessageDialog(null, "重复密码不能为空");
+            return;
+        }
+        if (StringUtil.isEmpty(userRealName)) {
+            JOptionPane.showMessageDialog(null, "姓名不能为空");
+            return;
+        }
+        if (StringUtil.isEmpty(userTelPhone)) {
+            JOptionPane.showMessageDialog(null, "联系方式不能为空");
+            return;
+        }
+
+        User user = new User(userRegisterName, userRegisterPassword, userRealName, userTelPhone);
+        Connection con = null;
+        try {
+            if(!Objects.equals(userRegisterPassword, userConfPassword)){
+                JOptionPane.showMessageDialog(null,"两次密码输入不同");
+                return;
+            }
+            con = getConnection();
+            int n = userDao.userRegister(con, user);
+            if (n == 1) {
+                JOptionPane.showMessageDialog(null, "注册成功");
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "注册失败");
+            }
+
+        } catch (Exception e1) {
+            e1.printStackTrace();
+            JOptionPane.showMessageDialog(null, "注册失败");
+        } finally {
+            free(con);
+        }
     }
 
     private void initComponents() {
@@ -22,17 +92,17 @@ public class Register extends JFrame {
         // Generated using JFormDesigner Evaluation license - siyuan zheng
         label1 = new JLabel();
         label2 = new JLabel();
-        textField2 = new JTextField();
+        realNameTxt = new JTextField();
         label3 = new JLabel();
         label4 = new JLabel();
-        textField4 = new JTextField();
+        userNameTxt = new JTextField();
         label6 = new JLabel();
-        passwordField1 = new JPasswordField();
-        passwordField2 = new JPasswordField();
-        textField5 = new JTextField();
+        passwordTxt = new JPasswordField();
+        confPasswordTxt = new JPasswordField();
+        telPhoneTxt = new JTextField();
         label9 = new JLabel();
-        button1 = new JButton();
-        button2 = new JButton();
+        jb_register = new JButton();
+        jb_reset = new JButton();
         label8 = new JLabel();
         label7 = new JLabel();
 
@@ -42,101 +112,103 @@ public class Register extends JFrame {
 
         //---- label1 ----
         label1.setText("\u7528\u6237\u540d");
-        label1.setFont(new Font(".SF NS Display", Font.PLAIN, 16));
+        label1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         label1.setForeground(new Color(204, 204, 204));
         contentPane.add(label1);
         label1.setBounds(new Rectangle(new Point(210, 140), label1.getPreferredSize()));
 
         //---- label2 ----
         label2.setText("\u5bc6\u7801");
-        label2.setFont(new Font(".SF NS Text", Font.PLAIN, 16));
+        label2.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         label2.setForeground(new Color(204, 204, 204));
         contentPane.add(label2);
         label2.setBounds(new Rectangle(new Point(225, 185), label2.getPreferredSize()));
 
-        //---- textField2 ----
-        textField2.setBorder(null);
-        textField2.setBackground(new Color(70, 73, 74));
-        textField2.setForeground(new Color(204, 204, 204));
-        contentPane.add(textField2);
-        textField2.setBounds(285, 273, 290, 25);
+        //---- realNameTxt ----
+        realNameTxt.setBorder(null);
+        realNameTxt.setBackground(new Color(70, 73, 74));
+        realNameTxt.setForeground(new Color(204, 204, 204));
+        contentPane.add(realNameTxt);
+        realNameTxt.setBounds(285, 273, 290, 25);
 
         //---- label3 ----
         label3.setText("\u786e\u8ba4\u5bc6\u7801");
-        label3.setFont(new Font(".SF NS Text", Font.PLAIN, 16));
+        label3.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         label3.setForeground(new Color(204, 204, 204));
         contentPane.add(label3);
         label3.setBounds(new Rectangle(new Point(195, 230), label3.getPreferredSize()));
 
         //---- label4 ----
         label4.setText("\u59d3\u540d");
-        label4.setFont(new Font(".SF NS Text", Font.PLAIN, 16));
+        label4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         label4.setForeground(new Color(204, 204, 204));
         contentPane.add(label4);
         label4.setBounds(new Rectangle(new Point(225, 275), label4.getPreferredSize()));
 
-        //---- textField4 ----
-        textField4.setBorder(null);
-        textField4.setBackground(new Color(70, 73, 74));
-        textField4.setForeground(new Color(204, 204, 204));
-        contentPane.add(textField4);
-        textField4.setBounds(285, 138, 290, 25);
+        //---- userNameTxt ----
+        userNameTxt.setBorder(null);
+        userNameTxt.setBackground(new Color(70, 73, 74));
+        userNameTxt.setForeground(new Color(204, 204, 204));
+        contentPane.add(userNameTxt);
+        userNameTxt.setBounds(285, 138, 290, 25);
 
         //---- label6 ----
         label6.setText("\u8054\u7cfb\u65b9\u5f0f");
-        label6.setFont(new Font(".SF NS Text", Font.PLAIN, 16));
+        label6.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         label6.setForeground(new Color(204, 204, 204));
         contentPane.add(label6);
         label6.setBounds(new Rectangle(new Point(195, 320), label6.getPreferredSize()));
 
-        //---- passwordField1 ----
-        passwordField1.setBackground(new Color(70, 73, 74));
-        passwordField1.setBorder(null);
-        passwordField1.setForeground(new Color(204, 204, 204));
-        contentPane.add(passwordField1);
-        passwordField1.setBounds(285, 183, 290, 25);
+        //---- passwordTxt ----
+        passwordTxt.setBackground(new Color(70, 73, 74));
+        passwordTxt.setBorder(null);
+        passwordTxt.setForeground(new Color(204, 204, 204));
+        contentPane.add(passwordTxt);
+        passwordTxt.setBounds(285, 183, 290, 25);
 
-        //---- passwordField2 ----
-        passwordField2.setBorder(null);
-        passwordField2.setBackground(new Color(70, 73, 74));
-        passwordField2.setForeground(new Color(204, 204, 204));
-        contentPane.add(passwordField2);
-        passwordField2.setBounds(285, 228, 290, 25);
+        //---- confPasswordTxt ----
+        confPasswordTxt.setBorder(null);
+        confPasswordTxt.setBackground(new Color(70, 73, 74));
+        confPasswordTxt.setForeground(new Color(204, 204, 204));
+        contentPane.add(confPasswordTxt);
+        confPasswordTxt.setBounds(285, 228, 290, 25);
 
-        //---- textField5 ----
-        textField5.setBorder(null);
-        textField5.setBackground(new Color(70, 73, 74));
-        textField5.setForeground(new Color(204, 204, 204));
-        contentPane.add(textField5);
-        textField5.setBounds(285, 318, 290, 25);
+        //---- telPhoneTxt ----
+        telPhoneTxt.setBorder(null);
+        telPhoneTxt.setBackground(new Color(70, 73, 74));
+        telPhoneTxt.setForeground(new Color(204, 204, 204));
+        contentPane.add(telPhoneTxt);
+        telPhoneTxt.setBounds(285, 318, 290, 25);
 
         //---- label9 ----
         label9.setText("\u65b0\u7528\u6237\u6ce8\u518c");
-        label9.setFont(new Font(".SF NS Text", Font.PLAIN, 28));
+        label9.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 28));
         label9.setForeground(new Color(204, 204, 204));
         contentPane.add(label9);
         label9.setBounds(new Rectangle(new Point(350, 60), label9.getPreferredSize()));
 
-        //---- button1 ----
-        button1.setText("\u6ce8\u518c");
-        button1.setContentAreaFilled(false);
-        button1.setFont(new Font(".SF NS Text", Font.PLAIN, 14));
-        button1.setForeground(new Color(204, 204, 204));
-        button1.setBorder(null);
-        contentPane.add(button1);
-        button1.setBounds(485, 370, 90, 35);
+        //---- jb_register ----
+        jb_register.setText("\u6ce8\u518c");
+        jb_register.setContentAreaFilled(false);
+        jb_register.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        jb_register.setForeground(new Color(204, 204, 204));
+        jb_register.setBorder(null);
+        jb_register.addActionListener(e -> jb_registerActionPerformed(e));
+        contentPane.add(jb_register);
+        jb_register.setBounds(485, 370, 90, 35);
 
-        //---- button2 ----
-        button2.setText("\u91cd\u7f6e");
-        button2.setContentAreaFilled(false);
-        button2.setFont(new Font(".SF NS Text", Font.PLAIN, 14));
-        button2.setForeground(new Color(204, 204, 204));
-        button2.setBorder(null);
-        contentPane.add(button2);
-        button2.setBounds(285, 370, 90, 35);
+        //---- jb_reset ----
+        jb_reset.setText("\u91cd\u7f6e");
+        jb_reset.setContentAreaFilled(false);
+        jb_reset.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        jb_reset.setForeground(new Color(204, 204, 204));
+        jb_reset.setBorder(null);
+        jb_reset.addActionListener(e -> jb_resetActionPerformed(e));
+        contentPane.add(jb_reset);
+        jb_reset.setBounds(285, 370, 90, 35);
 
         //---- label8 ----
-        label8.setIcon(new ImageIcon("/Users/zhengsiyuan/Downloads/\u6ce8\u518c-4.png"));
+        label8.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Register.png")));
         contentPane.add(label8);
         label8.setBounds(new Rectangle(new Point(250, 50), label8.getPreferredSize()));
 
@@ -167,17 +239,17 @@ public class Register extends JFrame {
     // Generated using JFormDesigner Evaluation license - siyuan zheng
     private JLabel label1;
     private JLabel label2;
-    private JTextField textField2;
+    private JTextField realNameTxt;
     private JLabel label3;
     private JLabel label4;
-    private JTextField textField4;
+    private JTextField userNameTxt;
     private JLabel label6;
-    private JPasswordField passwordField1;
-    private JPasswordField passwordField2;
-    private JTextField textField5;
+    private JPasswordField passwordTxt;
+    private JPasswordField confPasswordTxt;
+    private JTextField telPhoneTxt;
     private JLabel label9;
-    private JButton button1;
-    private JButton button2;
+    private JButton jb_register;
+    private JButton jb_reset;
     private JLabel label8;
     private JLabel label7;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
