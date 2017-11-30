@@ -39,6 +39,16 @@ new FormModel {
 				"x": 300
 				"y": 280
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "text"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/未标题-1.png" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"y": 0
+				"width": 500
+				"height": 350
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 470, 210 )
 			"size": new java.awt.Dimension( 500, 375 )

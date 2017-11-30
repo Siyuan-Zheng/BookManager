@@ -1,6 +1,8 @@
 package com.shigure.dao;
 
+import com.shigure.model.BookType;
 import com.shigure.model.User;
+import com.shigure.util.StringUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

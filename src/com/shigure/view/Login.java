@@ -11,6 +11,7 @@ import com.shigure.util.StringUtil;
 
 import java.awt.*;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import javax.swing.*;
 
 import static com.shigure.util.DbUtil.*;

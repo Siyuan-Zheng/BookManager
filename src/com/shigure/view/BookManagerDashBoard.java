@@ -20,6 +20,14 @@ public class BookManagerDashBoard extends JFrame {
         new BookAddInterFrm().setVisible(true);
     }
 
+    private void button3ActionPerformed(ActionEvent e) {
+        new BookTypeInterFrm().setVisible(true);
+    }
+
+    private void button1ActionPerformed(ActionEvent e) {
+        new BookTypeManageInterFrm().setVisible(true);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - siyuan zheng
@@ -43,95 +51,97 @@ public class BookManagerDashBoard extends JFrame {
         contentPane.setLayout(null);
 
         //---- button1 ----
-        button1.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u7f16\u8f91\u4e66\u67b6.png")));
+        button1.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Pen.png")));
         button1.setBorder(null);
         button1.setContentAreaFilled(false);
+        button1.addActionListener(e -> button1ActionPerformed(e));
         contentPane.add(button1);
-        button1.setBounds(new Rectangle(new Point(500, 330), button1.getPreferredSize()));
+        button1.setBounds(new Rectangle(new Point(495, 320), button1.getPreferredSize()));
 
         //---- button2 ----
-        button2.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u56fe\u4e66\u7c7b\u522b\u7ba1\u7406.png")));
+        button2.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Pencil_note.png")));
         button2.setContentAreaFilled(false);
         button2.setBorder(null);
         contentPane.add(button2);
-        button2.setBounds(new Rectangle(new Point(500, 75), button2.getPreferredSize()));
+        button2.setBounds(new Rectangle(new Point(495, 75), button2.getPreferredSize()));
 
         //---- button3 ----
-        button3.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u56fe\u68071_\u6dfb\u52a0\u4e66\u7b7e.png")));
+        button3.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Books.png")));
         button3.setContentAreaFilled(false);
         button3.setBorder(null);
+        button3.addActionListener(e -> button3ActionPerformed(e));
         contentPane.add(button3);
-        button3.setBounds(new Rectangle(new Point(145, 330), button3.getPreferredSize()));
+        button3.setBounds(new Rectangle(new Point(125, 320), button3.getPreferredSize()));
 
         //---- button4 ----
-        button4.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u56fe\u4e66\u9986.png")));
+        button4.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Book-1.png")));
         button4.setBorder(null);
         button4.setContentAreaFilled(false);
         button4.addActionListener(e -> button4ActionPerformed(e));
         contentPane.add(button4);
-        button4.setBounds(new Rectangle(new Point(143, 75), button4.getPreferredSize()));
+        button4.setBounds(new Rectangle(new Point(125, 75), button4.getPreferredSize()));
 
         //---- button5 ----
-        button5.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u7ba1\u7406.png")));
+        button5.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Myspace.png")));
         button5.setBorder(null);
         button5.setContentAreaFilled(false);
         contentPane.add(button5);
-        button5.setBounds(new Rectangle(new Point(145, 590), button5.getPreferredSize()));
+        button5.setBounds(new Rectangle(new Point(125, 545), button5.getPreferredSize()));
 
         //---- button6 ----
         button6.setContentAreaFilled(false);
         button6.setBorder(null);
-        button6.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u5173\u4e8e.png")));
+        button6.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Lightbulb.png")));
         contentPane.add(button6);
-        button6.setBounds(new Rectangle(new Point(500, 590), button6.getPreferredSize()));
+        button6.setBounds(new Rectangle(new Point(495, 545), button6.getPreferredSize()));
 
         //---- label1 ----
         label1.setText("\u6dfb\u52a0\u56fe\u4e66");
-        label1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
         label1.setForeground(new Color(51, 51, 51));
         contentPane.add(label1);
-        label1.setBounds(new Rectangle(new Point(145, 150), label1.getPreferredSize()));
+        label1.setBounds(new Rectangle(new Point(155, 220), label1.getPreferredSize()));
 
         //---- label2 ----
         label2.setText("\u4fee\u6539\u56fe\u4e66\u4fe1\u606f");
-        label2.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label2.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
         label2.setForeground(new Color(51, 51, 51));
         contentPane.add(label2);
-        label2.setBounds(new Rectangle(new Point(490, 150), label2.getPreferredSize()));
+        label2.setBounds(new Rectangle(new Point(510, 220), label2.getPreferredSize()));
 
         //---- label3 ----
         label3.setText("\u6dfb\u52a0\u56fe\u4e66\u7c7b\u522b");
-        label3.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label3.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
         label3.setForeground(new Color(51, 51, 51));
         contentPane.add(label3);
-        label3.setBounds(new Rectangle(new Point(135, 410), label3.getPreferredSize()));
+        label3.setBounds(new Rectangle(new Point(140, 465), label3.getPreferredSize()));
 
         //---- label4 ----
         label4.setText("\u4fee\u6539\u56fe\u4e66\u7c7b\u522b");
-        label4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
         label4.setForeground(new Color(51, 51, 51));
         contentPane.add(label4);
-        label4.setBounds(new Rectangle(new Point(490, 410), label4.getPreferredSize()));
+        label4.setBounds(new Rectangle(new Point(510, 465), label4.getPreferredSize()));
 
         //---- label5 ----
         label5.setText("\u7528\u6237\u7ba1\u7406");
-        label5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
         label5.setForeground(new Color(51, 51, 51));
         contentPane.add(label5);
-        label5.setBounds(new Rectangle(new Point(145, 675), label5.getPreferredSize()));
+        label5.setBounds(new Rectangle(new Point(155, 695), label5.getPreferredSize()));
 
         //---- label6 ----
         label6.setText("\u5173\u4e8e");
-        label6.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label6.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
         label6.setForeground(new Color(51, 51, 51));
         contentPane.add(label6);
-        label6.setBounds(new Rectangle(new Point(520, 675), label6.getPreferredSize()));
+        label6.setBounds(new Rectangle(new Point(545, 695), label6.getPreferredSize()));
 
         //---- label7 ----
         label7.setText("text");
-        label7.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/timg.jpg")));
+        label7.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u672a\u6807\u9898-1.png")));
         contentPane.add(label7);
-        label7.setBounds(0, 0, 725, 765);
+        label7.setBounds(0, 0, 725, 785);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();

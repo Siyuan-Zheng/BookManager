@@ -117,7 +117,7 @@ class BookAddInterFrm extends JFrame {
         label4 = new JLabel();
         priceTxt = new JTextField();
         label5 = new JLabel();
-        jcb_BookType = new JComboBox();
+        jcb_BookType = new JComboBox<BookType>();
         label6 = new JLabel();
         bookDescTxt = new JTextArea();
         button1 = new JButton();
@@ -251,7 +251,7 @@ class BookAddInterFrm extends JFrame {
     private JLabel label4;
     private JTextField priceTxt;
     private JLabel label5;
-    private JComboBox jcb_BookType;
+    private JComboBox<BookType> jcb_BookType;
     private JLabel label6;
     private JTextArea bookDescTxt;
     private JButton button1;

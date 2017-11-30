@@ -67,6 +67,7 @@ class BookTypeInterFrm extends JFrame {
         bookTypeDescTxt = new JTextArea();
         jb_Add = new JButton();
         jb_Reset = new JButton();
+        label1 = new JLabel();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -93,6 +94,12 @@ class BookTypeInterFrm extends JFrame {
         contentPane.add(jb_Reset);
         jb_Reset.setBounds(new Rectangle(new Point(300, 280), jb_Reset.getPreferredSize()));
 
+        //---- label1 ----
+        label1.setText("text");
+        label1.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u672a\u6807\u9898-1.png")));
+        contentPane.add(label1);
+        label1.setBounds(0, 0, 500, 350);
+
         { // compute preferred size
             Dimension preferredSize = new Dimension();
             for(int i = 0; i < contentPane.getComponentCount(); i++) {
@@ -118,5 +125,6 @@ class BookTypeInterFrm extends JFrame {
     private JTextArea bookTypeDescTxt;
     private JButton jb_Add;
     private JButton jb_Reset;
+    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

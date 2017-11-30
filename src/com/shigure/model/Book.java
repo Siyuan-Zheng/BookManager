@@ -13,7 +13,11 @@ public class Book {
         super();
     }
 
-    public Book(String bookName, String author,  float price, String bookDesc, int bookTypeId) {
+
+
+
+
+    public Book(String bookName, String author, float price, String bookDesc , int bookTypeId) {
         super();
         this.bookName = bookName;
         this.author = author;
