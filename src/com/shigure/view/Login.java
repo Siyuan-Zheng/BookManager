@@ -11,7 +11,6 @@ import com.shigure.util.StringUtil;
 
 import java.awt.*;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import javax.swing.*;
 
 import static com.shigure.util.DbUtil.*;
@@ -75,7 +74,7 @@ public class Login extends JFrame {
             if(currentUser!=null) {
                 if( manager ){
                 this.dispose();
-                new BookManagerDashBoard().setVisible(true);
+                new ManagerDashBoard().setVisible(true);
                 }else if( reader ){
                     JOptionPane.showMessageDialog(null,"读者");
                 }else {
@@ -161,10 +160,7 @@ public class Login extends JFrame {
         registerButton.setAutoscrolls(true);
         registerButton.setContentAreaFilled(false);
         registerButton.setBorder(null);
-        registerButton.addActionListener(e -> {
-			button1ActionPerformed(e);
-			button1ActionPerformed(e);
-		});
+        registerButton.addActionListener(this::button1ActionPerformed);
         contentPane.add(registerButton);
         registerButton.setBounds(235, 335, 90, 35);
 
@@ -175,7 +171,7 @@ public class Login extends JFrame {
         loginButton.setForeground(new Color(204, 204, 204));
         loginButton.setContentAreaFilled(false);
         loginButton.setBorder(null);
-        loginButton.addActionListener(e -> button2ActionPerformed(e));
+        loginButton.addActionListener(this::button2ActionPerformed);
         contentPane.add(loginButton);
         loginButton.setBounds(465, 335, 90, 35);
 

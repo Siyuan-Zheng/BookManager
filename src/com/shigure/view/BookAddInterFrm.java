@@ -31,9 +31,8 @@ class BookAddInterFrm extends JFrame {
 
     BookAddInterFrm() {
         initComponents();
-        this.setLocation(200,50);
         this.fillBookType();
-        this.jcb_BookType.setSelectedIndex(0);
+        //this.jcb_BookType.setSelectedIndex(0);
     }
 
     private void fillBookType(){
@@ -42,6 +41,10 @@ class BookAddInterFrm extends JFrame {
         try {
             con = getConnection();
             ResultSet rs = BookTypeDao.bookTypeList(con,new BookType());
+            bookType = new BookType();
+            bookType.setBookTypeName("请选择...");
+            bookType.setId(-1);
+            this.jcb_BookType.addItem(bookType);
             while(rs.next()){
                 bookType = new BookType();
                 bookType.setId(rs.getInt("id"));
@@ -81,8 +84,6 @@ class BookAddInterFrm extends JFrame {
             JOptionPane.showMessageDialog(null,"图书价格不能为空");
             return;
         }
-
-
 
         BookType bookType = (BookType) this.jcb_BookType.getSelectedItem();
         int bookTypeId = bookType.getId();

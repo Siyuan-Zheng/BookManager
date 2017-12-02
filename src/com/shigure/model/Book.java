@@ -7,15 +7,35 @@ public class Book {
     private String author;
     private float price;
     private String bookDesc;
-    private int bookTypeId;
+    private int bookTypeId = -1;
+    private String BookTypeName;
+
+    public Book(int id, String bookName, String author, float price, String bookDesc, int bookTypeId) {
+        this.id = id;
+        this.bookName = bookName;
+        this.author = author;
+        this.price = price;
+        this.bookDesc = bookDesc;
+        this.bookTypeId = bookTypeId;
+    }
 
     public Book() {
         super();
     }
 
+    public Book(String bookName, String author, int bookTypeId) {
+        this.bookName = bookName;
+        this.author = author;
+        this.bookTypeId = bookTypeId;
+    }
 
+    public String getBookTypeName() {
+        return BookTypeName;
+    }
 
-
+    public void setBookTypeName(String bookTypeName) {
+        BookTypeName = bookTypeName;
+    }
 
     public Book(String bookName, String author, float price, String bookDesc , int bookTypeId) {
         super();

@@ -4,6 +4,7 @@
 
 package com.shigure.view;
 
+import com.shigure.dao.BookDao;
 import com.shigure.dao.BookTypeDao;
 import com.shigure.model.BookType;
 import com.shigure.util.StringUtil;
@@ -27,9 +28,9 @@ import static com.shigure.util.DbUtil.getConnection;
  */
 class BookTypeManageInterFrm extends JFrame {
     private BookTypeDao bookTypeDao = new BookTypeDao();
+    BookDao bookDao = new BookDao();
     BookTypeManageInterFrm() {
         initComponents();
-        this.setLocation(200,50);
         this.fillTable(new BookType());
     }
 
@@ -72,6 +73,11 @@ class BookTypeManageInterFrm extends JFrame {
             Connection con = null;
             try {
                 con= getConnection();
+                boolean flag = bookDao.getBookByBookTypeId(con,id);
+                if(flag){
+                    JOptionPane.showMessageDialog(null,"当前图书类别下仍有图书，不能删除该类别");
+                    return;
+                }
                 int deleteNum = bookTypeDao.bookTypeDelete(con,id);
                 if(deleteNum == 1){
                     JOptionPane.showMessageDialog(null,"删除成功");
@@ -147,9 +153,8 @@ class BookTypeManageInterFrm extends JFrame {
         jb_search = new JButton();
         scrollPane1 = new JScrollPane();
         bookTypeTable = new JTable();
-        panel1 = new JPanel();
-        label2 = new JLabel();
         idTxt = new JTextField();
+        label2 = new JLabel();
         label3 = new JLabel();
         bookTypeNameTxt = new JTextField();
         label4 = new JLabel();
@@ -208,78 +213,48 @@ class BookTypeManageInterFrm extends JFrame {
         contentPane.add(scrollPane1);
         scrollPane1.setBounds(20, 85, 455, 220);
 
-        //======== panel1 ========
+        //---- idTxt ----
+        idTxt.setEditable(false);
+        contentPane.add(idTxt);
+        idTxt.setBounds(70, 360, 125, idTxt.getPreferredSize().height);
+
+        //---- label2 ----
+        label2.setText("\u7f16\u53f7\uff1a");
+        contentPane.add(label2);
+        label2.setBounds(new Rectangle(new Point(25, 365), label2.getPreferredSize()));
+
+        //---- label3 ----
+        label3.setText("\u56fe\u4e66\u7c7b\u522b\u540d\u79f0\uff1a");
+        contentPane.add(label3);
+        label3.setBounds(new Rectangle(new Point(215, 365), label3.getPreferredSize()));
+        contentPane.add(bookTypeNameTxt);
+        bookTypeNameTxt.setBounds(305, 360, 130, bookTypeNameTxt.getPreferredSize().height);
+
+        //---- label4 ----
+        label4.setText("\u63cf\u8ff0\uff1a");
+        contentPane.add(label4);
+        label4.setBounds(new Rectangle(new Point(30, 410), label4.getPreferredSize()));
+        contentPane.add(textArea1);
+        textArea1.setBounds(new Rectangle(new Point(110, 400), textArea1.getPreferredSize()));
+
+        //======== scrollPane2 ========
         {
-            panel1.setBorder(new TitledBorder("\u8868\u5355\u64cd\u4f5c"));
-
-            // JFormDesigner evaluation mark
-            panel1.setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                    "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                    javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                    java.awt.Color.red), panel1.getBorder())); panel1.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
-
-            panel1.setLayout(null);
-
-            //---- label2 ----
-            label2.setText("\u7f16\u53f7\uff1a");
-            panel1.add(label2);
-            label2.setBounds(new Rectangle(new Point(20, 30), label2.getPreferredSize()));
-
-            //---- idTxt ----
-            idTxt.setEditable(false);
-            panel1.add(idTxt);
-            idTxt.setBounds(65, 25, 125, idTxt.getPreferredSize().height);
-
-            //---- label3 ----
-            label3.setText("\u56fe\u4e66\u7c7b\u522b\u540d\u79f0\uff1a");
-            panel1.add(label3);
-            label3.setBounds(new Rectangle(new Point(210, 30), label3.getPreferredSize()));
-            panel1.add(bookTypeNameTxt);
-            bookTypeNameTxt.setBounds(300, 25, 130, bookTypeNameTxt.getPreferredSize().height);
-
-            //---- label4 ----
-            label4.setText("\u63cf\u8ff0\uff1a");
-            panel1.add(label4);
-            label4.setBounds(new Rectangle(new Point(25, 75), label4.getPreferredSize()));
-            panel1.add(textArea1);
-            textArea1.setBounds(new Rectangle(new Point(105, 65), textArea1.getPreferredSize()));
-
-            //======== scrollPane2 ========
-            {
-                scrollPane2.setViewportView(bookTypeDescTxt);
-            }
-            panel1.add(scrollPane2);
-            scrollPane2.setBounds(80, 75, 285, 55);
-
-            //---- jb_modify ----
-            jb_modify.setText("\u4fee\u6539");
-            jb_modify.addActionListener(e -> jb_modifyActionPerformed(e));
-            panel1.add(jb_modify);
-            jb_modify.setBounds(new Rectangle(new Point(40, 145), jb_modify.getPreferredSize()));
-
-            //---- jb_delete ----
-            jb_delete.setText("\u5220\u9664");
-            jb_delete.addActionListener(e -> jb_deleteActionPerformed(e));
-            panel1.add(jb_delete);
-            jb_delete.setBounds(new Rectangle(new Point(215, 145), jb_delete.getPreferredSize()));
-
-            { // compute preferred size
-                Dimension preferredSize = new Dimension();
-                for(int i = 0; i < panel1.getComponentCount(); i++) {
-                    Rectangle bounds = panel1.getComponent(i).getBounds();
-                    preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                    preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                }
-                Insets insets = panel1.getInsets();
-                preferredSize.width += insets.right;
-                preferredSize.height += insets.bottom;
-                panel1.setMinimumSize(preferredSize);
-                panel1.setPreferredSize(preferredSize);
-            }
+            scrollPane2.setViewportView(bookTypeDescTxt);
         }
-        contentPane.add(panel1);
-        panel1.setBounds(20, 345, 455, 185);
+        contentPane.add(scrollPane2);
+        scrollPane2.setBounds(85, 410, 285, 55);
+
+        //---- jb_modify ----
+        jb_modify.setText("\u4fee\u6539");
+        jb_modify.addActionListener(e -> jb_modifyActionPerformed(e));
+        contentPane.add(jb_modify);
+        jb_modify.setBounds(new Rectangle(new Point(45, 480), jb_modify.getPreferredSize()));
+
+        //---- jb_delete ----
+        jb_delete.setText("\u5220\u9664");
+        jb_delete.addActionListener(e -> jb_deleteActionPerformed(e));
+        contentPane.add(jb_delete);
+        jb_delete.setBounds(new Rectangle(new Point(220, 480), jb_delete.getPreferredSize()));
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -306,9 +281,8 @@ class BookTypeManageInterFrm extends JFrame {
     private JButton jb_search;
     private JScrollPane scrollPane1;
     private JTable bookTypeTable;
-    private JPanel panel1;
-    private JLabel label2;
     private JTextField idTxt;
+    private JLabel label2;
     private JLabel label3;
     private JTextField bookTypeNameTxt;
     private JLabel label4;

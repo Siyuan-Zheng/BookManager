@@ -7,36 +7,48 @@ package com.shigure.view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.*;
 
 /**
  * @author siyuan zheng
  */
-public class BookManagerDashBoard extends JFrame {
-    public BookManagerDashBoard() {
+public class ManagerDashBoard extends JFrame {
+    public ManagerDashBoard() {
         initComponents();
     }
 
-    private void button4ActionPerformed(ActionEvent e) {
-        new BookAddInterFrm().setVisible(true);
-    }
 
     private void button3ActionPerformed(ActionEvent e) {
+        //---- jb_AddBookType ----
         new BookTypeInterFrm().setVisible(true);
     }
 
     private void button1ActionPerformed(ActionEvent e) {
+        //jb_BookTypeUpdate
         new BookTypeManageInterFrm().setVisible(true);
     }
+
+    private void button2ActionPerformed(ActionEvent e) {
+        //---- jb_BookUpdate ----
+        new BookManageInterFrm().setVisible(true);
+    }
+
+
+
+    private void jb_AddBookActionPerformed() {
+        new BookAddInterFrm().setVisible(true);
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - siyuan zheng
-        button1 = new JButton();
-        button2 = new JButton();
-        button3 = new JButton();
-        button4 = new JButton();
-        button5 = new JButton();
-        button6 = new JButton();
+        jb_AddBook = new JButton();
+        jb_BookTypeUpdate = new JButton();
+        jb_BookUpdate = new JButton();
+        jb_AddBookType = new JButton();
+        jb_ReaderManager = new JButton();
+        jb_About = new JButton();
         label1 = new JLabel();
         label2 = new JLabel();
         label3 = new JLabel();
@@ -50,50 +62,52 @@ public class BookManagerDashBoard extends JFrame {
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
-        //---- button1 ----
-        button1.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Pen.png")));
-        button1.setBorder(null);
-        button1.setContentAreaFilled(false);
-        button1.addActionListener(e -> button1ActionPerformed(e));
-        contentPane.add(button1);
-        button1.setBounds(new Rectangle(new Point(495, 320), button1.getPreferredSize()));
+        //---- jb_AddBook ----
+        jb_AddBook.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Book-1.png")));
+        jb_AddBook.setBorderPainted(false);
+        jb_AddBook.setContentAreaFilled(false);
+        jb_AddBook.setBorder(null);
+        jb_AddBook.addActionListener(e -> jb_AddBookActionPerformed());
+        contentPane.add(jb_AddBook);
+        jb_AddBook.setBounds(new Rectangle(new Point(125, 75), jb_AddBook.getPreferredSize()));
 
-        //---- button2 ----
-        button2.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Pencil_note.png")));
-        button2.setContentAreaFilled(false);
-        button2.setBorder(null);
-        contentPane.add(button2);
-        button2.setBounds(new Rectangle(new Point(495, 75), button2.getPreferredSize()));
+        //---- jb_BookTypeUpdate ----
+        jb_BookTypeUpdate.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Pen.png")));
+        jb_BookTypeUpdate.setBorder(null);
+        jb_BookTypeUpdate.setContentAreaFilled(false);
+        jb_BookTypeUpdate.addActionListener(e -> button1ActionPerformed(e));
+        contentPane.add(jb_BookTypeUpdate);
+        jb_BookTypeUpdate.setBounds(new Rectangle(new Point(495, 320), jb_BookTypeUpdate.getPreferredSize()));
 
-        //---- button3 ----
-        button3.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Books.png")));
-        button3.setContentAreaFilled(false);
-        button3.setBorder(null);
-        button3.addActionListener(e -> button3ActionPerformed(e));
-        contentPane.add(button3);
-        button3.setBounds(new Rectangle(new Point(125, 320), button3.getPreferredSize()));
+        //---- jb_BookUpdate ----
+        jb_BookUpdate.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Pencil_note.png")));
+        jb_BookUpdate.setContentAreaFilled(false);
+        jb_BookUpdate.setBorder(null);
+        jb_BookUpdate.addActionListener(e -> button2ActionPerformed(e));
+        contentPane.add(jb_BookUpdate);
+        jb_BookUpdate.setBounds(new Rectangle(new Point(495, 75), jb_BookUpdate.getPreferredSize()));
 
-        //---- button4 ----
-        button4.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Book-1.png")));
-        button4.setBorder(null);
-        button4.setContentAreaFilled(false);
-        button4.addActionListener(e -> button4ActionPerformed(e));
-        contentPane.add(button4);
-        button4.setBounds(new Rectangle(new Point(125, 75), button4.getPreferredSize()));
+        //---- jb_AddBookType ----
+        jb_AddBookType.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Books.png")));
+        jb_AddBookType.setContentAreaFilled(false);
+        jb_AddBookType.setBorder(null);
+        jb_AddBookType.addActionListener(e -> button3ActionPerformed(e));
+        contentPane.add(jb_AddBookType);
+        jb_AddBookType.setBounds(new Rectangle(new Point(125, 320), jb_AddBookType.getPreferredSize()));
 
-        //---- button5 ----
-        button5.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Myspace.png")));
-        button5.setBorder(null);
-        button5.setContentAreaFilled(false);
-        contentPane.add(button5);
-        button5.setBounds(new Rectangle(new Point(125, 545), button5.getPreferredSize()));
+        //---- jb_ReaderManager ----
+        jb_ReaderManager.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Myspace.png")));
+        jb_ReaderManager.setBorder(null);
+        jb_ReaderManager.setContentAreaFilled(false);
+        contentPane.add(jb_ReaderManager);
+        jb_ReaderManager.setBounds(new Rectangle(new Point(125, 545), jb_ReaderManager.getPreferredSize()));
 
-        //---- button6 ----
-        button6.setContentAreaFilled(false);
-        button6.setBorder(null);
-        button6.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Lightbulb.png")));
-        contentPane.add(button6);
-        button6.setBounds(new Rectangle(new Point(495, 545), button6.getPreferredSize()));
+        //---- jb_About ----
+        jb_About.setContentAreaFilled(false);
+        jb_About.setBorder(null);
+        jb_About.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Lightbulb.png")));
+        contentPane.add(jb_About);
+        jb_About.setBounds(new Rectangle(new Point(495, 545), jb_About.getPreferredSize()));
 
         //---- label1 ----
         label1.setText("\u6dfb\u52a0\u56fe\u4e66");
@@ -163,12 +177,12 @@ public class BookManagerDashBoard extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - siyuan zheng
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
-    private JButton button5;
-    private JButton button6;
+    private JButton jb_AddBook;
+    private JButton jb_BookTypeUpdate;
+    private JButton jb_BookUpdate;
+    private JButton jb_AddBookType;
+    private JButton jb_ReaderManager;
+    private JButton jb_About;
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
