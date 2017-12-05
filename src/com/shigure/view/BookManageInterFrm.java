@@ -347,6 +347,10 @@ public class BookManageInterFrm extends JFrame {
 
         //======== scrollPane2 ========
         {
+            scrollPane2.setBorder(null);
+
+            //---- bookDescTxt ----
+            bookDescTxt.setLineWrap(true);
             scrollPane2.setViewportView(bookDescTxt);
         }
         contentPane.add(scrollPane2);

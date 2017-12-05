@@ -4,6 +4,9 @@
 
 package com.shigure.view;
 
+import java.awt.event.*;
+import com.shigure.model.User;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -11,9 +14,23 @@ import javax.swing.*;
  * @author siyuan zheng
  */
 public class ReaderDashBoard extends JFrame {
+    public static int uid;
+
+    //static User user = new User();
     public ReaderDashBoard() {
         initComponents();
     }
+
+    public void tetId(User id){
+        ReaderDashBoard.uid = id.getId();
+        //System.out.println(uid);
+    }
+
+    private void button1ActionPerformed(ActionEvent e) {
+        System.out.println(uid);
+        new Rd_BookLookUp().setVisible(true);
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -24,11 +41,13 @@ public class ReaderDashBoard extends JFrame {
         button4 = new JButton();
 
         //======== this ========
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- button1 ----
         button1.setText("text");
+        button1.addActionListener(e -> button1ActionPerformed(e));
         contentPane.add(button1);
         button1.setBounds(new Rectangle(new Point(105, 95), button1.getPreferredSize()));
 

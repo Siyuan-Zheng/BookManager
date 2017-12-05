@@ -24,7 +24,7 @@ import static com.shigure.util.DbUtil.*;
 public class Login extends JFrame {
     private ManagerDao managerDao = new ManagerDao();
     private UserDao userDao = new UserDao();
-    ManagerDashBoard managerDashBoard = new ManagerDashBoard();
+    ReaderDashBoard readerDashBoard = new ReaderDashBoard();
     public Login() {
         initComponents();
     }
@@ -77,7 +77,7 @@ public class Login extends JFrame {
                 con = getConnection();
                 User currentUser =userDao.login(con,user);      //进行登陆
                 User id = userDao.userTypeList(con,user);
-                managerDashBoard.tetId(id);
+                readerDashBoard.tetId(id);
                     if(currentUser !=null) {
                     this.dispose();
                     new ReaderDashBoard().setVisible(true);     //当读者选项被选中是关闭登陆窗口，调用管理员主菜单

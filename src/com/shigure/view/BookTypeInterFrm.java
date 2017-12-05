@@ -77,6 +77,10 @@ class BookTypeInterFrm extends JFrame {
 
         //======== scrollPane1 ========
         {
+            scrollPane1.setBorder(null);
+
+            //---- bookTypeDescTxt ----
+            bookTypeDescTxt.setLineWrap(true);
             scrollPane1.setViewportView(bookTypeDescTxt);
         }
         contentPane.add(scrollPane1);

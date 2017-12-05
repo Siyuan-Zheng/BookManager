@@ -114,11 +114,12 @@ class BookAddInterFrm extends JFrame {
         label4 = new JLabel();
         priceTxt = new JTextField();
         label5 = new JLabel();
-        jcb_BookType = new JComboBox<BookType>();
+        jcb_BookType = new JComboBox();
         label6 = new JLabel();
-        bookDescTxt = new JTextArea();
         jb_add = new JButton();
         jb_reset = new JButton();
+        scrollPane1 = new JScrollPane();
+        bookDescTxt = new JTextArea();
         label3 = new JLabel();
 
         //======== this ========
@@ -189,13 +190,6 @@ class BookAddInterFrm extends JFrame {
         contentPane.add(label6);
         label6.setBounds(new Rectangle(new Point(45, 225), label6.getPreferredSize()));
 
-        //---- bookDescTxt ----
-        bookDescTxt.setBorder(null);
-        bookDescTxt.setForeground(new Color(51, 51, 51));
-        bookDescTxt.setBackground(new Color(204, 204, 204));
-        contentPane.add(bookDescTxt);
-        bookDescTxt.setBounds(115, 220, 425, 120);
-
         //---- jb_add ----
         jb_add.setText("\u6dfb\u52a0");
         jb_add.setContentAreaFilled(false);
@@ -215,6 +209,20 @@ class BookAddInterFrm extends JFrame {
         jb_reset.addActionListener(e -> button2ActionPerformed(e));
         contentPane.add(jb_reset);
         jb_reset.setBounds(115, 375, 90, 35);
+
+        //======== scrollPane1 ========
+        {
+            scrollPane1.setBorder(null);
+
+            //---- bookDescTxt ----
+            bookDescTxt.setBorder(null);
+            bookDescTxt.setForeground(new Color(51, 51, 51));
+            bookDescTxt.setBackground(new Color(204, 204, 204));
+            bookDescTxt.setLineWrap(true);
+            scrollPane1.setViewportView(bookDescTxt);
+        }
+        contentPane.add(scrollPane1);
+        scrollPane1.setBounds(120, 210, 400, 120);
 
         //---- label3 ----
         label3.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u672a\u6807\u9898-1.png")));
@@ -248,11 +256,12 @@ class BookAddInterFrm extends JFrame {
     private JLabel label4;
     private JTextField priceTxt;
     private JLabel label5;
-    private JComboBox<BookType> jcb_BookType;
+    private JComboBox jcb_BookType;
     private JLabel label6;
-    private JTextArea bookDescTxt;
     private JButton jb_add;
     private JButton jb_reset;
+    private JScrollPane scrollPane1;
+    private JTextArea bookDescTxt;
     private JLabel label3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

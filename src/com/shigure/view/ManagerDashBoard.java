@@ -14,7 +14,7 @@ import javax.swing.*;
  * @author siyuan zheng
  */
 class ManagerDashBoard extends JFrame {
-    User user = new User();
+    static User user = new User();
     ManagerDashBoard() {
         initComponents();
     }
@@ -33,11 +33,6 @@ class ManagerDashBoard extends JFrame {
     private void button2ActionPerformed(ActionEvent e) {
         //---- jb_BookUpdate ----
         new BookManageInterFrm().setVisible(true);
-    }
-
-    public void tetId(User id){
-        //User user = this.user;
-        System.out.println(id.getId());
     }
 
 
@@ -112,6 +107,7 @@ class ManagerDashBoard extends JFrame {
         jb_About.setContentAreaFilled(false);
         jb_About.setBorder(null);
         jb_About.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Lightbulb.png")));
+        jb_About.setBorderPainted(false);
         contentPane.add(jb_About);
         jb_About.setBounds(new Rectangle(new Point(355, 545), jb_About.getPreferredSize()));
 
