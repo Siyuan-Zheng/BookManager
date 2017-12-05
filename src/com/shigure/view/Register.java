@@ -4,7 +4,9 @@
 
 package com.shigure.view;
 
+import com.shigure.dao.ManagerDao;
 import com.shigure.dao.UserDao;
+import com.shigure.model.Manager;
 import com.shigure.model.User;
 import com.shigure.util.StringUtil;
 
@@ -13,7 +15,6 @@ import java.awt.event.*;
 import java.sql.Connection;
 import java.util.Objects;
 import javax.swing.*;
-import javax.swing.border.*;
 
 import static com.shigure.util.DbUtil.free;
 import static com.shigure.util.DbUtil.getConnection;
@@ -23,11 +24,12 @@ import static com.shigure.util.DbUtil.getConnection;
  * @author siyuan zheng
  */
 public class Register extends JFrame {
-    UserDao userDao = new UserDao();
+    User user = new User();
     public Register() {
         initComponents();
     }
 
+    //重置输入框
     private void jb_resetActionPerformed(ActionEvent e) {
         this.userNameTxt.setText("");
         this.passwordTxt.setText("");
@@ -36,6 +38,7 @@ public class Register extends JFrame {
         this.telPhoneTxt.setText("");
     }
 
+    //注册新用户
     private void jb_registerActionPerformed(ActionEvent e) {
         String userRegisterName = this.userNameTxt.getText();
         String userRegisterPassword = new String(this.passwordTxt.getPassword());
@@ -71,7 +74,7 @@ public class Register extends JFrame {
                 return;
             }
             con = getConnection();
-            int n = userDao.userRegister(con, user);
+            int n = UserDao.userRegister(con, user);
             if (n == 1) {
                 JOptionPane.showMessageDialog(null, "注册成功");
                 this.dispose();

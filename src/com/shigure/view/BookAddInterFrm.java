@@ -9,7 +9,6 @@ import com.shigure.dao.BookDao;
 import com.shigure.dao.BookTypeDao;
 import com.shigure.model.Book;
 import com.shigure.model.BookType;
-import com.shigure.util.DbUtil;
 import com.shigure.util.StringUtil;
 
 import java.awt.*;
@@ -24,10 +23,7 @@ import static com.shigure.util.DbUtil.getConnection;
  * @author siyuan zheng
  */
 class BookAddInterFrm extends JFrame {
-
-    DbUtil dbUtil = new DbUtil();
-    BookTypeDao bookTypeDao = new BookTypeDao();
-    BookDao bookDao = new BookDao();
+    private BookDao bookDao = new BookDao();
 
     BookAddInterFrm() {
         initComponents();
@@ -35,7 +31,7 @@ class BookAddInterFrm extends JFrame {
         //this.jcb_BookType.setSelectedIndex(0);
     }
 
-    private void fillBookType(){
+    private void fillBookType(){                             //获取图书类型添加到选择框中
         Connection con = null;
         BookType bookType = null;
         try {
@@ -43,7 +39,7 @@ class BookAddInterFrm extends JFrame {
             ResultSet rs = BookTypeDao.bookTypeList(con,new BookType());
             bookType = new BookType();
             bookType.setBookTypeName("请选择...");
-            bookType.setId(-1);
+            bookType.setId(-1);                             //将索引为-1的选项设为“请选择...”
             this.jcb_BookType.addItem(bookType);
             while(rs.next()){
                 bookType = new BookType();
@@ -58,7 +54,7 @@ class BookAddInterFrm extends JFrame {
         }
     }
 
-    private void button2ActionPerformed(ActionEvent e) {
+    private void button2ActionPerformed(ActionEvent e) {        //重置输入框
         this.bookNameTxt.setText("");
         this.authorTxt.setText("");
         this.priceTxt.setText("");
@@ -66,7 +62,7 @@ class BookAddInterFrm extends JFrame {
         this.bookDescTxt.setText("");
     }
 
-    private void button1ActionPerformed(ActionEvent e) {
+    private void button1ActionPerformed(ActionEvent e) {        //添加图书
         String bookName = this.bookNameTxt.getText();
         String author = this.authorTxt.getText();
         String price = this.priceTxt.getText();
@@ -85,8 +81,8 @@ class BookAddInterFrm extends JFrame {
             return;
         }
 
-        BookType bookType = (BookType) this.jcb_BookType.getSelectedItem();
-        int bookTypeId = bookType.getId();
+        BookType bookType = (BookType) this.jcb_BookType.getSelectedItem();     //获取选择框中的内容
+        int bookTypeId = bookType.getId();                                      //获取bookTypeId
 
         Book book = new Book(bookName,author,Float.parseFloat(price),bookDesc,bookTypeId);
 
@@ -94,8 +90,8 @@ class BookAddInterFrm extends JFrame {
 
         try {
             con = getConnection();
-            int addNum = bookDao.bookAdd(con,book);
-            if(addNum == 1 ){
+            int addNum = bookDao.bookAdd(con,book);                             //获取return值
+            if(addNum == 1 ){                                                   //return为1时即添加成功
                 JOptionPane.showMessageDialog(null,"图书添加成功");
             }else {
                 JOptionPane.showMessageDialog(null,"图书添加失败");
@@ -121,8 +117,8 @@ class BookAddInterFrm extends JFrame {
         jcb_BookType = new JComboBox<BookType>();
         label6 = new JLabel();
         bookDescTxt = new JTextArea();
-        button1 = new JButton();
-        button2 = new JButton();
+        jb_add = new JButton();
+        jb_reset = new JButton();
         label3 = new JLabel();
 
         //======== this ========
@@ -200,28 +196,28 @@ class BookAddInterFrm extends JFrame {
         contentPane.add(bookDescTxt);
         bookDescTxt.setBounds(115, 220, 425, 120);
 
-        //---- button1 ----
-        button1.setText("\u6dfb\u52a0");
-        button1.setContentAreaFilled(false);
-        button1.setBorder(null);
-        button1.setForeground(new Color(51, 51, 51));
-        button1.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
-        button1.addActionListener(e -> button1ActionPerformed(e));
-        contentPane.add(button1);
-        button1.setBounds(450, 375, 90, 35);
+        //---- jb_add ----
+        jb_add.setText("\u6dfb\u52a0");
+        jb_add.setContentAreaFilled(false);
+        jb_add.setBorder(null);
+        jb_add.setForeground(new Color(51, 51, 51));
+        jb_add.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+        jb_add.addActionListener(e -> button1ActionPerformed(e));
+        contentPane.add(jb_add);
+        jb_add.setBounds(450, 375, 90, 35);
 
-        //---- button2 ----
-        button2.setText("\u91cd\u7f6e");
-        button2.setBorder(null);
-        button2.setContentAreaFilled(false);
-        button2.setForeground(new Color(51, 51, 51));
-        button2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
-        button2.addActionListener(e -> button2ActionPerformed(e));
-        contentPane.add(button2);
-        button2.setBounds(115, 375, 90, 35);
+        //---- jb_reset ----
+        jb_reset.setText("\u91cd\u7f6e");
+        jb_reset.setBorder(null);
+        jb_reset.setContentAreaFilled(false);
+        jb_reset.setForeground(new Color(51, 51, 51));
+        jb_reset.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+        jb_reset.addActionListener(e -> button2ActionPerformed(e));
+        contentPane.add(jb_reset);
+        jb_reset.setBounds(115, 375, 90, 35);
 
         //---- label3 ----
-        label3.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/timg.jpg")));
+        label3.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u672a\u6807\u9898-1.png")));
         contentPane.add(label3);
         label3.setBounds(0, 0, 585, 470);
 
@@ -255,8 +251,8 @@ class BookAddInterFrm extends JFrame {
     private JComboBox<BookType> jcb_BookType;
     private JLabel label6;
     private JTextArea bookDescTxt;
-    private JButton button1;
-    private JButton button2;
+    private JButton jb_add;
+    private JButton jb_reset;
     private JLabel label3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

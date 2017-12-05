@@ -1,12 +1,13 @@
 package com.shigure.dao;
 
-import com.shigure.model.BookType;
+import com.shigure.model.Manager;
 import com.shigure.model.User;
 import com.shigure.util.StringUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 
 public class UserDao {
 
@@ -26,7 +27,7 @@ public class UserDao {
         return resultUser;
     }
 
-    public int userRegister(Connection con, User user) throws Exception {
+    public static int userRegister(Connection con, User user) throws Exception {
         String sql = "INSERT INTO t_user VALUES(NULL,?,?,?,?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1, user.getUserName());
@@ -35,7 +36,17 @@ public class UserDao {
         pstmt.setString(4, user.getTelPhone());
         return pstmt.executeUpdate();
     }
+
+    public static User userTypeList(Connection con, User user) throws Exception{
+        ResultSet rs = null;
+        String sql = "select * from t_user where userName=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, user.getUserName());
+        rs = pstmt.executeQuery();
+        while (rs.next()){
+            user = new User();
+            user.setId(rs.getInt("id"));
+        }
+        return user;
+    }
 }
-
-
-

@@ -14,7 +14,7 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_AddBookActionPerformed", false ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 125
+				"x": 70
 				"y": 75
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -24,7 +24,7 @@ new FormModel {
 				"contentAreaFilled": false
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 495
+				"x": 355
 				"y": 320
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -34,7 +34,7 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 495
+				"x": 355
 				"y": 75
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -44,7 +44,7 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 125
+				"x": 70
 				"y": 320
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -53,7 +53,7 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"contentAreaFilled": false
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 125
+				"x": 70
 				"y": 545
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -62,7 +62,7 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/Lightbulb.png" )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 495
+				"x": 355
 				"y": 545
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -71,7 +71,7 @@ new FormModel {
 				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
 				"foreground": new java.awt.Color( 51, 51, 51, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 155
+				"x": 100
 				"y": 220
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -80,7 +80,7 @@ new FormModel {
 				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
 				"foreground": new java.awt.Color( 51, 51, 51, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 510
+				"x": 365
 				"y": 220
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -89,7 +89,7 @@ new FormModel {
 				"font": &Font0 new java.awt.Font( "Microsoft YaHei UI", 0, 18 )
 				"foreground": new java.awt.Color( 51, 51, 51, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 140
+				"x": 80
 				"y": 465
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -98,7 +98,7 @@ new FormModel {
 				"font": #Font0
 				"foreground": new java.awt.Color( 51, 51, 51, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 510
+				"x": 370
 				"y": 465
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -107,7 +107,7 @@ new FormModel {
 				"font": #Font0
 				"foreground": new java.awt.Color( 51, 51, 51, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 155
+				"x": 100
 				"y": 695
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -116,7 +116,7 @@ new FormModel {
 				"font": #Font0
 				"foreground": new java.awt.Color( 51, 51, 51, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 545
+				"x": 400
 				"y": 695
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -126,12 +126,12 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 0
 				"y": 0
-				"width": 725
+				"width": 550
 				"height": 785
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 230, 0 )
-			"size": new java.awt.Dimension( 725, 815 )
+			"location": new java.awt.Point( 405, 0 )
+			"size": new java.awt.Dimension( 550, 815 )
 		} )
 	}
 }

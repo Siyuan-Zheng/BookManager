@@ -5,7 +5,9 @@
 package com.shigure.view;
 
 import java.awt.event.*;
+import com.shigure.dao.ManagerDao;
 import com.shigure.dao.UserDao;
+import com.shigure.model.Manager;
 import com.shigure.model.User;
 import com.shigure.util.StringUtil;
 
@@ -20,77 +22,75 @@ import static com.shigure.util.DbUtil.*;
  * @author siyuan zheng
  */
 public class Login extends JFrame {
+    private ManagerDao managerDao = new ManagerDao();
     private UserDao userDao = new UserDao();
+    ManagerDashBoard managerDashBoard = new ManagerDashBoard();
     public Login() {
         initComponents();
     }
 
+    //调用注册窗口
     private void button1ActionPerformed(ActionEvent e) {
         new Register().setVisible(true);
-//        String userRegisterName = this.userNameField.getText();
-//        String userRegisterPassword = new String(this.passwordField.getPassword());
-//        if (StringUtil.isEmpty(userRegisterName)) {
-//            JOptionPane.showMessageDialog(null, "用户名不能为空");
-//            return;
-//        }
-//        User user = new User(userRegisterName, userRegisterPassword);
-//        Connection con = null;
-//        try {
-//            con = getConnection();
-//            int n = userDao.userRegister(con, user);
-//            if (n == 1) {
-//                JOptionPane.showMessageDialog(null, "注册成功");
-//            } else {
-//                JOptionPane.showMessageDialog(null, "注册失败");
-//            }
-//
-//        } catch (Exception e1) {
-//            e1.printStackTrace();
-//            JOptionPane.showMessageDialog(null, "注册失败");
-//        } finally {
-//            free(con);
-//        }
     }
+
+    //登陆
     private void button2ActionPerformed(ActionEvent e) {
 
-        boolean manager = this.managerCheck.isSelected();
-        boolean reader = this.readerCheck.isSelected();
+        boolean managerFlag = this.managerCheck.isSelected();           //判断管理员选框是否被选中
+        boolean readerFlag = this.readerCheck.isSelected();             //判断读者选框是否被选中
 
-        String userName = userNameField.getText();
-        String password =new String(passwordField.getPassword());
-        if(StringUtil.isEmpty(userName)){
+        String userName = userNameField.getText();                      //获取输入框内用户名
+        String password =new String(passwordField.getPassword());       //获取输入框内密码
+
+        if(StringUtil.isEmpty(userName)){                               //用户名为空时报错
             JOptionPane.showMessageDialog(null,"用户名不能为空");
             return;
         }
-        if(StringUtil.isEmpty(password)){
+        if(StringUtil.isEmpty(password)){                               //密码为空时报错
             JOptionPane.showMessageDialog(null,"密码不能为空");
             return;
         }
-        User user = new User(userName,password,null,null);
-        Connection con = null;
-        try {
-            con = getConnection();
-            User currentUser=userDao.login(con,user);
-            if(currentUser!=null) {
-                if( manager ){
-                this.dispose();
-                new ManagerDashBoard().setVisible(true);
-                }else if( reader ){
-                    JOptionPane.showMessageDialog(null,"读者");
-                }else {
-                    JOptionPane.showMessageDialog(null,"请选择用户类型");
-                }
-            }
-            else {
-                JOptionPane.showMessageDialog(null,"登录失败");
-            }
-        } catch (Exception e1) {
-            e1.printStackTrace();
-            JOptionPane.showMessageDialog(null,"登录失败");
-        }finally {
-            free(con);
-        }
 
+        if(managerFlag){                                                //当管理员选项被选中时
+            Manager manager = new Manager(userName,password);
+            Connection con = null;
+            try {
+                con = getConnection();
+                Manager currentManager =managerDao.login(con,manager);  //进行登陆
+                if(currentManager !=null) {
+                    this.dispose();
+                    new ManagerDashBoard().setVisible(true);            //当管理员选项被选中是关闭登陆窗口，调用管理员主菜单
+                } else {                                                //登录失败时报错
+                    JOptionPane.showMessageDialog(null,"登录失败");
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                JOptionPane.showMessageDialog(null,"登录失败");
+            }finally {
+                free(con);                                              //断开数据库连接
+            }
+        }else if(readerFlag){
+            User user = new User(userName,password,null,null);
+            Connection con = null;
+            try {
+                con = getConnection();
+                User currentUser =userDao.login(con,user);      //进行登陆
+                User id = userDao.userTypeList(con,user);
+                managerDashBoard.tetId(id);
+                    if(currentUser !=null) {
+                    this.dispose();
+                    new ReaderDashBoard().setVisible(true);     //当读者选项被选中是关闭登陆窗口，调用管理员主菜单
+                } else {
+                    JOptionPane.showMessageDialog(null,"登录失败");
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                JOptionPane.showMessageDialog(null,"登录失败");
+            }finally {
+                free(con);
+            }
+        }
     }
 
 
