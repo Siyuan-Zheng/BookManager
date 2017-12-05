@@ -10,12 +10,10 @@ import com.shigure.dao.BookTypeDao;
 import com.shigure.model.Book;
 import com.shigure.model.BookBorrow;
 import com.shigure.model.BookType;
-import com.shigure.util.StringUtil;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.Vector;
 import javax.swing.*;
@@ -27,12 +25,12 @@ import static com.shigure.util.DbUtil.getConnection;
 /**
  * @author siyuan zheng
  */
-public class Rd_BookLookUp extends JFrame {
+public class ReaderBookLookUp extends JFrame {
     BookDao bookDao = new BookDao();
     BookBorrowDao bookBorrowDao = new BookBorrowDao();
     static int bookId = 0;
 
-    public Rd_BookLookUp() {
+    public ReaderBookLookUp() {
         initComponents();
         this.fillTable(new Book());
         this.fillBookType();
@@ -98,7 +96,7 @@ public class Rd_BookLookUp extends JFrame {
 
     private void jb_addBookBorrowActionPerformed(ActionEvent e) {
         int userId = ReaderDashBoard.uid;
-        int bookId = Rd_BookLookUp.bookId;
+        int bookId = ReaderBookLookUp.bookId;
         java.util.Date date = new java.util.Date();
         java.sql.Date borrowTime = new java.sql.Date(date.getTime());
 
@@ -124,7 +122,7 @@ public class Rd_BookLookUp extends JFrame {
 
     private void bookTableMousePressed(MouseEvent e) {
         int row = this.bookTable.getSelectedRow();
-        Rd_BookLookUp.bookId = Integer.parseInt(String.valueOf(bookTable.getValueAt(row,0)));
+        ReaderBookLookUp.bookId = Integer.parseInt(String.valueOf(bookTable.getValueAt(row,0)));
     }
 
     private void initComponents() {

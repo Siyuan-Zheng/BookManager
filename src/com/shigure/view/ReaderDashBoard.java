@@ -28,7 +28,11 @@ public class ReaderDashBoard extends JFrame {
 
     private void button1ActionPerformed(ActionEvent e) {
         System.out.println(uid);
-        new Rd_BookLookUp().setVisible(true);
+        new ReaderBookLookUp().setVisible(true);
+    }
+
+    private void button2ActionPerformed(ActionEvent e) {
+        new ReaderBorrowManage().setVisible(true);
     }
 
 
@@ -53,6 +57,7 @@ public class ReaderDashBoard extends JFrame {
 
         //---- button2 ----
         button2.setText("text");
+        button2.addActionListener(e -> button2ActionPerformed(e));
         contentPane.add(button2);
         button2.setBounds(new Rectangle(new Point(405, 100), button2.getPreferredSize()));
 
