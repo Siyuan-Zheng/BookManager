@@ -21,13 +21,11 @@ public class ReaderDashBoard extends JFrame {
         initComponents();
     }
 
-    public void tetId(User id){
+    public void getUserId(User id){
         ReaderDashBoard.uid = id.getId();
-        //System.out.println(uid);
     }
 
     private void button1ActionPerformed(ActionEvent e) {
-        System.out.println(uid);
         new ReaderBookLookUp().setVisible(true);
     }
 

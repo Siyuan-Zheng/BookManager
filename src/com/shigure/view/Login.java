@@ -77,7 +77,7 @@ public class Login extends JFrame {
                 con = getConnection();
                 User currentUser =userDao.login(con,user);      //进行登陆
                 User id = userDao.userTypeList(con,user);
-                readerDashBoard.tetId(id);
+                readerDashBoard.getUserId(id);
                     if(currentUser !=null) {
                     this.dispose();
                     new ReaderDashBoard().setVisible(true);     //当读者选项被选中是关闭登陆窗口，调用管理员主菜单
@@ -118,24 +118,24 @@ public class Login extends JFrame {
 
         //---- title ----
         title.setText("\u56fe\u4e66\u4fe1\u606f\u7ba1\u7406\u7cfb\u7edf");
-        title.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 28));
+        title.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 30));
         title.setForeground(new Color(204, 204, 204));
         contentPane.add(title);
-        title.setBounds(310, 75, 260, title.getPreferredSize().height);
+        title.setBounds(195, 75, 255, title.getPreferredSize().height);
 
         //---- userNameLabel ----
         userNameLabel.setText("\u7528\u6237\u540d");
         userNameLabel.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         userNameLabel.setForeground(new Color(204, 204, 204));
         contentPane.add(userNameLabel);
-        userNameLabel.setBounds(new Rectangle(new Point(190, 175), userNameLabel.getPreferredSize()));
+        userNameLabel.setBounds(new Rectangle(new Point(100, 205), userNameLabel.getPreferredSize()));
 
         //---- passwordLabel ----
         passwordLabel.setText("\u5bc6\u7801");
         passwordLabel.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         passwordLabel.setForeground(new Color(204, 204, 204));
         contentPane.add(passwordLabel);
-        passwordLabel.setBounds(new Rectangle(new Point(205, 235), passwordLabel.getPreferredSize()));
+        passwordLabel.setBounds(new Rectangle(new Point(115, 300), passwordLabel.getPreferredSize()));
 
         //---- userNameField ----
         userNameField.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
@@ -143,37 +143,42 @@ public class Login extends JFrame {
         userNameField.setForeground(new Color(204, 204, 204));
         userNameField.setBackground(new Color(70, 73, 74));
         contentPane.add(userNameField);
-        userNameField.setBounds(260, 175, 290, 25);
+        userNameField.setBounds(170, 205, 290, 25);
 
         //---- passwordField ----
         passwordField.setBackground(new Color(70, 73, 74));
         passwordField.setBorder(null);
         passwordField.setForeground(new Color(204, 204, 204));
         contentPane.add(passwordField);
-        passwordField.setBounds(260, 235, 290, 25);
+        passwordField.setBounds(170, 300, 290, 25);
 
         //---- registerButton ----
-        registerButton.setText("\u6ce8\u518c");
         registerButton.setBackground(new Color(102, 102, 102));
         registerButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
         registerButton.setForeground(new Color(204, 204, 204));
         registerButton.setAutoscrolls(true);
         registerButton.setContentAreaFilled(false);
         registerButton.setBorder(null);
-        registerButton.addActionListener(this::button1ActionPerformed);
+        registerButton.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/New.png")));
+        registerButton.setBorderPainted(false);
+        registerButton.addActionListener(e -> {
+			button1ActionPerformed(e);
+			button1ActionPerformed(e);
+		});
         contentPane.add(registerButton);
-        registerButton.setBounds(235, 335, 90, 35);
+        registerButton.setBounds(115, 465, 115, 110);
 
         //---- loginButton ----
-        loginButton.setText("\u767b\u9646");
         loginButton.setBackground(new Color(102, 102, 102));
         loginButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
         loginButton.setForeground(new Color(204, 204, 204));
         loginButton.setContentAreaFilled(false);
         loginButton.setBorder(null);
-        loginButton.addActionListener(this::button2ActionPerformed);
+        loginButton.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Plane.png")));
+        loginButton.setBorderPainted(false);
+        loginButton.addActionListener(e -> button2ActionPerformed(e));
         contentPane.add(loginButton);
-        loginButton.setBounds(465, 335, 90, 35);
+        loginButton.setBounds(370, 465, 115, 110);
 
         //---- readerCheck ----
         readerCheck.setText("\u8bfb\u8005");
@@ -183,7 +188,7 @@ public class Login extends JFrame {
         readerCheck.setBackground(new Color(102, 102, 102));
         readerCheck.setForeground(new Color(204, 204, 204));
         contentPane.add(readerCheck);
-        readerCheck.setBounds(new Rectangle(new Point(310, 285), readerCheck.getPreferredSize()));
+        readerCheck.setBounds(new Rectangle(new Point(220, 375), readerCheck.getPreferredSize()));
 
         //---- managerCheck ----
         managerCheck.setText("\u7ba1\u7406\u5458");
@@ -193,18 +198,18 @@ public class Login extends JFrame {
         managerCheck.setBackground(new Color(102, 102, 102));
         managerCheck.setForeground(new Color(204, 204, 204));
         contentPane.add(managerCheck);
-        managerCheck.setBounds(new Rectangle(new Point(435, 285), managerCheck.getPreferredSize()));
+        managerCheck.setBounds(new Rectangle(new Point(345, 375), managerCheck.getPreferredSize()));
 
         //---- titleIcon ----
         titleIcon.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/ManagerIcon.png")));
         contentPane.add(titleIcon);
-        titleIcon.setBounds(new Rectangle(new Point(235, 70), titleIcon.getPreferredSize()));
+        titleIcon.setBounds(new Rectangle(new Point(120, 70), titleIcon.getPreferredSize()));
 
         //---- background ----
-        background.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/LoginBackground.jpg")));
+        background.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u672a\u6807\u9898-1.png")));
         background.setBorder(null);
         contentPane.add(background);
-        background.setBounds(0, 0, 770, 495);
+        background.setBounds(0, 0, 575, 640);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
