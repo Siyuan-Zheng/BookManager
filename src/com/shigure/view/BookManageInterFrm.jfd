@@ -30,7 +30,7 @@ new FormModel {
 						add( "编号" )
 						add( "图书名称" )
 						add( "图书作者" )
-						add( "图书价格" )
+						add( "出版社" )
 						add( "图书描述" )
 						add( "图书类别" )
 					}, new java.util.Vector {
@@ -110,7 +110,7 @@ new FormModel {
 				"text": "查询"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_searchActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 330
+				"x": 470
 				"y": 100
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -130,13 +130,13 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
-				"text": "价格"
+				"text": "出版社"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 40
 				"y": 410
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "priceTxt"
+				name: "pressNameTxt"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 85
 				"y": 410
@@ -220,10 +220,23 @@ new FormModel {
 				"x": 135
 				"y": 565
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label10"
+				"text": "出版社"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 220
+				"y": 105
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "s_pressNameTxt"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 285
+				"y": 100
+				"width": 135
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 95 )
 			"size": new java.awt.Dimension( 590, 640 )
 		} )
 	}
 }
-

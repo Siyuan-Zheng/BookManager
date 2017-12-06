@@ -71,7 +71,7 @@ public class ReaderBookLookUp extends JFrame {
                 v.add(rs.getInt("id"));
                 v.add(rs.getString("bookName"));
                 v.add(rs.getString("author"));
-                v.add(rs.getFloat("price"));
+                v.add(rs.getString("pressName"));
                 v.add(rs.getString("bookDesc"));
                 v.add(rs.getString("bookTypeName"));
                 dtm.addRow(v);
@@ -86,10 +86,11 @@ public class ReaderBookLookUp extends JFrame {
     private void jb_searchActionPerformed(ActionEvent e) {
         String bookName = this.s_bookNameTxt.getText();
         String author = this.s_authorTxt.getText();
+        String pressName = this.s_pressNameTxt.getText();
         BookType bookType = (BookType)this.s_jcb_bookType.getSelectedItem();
         int bookTypeId = bookType.getId();
 
-        Book book = new Book(bookName, author, bookTypeId);
+        Book book = new Book(bookName, author, bookTypeId,pressName);
 
         this.fillTable(book);
     }
@@ -138,6 +139,8 @@ public class ReaderBookLookUp extends JFrame {
         bookTable = new JTable();
         s_jcb_bookType = new JComboBox();
         jb_addBookBorrow = new JButton();
+        label4 = new JLabel();
+        s_pressNameTxt = new JTextField();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -166,7 +169,7 @@ public class ReaderBookLookUp extends JFrame {
         jb_search.setText("\u67e5\u8be2");
         jb_search.addActionListener(e -> jb_searchActionPerformed(e));
         contentPane.add(jb_search);
-        jb_search.setBounds(new Rectangle(new Point(305, 70), jb_search.getPreferredSize()));
+        jb_search.setBounds(new Rectangle(new Point(480, 70), jb_search.getPreferredSize()));
 
         //======== scrollPane1 ========
         {
@@ -177,7 +180,7 @@ public class ReaderBookLookUp extends JFrame {
                     {null, null, null, null, null, null},
                 },
                 new String[] {
-                    "\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u56fe\u4e66\u4ef7\u683c", "\u56fe\u4e66\u63cf\u8ff0", "\u56fe\u4e66\u7c7b\u522b"
+                    "\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u51fa\u7248\u793e", "\u56fe\u4e66\u63cf\u8ff0", "\u56fe\u4e66\u7c7b\u522b"
                 }
             ) {
                 boolean[] columnEditable = new boolean[] {
@@ -206,6 +209,13 @@ public class ReaderBookLookUp extends JFrame {
         jb_addBookBorrow.addActionListener(e -> jb_addBookBorrowActionPerformed(e));
         contentPane.add(jb_addBookBorrow);
         jb_addBookBorrow.setBounds(new Rectangle(new Point(225, 435), jb_addBookBorrow.getPreferredSize()));
+
+        //---- label4 ----
+        label4.setText("\u51fa\u7248\u793e");
+        contentPane.add(label4);
+        label4.setBounds(new Rectangle(new Point(250, 80), label4.getPreferredSize()));
+        contentPane.add(s_pressNameTxt);
+        s_pressNameTxt.setBounds(305, 80, 115, s_pressNameTxt.getPreferredSize().height);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -237,5 +247,7 @@ public class ReaderBookLookUp extends JFrame {
     private JTable bookTable;
     private JComboBox s_jcb_bookType;
     private JButton jb_addBookBorrow;
+    private JLabel label4;
+    private JTextField s_pressNameTxt;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

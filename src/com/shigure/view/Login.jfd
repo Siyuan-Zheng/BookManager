@@ -65,7 +65,7 @@ new FormModel {
 				"autoscrolls": true
 				"contentAreaFilled": false
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/New.png" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/s_New.png" )
 				"borderPainted": false
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
@@ -82,7 +82,7 @@ new FormModel {
 				"foreground": new java.awt.Color( 204, 204, 204, 255 )
 				"contentAreaFilled": false
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/Plane.png" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/s_Rocket.png" )
 				"borderPainted": false
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {

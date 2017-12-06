@@ -5,16 +5,16 @@ public class Book {
     private int id;
     private String bookName;
     private String author;
-    private float price;
+    private String pressName;
     private String bookDesc;
     private int bookTypeId = -1;
     private String BookTypeName;
 
-    public Book(int id, String bookName, String author, float price, String bookDesc, int bookTypeId) {
+    public Book(int id, String bookName, String author, String pressName, String bookDesc, int bookTypeId) {
         this.id = id;
         this.bookName = bookName;
         this.author = author;
-        this.price = price;
+        this.pressName = pressName;
         this.bookDesc = bookDesc;
         this.bookTypeId = bookTypeId;
     }
@@ -23,10 +23,11 @@ public class Book {
         super();
     }
 
-    public Book(String bookName, String author, int bookTypeId) {
+    public Book(String bookName, String author, int bookTypeId, String pressName) {
         this.bookName = bookName;
         this.author = author;
         this.bookTypeId = bookTypeId;
+        this.pressName = pressName;
     }
 
     public String getBookTypeName() {
@@ -37,11 +38,11 @@ public class Book {
         BookTypeName = bookTypeName;
     }
 
-    public Book(String bookName, String author, float price, String bookDesc , int bookTypeId) {
+    public Book(String bookName, String author, String pressName, String bookDesc , int bookTypeId) {
         super();
         this.bookName = bookName;
         this.author = author;
-        this.price = price;
+        this.pressName = pressName;
         this.bookDesc = bookDesc;
         this.bookTypeId = bookTypeId;
     }
@@ -71,12 +72,12 @@ public class Book {
     }
 
 
-    public float getPrice() {
-        return price;
+    public String getPressName() {
+        return pressName;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setpressName(String pressName) {
+        this.pressName = pressName;
     }
 
     public String getBookDesc() {

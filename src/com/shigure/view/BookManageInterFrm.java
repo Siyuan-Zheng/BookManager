@@ -41,7 +41,7 @@ public class BookManageInterFrm extends JFrame {
         this.idTxt.setText("");
         this.bookNameTxt.setText("");
         this.authorTxt.setText("");
-        this.priceTxt.setText("");
+        this.pressNameTxt.setText("");
         this.bookDescTxt.setText("");
         if(this.jcb_bookType.getItemCount() > 0){
             this.jcb_bookType.setSelectedIndex(0);
@@ -89,7 +89,7 @@ public class BookManageInterFrm extends JFrame {
                 v.add(rs.getInt("id"));
                 v.add(rs.getString("bookName"));
                 v.add(rs.getString("author"));
-                v.add(rs.getFloat("price"));
+                v.add(rs.getString("pressName"));
                 v.add(rs.getString("bookDesc"));
                 v.add(rs.getString("bookTypeName"));
                 dtm.addRow(v);
@@ -104,10 +104,11 @@ public class BookManageInterFrm extends JFrame {
     private void jb_searchActionPerformed(ActionEvent e) {
         String bookName = this.s_bookNameTxt.getText();
         String author = this.s_authorTxt.getText();
+        String pressName = this.s_pressNameTxt.getText();
         BookType bookType = (BookType)this.s_jcb_bookType.getSelectedItem();
         int bookTypeId = bookType.getId();
 
-        Book book = new Book(bookName, author, bookTypeId);
+        Book book = new Book(bookName, author, bookTypeId,pressName);
 
         this.fillTable(book);
         this.resetValue();
@@ -118,7 +119,7 @@ public class BookManageInterFrm extends JFrame {
         this.idTxt.setText((Integer)bookTable.getValueAt(row,0)+"");
         this.bookNameTxt.setText((String)bookTable.getValueAt(row,1));
         this.authorTxt.setText((String)bookTable.getValueAt(row,2));
-        this.priceTxt.setText((Float)bookTable.getValueAt(row,3)+"");
+        this.pressNameTxt.setText((String)bookTable.getValueAt(row,3));
         this.bookDescTxt.setText((String)bookTable.getValueAt(row,4));
         String bookTypeName = (String)bookTable.getValueAt(row,5);
         int n = this.jcb_bookType.getItemCount();
@@ -168,7 +169,7 @@ public class BookManageInterFrm extends JFrame {
 
         String bookName = this.bookNameTxt.getText();
         String author = this.authorTxt.getText();
-        String price = this.priceTxt.getText();
+        String pressName = this.pressNameTxt.getText();
         String bookDesc = this.bookDescTxt.getText();
 
         if(StringUtil.isEmpty(bookName)){
@@ -179,8 +180,8 @@ public class BookManageInterFrm extends JFrame {
             JOptionPane.showMessageDialog(null,"图书作者不能为空");
             return;
         }
-        if(StringUtil.isEmpty(price)){
-            JOptionPane.showMessageDialog(null,"图书价格不能为空");
+        if(StringUtil.isEmpty(pressName)){
+            JOptionPane.showMessageDialog(null,"出版社不能为空");
             return;
         }
 
@@ -189,7 +190,7 @@ public class BookManageInterFrm extends JFrame {
 
 
 
-        Book book = new Book(Integer.parseInt(id), bookName, author, Float.parseFloat(price), bookDesc, bookTypeId);
+        Book book = new Book(Integer.parseInt(id), bookName, author, pressName, bookDesc, bookTypeId);
         Connection con = null;
         try {
             con= getConnection();
@@ -226,7 +227,7 @@ public class BookManageInterFrm extends JFrame {
         label2 = new JLabel();
         idTxt = new JTextField();
         label3 = new JLabel();
-        priceTxt = new JTextField();
+        pressNameTxt = new JTextField();
         label6 = new JLabel();
         bookNameTxt = new JTextField();
         label7 = new JLabel();
@@ -238,6 +239,8 @@ public class BookManageInterFrm extends JFrame {
         bookDescTxt = new JTextArea();
         jb_modify = new JButton();
         jb_delete = new JButton();
+        label10 = new JLabel();
+        s_pressNameTxt = new JTextField();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -253,7 +256,7 @@ public class BookManageInterFrm extends JFrame {
                     {null, null, null, null, null, null},
                 },
                 new String[] {
-                    "\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u56fe\u4e66\u4ef7\u683c", "\u56fe\u4e66\u63cf\u8ff0", "\u56fe\u4e66\u7c7b\u522b"
+                    "\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u51fa\u7248\u793e", "\u56fe\u4e66\u63cf\u8ff0", "\u56fe\u4e66\u7c7b\u522b"
                 }
             ) {
                 boolean[] columnEditable = new boolean[] {
@@ -300,7 +303,7 @@ public class BookManageInterFrm extends JFrame {
         jb_search.setText("\u67e5\u8be2");
         jb_search.addActionListener(e -> jb_searchActionPerformed(e));
         contentPane.add(jb_search);
-        jb_search.setBounds(new Rectangle(new Point(330, 100), jb_search.getPreferredSize()));
+        jb_search.setBounds(new Rectangle(new Point(470, 100), jb_search.getPreferredSize()));
 
         //---- label2 ----
         label2.setText("\u7f16\u53f7");
@@ -313,11 +316,11 @@ public class BookManageInterFrm extends JFrame {
         idTxt.setBounds(80, 335, 150, idTxt.getPreferredSize().height);
 
         //---- label3 ----
-        label3.setText("\u4ef7\u683c");
+        label3.setText("\u51fa\u7248\u793e");
         contentPane.add(label3);
         label3.setBounds(new Rectangle(new Point(40, 410), label3.getPreferredSize()));
-        contentPane.add(priceTxt);
-        priceTxt.setBounds(85, 410, 150, priceTxt.getPreferredSize().height);
+        contentPane.add(pressNameTxt);
+        pressNameTxt.setBounds(85, 410, 150, pressNameTxt.getPreferredSize().height);
 
         //---- label6 ----
         label6.setText("\u56fe\u4e66\u540d\u79f0");
@@ -368,6 +371,13 @@ public class BookManageInterFrm extends JFrame {
         contentPane.add(jb_delete);
         jb_delete.setBounds(new Rectangle(new Point(135, 565), jb_delete.getPreferredSize()));
 
+        //---- label10 ----
+        label10.setText("\u51fa\u7248\u793e");
+        contentPane.add(label10);
+        label10.setBounds(new Rectangle(new Point(220, 105), label10.getPreferredSize()));
+        contentPane.add(s_pressNameTxt);
+        s_pressNameTxt.setBounds(285, 100, 135, s_pressNameTxt.getPreferredSize().height);
+
         { // compute preferred size
             Dimension preferredSize = new Dimension();
             for(int i = 0; i < contentPane.getComponentCount(); i++) {
@@ -400,7 +410,7 @@ public class BookManageInterFrm extends JFrame {
     private JLabel label2;
     private JTextField idTxt;
     private JLabel label3;
-    private JTextField priceTxt;
+    private JTextField pressNameTxt;
     private JLabel label6;
     private JTextField bookNameTxt;
     private JLabel label7;
@@ -412,5 +422,7 @@ public class BookManageInterFrm extends JFrame {
     private JTextArea bookDescTxt;
     private JButton jb_modify;
     private JButton jb_delete;
+    private JLabel label10;
+    private JTextField s_pressNameTxt;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

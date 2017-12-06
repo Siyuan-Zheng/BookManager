@@ -33,6 +33,14 @@ public class ReaderDashBoard extends JFrame {
         new ReaderBorrowManage().setVisible(true);
     }
 
+    private void button3ActionPerformed(ActionEvent e) {
+        new ReaderBookRecommend().setVisible(true);
+    }
+
+    private void button4ActionPerformed(ActionEvent e) {
+        new ReaderBookRecommendManage().setVisible(true);
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -61,11 +69,13 @@ public class ReaderDashBoard extends JFrame {
 
         //---- button3 ----
         button3.setText("text");
+        button3.addActionListener(e -> button3ActionPerformed(e));
         contentPane.add(button3);
         button3.setBounds(new Rectangle(new Point(110, 345), button3.getPreferredSize()));
 
         //---- button4 ----
         button4.setText("text");
+        button4.addActionListener(e -> button4ActionPerformed(e));
         contentPane.add(button4);
         button4.setBounds(new Rectangle(new Point(420, 360), button4.getPreferredSize()));
 

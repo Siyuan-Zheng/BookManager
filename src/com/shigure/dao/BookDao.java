@@ -13,7 +13,7 @@ public class BookDao {
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1,book.getBookName());
         pstmt.setString(2,book.getAuthor());
-        pstmt.setFloat(3,book.getPrice());
+        pstmt.setString(3,book.getPressName());
         pstmt.setString(4,book.getBookDesc());
         pstmt.setInt(5,book.getBookTypeId());
         return pstmt.executeUpdate();
@@ -26,6 +26,9 @@ public class BookDao {
         }
         if(StringUtil.isNotEmpty(book.getAuthor())){
             sb.append(" and b.author like '%").append(book.getAuthor()).append("%'");
+        }
+        if(StringUtil.isNotEmpty(book.getPressName())){
+            sb.append(" and b.pressName like '%").append(book.getPressName()).append("%'");
         }
         if(book.getBookTypeId() != -1){
             sb.append(" and b.bookTypeId =").append(book.getBookTypeId());
@@ -46,7 +49,7 @@ public class BookDao {
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1,book.getBookName());
         pstmt.setString(2,book.getAuthor());
-        pstmt.setFloat(3,book.getPrice());
+        pstmt.setString(3,book.getPressName());
         pstmt.setString(4,book.getBookDesc());
         pstmt.setInt(5,book.getBookTypeId());
         pstmt.setInt(6,book.getId());

@@ -159,7 +159,7 @@ public class Login extends JFrame {
         registerButton.setAutoscrolls(true);
         registerButton.setContentAreaFilled(false);
         registerButton.setBorder(null);
-        registerButton.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/New.png")));
+        registerButton.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/s_New.png")));
         registerButton.setBorderPainted(false);
         registerButton.addActionListener(e -> {
 			button1ActionPerformed(e);
@@ -174,7 +174,7 @@ public class Login extends JFrame {
         loginButton.setForeground(new Color(204, 204, 204));
         loginButton.setContentAreaFilled(false);
         loginButton.setBorder(null);
-        loginButton.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Plane.png")));
+        loginButton.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/s_Rocket.png")));
         loginButton.setBorderPainted(false);
         loginButton.addActionListener(e -> button2ActionPerformed(e));
         contentPane.add(loginButton);

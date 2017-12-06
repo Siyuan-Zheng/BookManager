@@ -57,7 +57,7 @@ class BookAddInterFrm extends JFrame {
     private void button2ActionPerformed(ActionEvent e) {        //重置输入框
         this.bookNameTxt.setText("");
         this.authorTxt.setText("");
-        this.priceTxt.setText("");
+        this.pressNameTxt.setText("");
         this.jcb_BookType.setSelectedIndex(0);
         this.bookDescTxt.setText("");
     }
@@ -65,7 +65,7 @@ class BookAddInterFrm extends JFrame {
     private void button1ActionPerformed(ActionEvent e) {        //添加图书
         String bookName = this.bookNameTxt.getText();
         String author = this.authorTxt.getText();
-        String price = this.priceTxt.getText();
+        String pressName = this.pressNameTxt.getText();
         String bookDesc = this.bookDescTxt.getText();
 
         if(StringUtil.isEmpty(bookName)){
@@ -76,15 +76,15 @@ class BookAddInterFrm extends JFrame {
             JOptionPane.showMessageDialog(null,"图书作者不能为空");
             return;
         }
-        if(StringUtil.isEmpty(price)){
-            JOptionPane.showMessageDialog(null,"图书价格不能为空");
+        if(StringUtil.isEmpty(pressName)){
+            JOptionPane.showMessageDialog(null,"出版社不能为空");
             return;
         }
 
         BookType bookType = (BookType) this.jcb_BookType.getSelectedItem();     //获取选择框中的内容
         int bookTypeId = bookType.getId();                                      //获取bookTypeId
 
-        Book book = new Book(bookName,author,Float.parseFloat(price),bookDesc,bookTypeId);
+        Book book = new Book(bookName,author,pressName,bookDesc,bookTypeId);
 
         Connection con = null;
 
@@ -112,7 +112,7 @@ class BookAddInterFrm extends JFrame {
         label2 = new JLabel();
         authorTxt = new JTextField();
         label4 = new JLabel();
-        priceTxt = new JTextField();
+        pressNameTxt = new JTextField();
         label5 = new JLabel();
         jcb_BookType = new JComboBox();
         label6 = new JLabel();
@@ -156,18 +156,18 @@ class BookAddInterFrm extends JFrame {
         authorTxt.setBounds(395, 60, 145, 25);
 
         //---- label4 ----
-        label4.setText("\u56fe\u4e66\u4ef7\u683c");
+        label4.setText("\u51fa\u7248\u793e");
         label4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
         label4.setForeground(new Color(51, 51, 51));
         contentPane.add(label4);
         label4.setBounds(new Rectangle(new Point(45, 150), label4.getPreferredSize()));
 
-        //---- priceTxt ----
-        priceTxt.setBorder(null);
-        priceTxt.setBackground(new Color(204, 204, 204));
-        priceTxt.setForeground(new Color(51, 51, 51));
-        contentPane.add(priceTxt);
-        priceTxt.setBounds(115, 145, 145, 25);
+        //---- pressNameTxt ----
+        pressNameTxt.setBorder(null);
+        pressNameTxt.setBackground(new Color(204, 204, 204));
+        pressNameTxt.setForeground(new Color(51, 51, 51));
+        contentPane.add(pressNameTxt);
+        pressNameTxt.setBounds(115, 145, 145, 25);
 
         //---- label5 ----
         label5.setText("\u56fe\u4e66\u7c7b\u522b");
@@ -254,7 +254,7 @@ class BookAddInterFrm extends JFrame {
     private JLabel label2;
     private JTextField authorTxt;
     private JLabel label4;
-    private JTextField priceTxt;
+    private JTextField pressNameTxt;
     private JLabel label5;
     private JComboBox jcb_BookType;
     private JLabel label6;
