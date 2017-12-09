@@ -138,9 +138,6 @@ class BookTypeManageInterFrm extends JFrame {
         this.bookTypeDescTxt.setText((String)bookTypeTable.getValueAt(row,2));
     }
 
-    private void scrollPane1MousePressed(MouseEvent e) {
-        // TODO add your code here
-    }
 
 
 
@@ -163,36 +160,31 @@ class BookTypeManageInterFrm extends JFrame {
         bookTypeDescTxt = new JTextArea();
         jb_modify = new JButton();
         jb_delete = new JButton();
+        label5 = new JLabel();
 
         //======== this ========
-        setTitle("\u56fe\u4e66\u7c7b\u522b\u7ef4\u62a4");
+        setTitle("\u56fe\u4e66\u7c7b\u522b\u4fee\u6539");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
-        label1.setText("\u56fe\u4e66\u7c7b\u522b\u540d\u79f0\uff1a");
+        label1.setText("\u56fe\u4e66\u7c7b\u522b\u540d\u79f0");
+        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 3f));
         contentPane.add(label1);
-        label1.setBounds(new Rectangle(new Point(40, 40), label1.getPreferredSize()));
+        label1.setBounds(new Rectangle(new Point(45, 47), label1.getPreferredSize()));
         contentPane.add(s_bookTypeNameTxt);
-        s_bookTypeNameTxt.setBounds(160, 35, 130, s_bookTypeNameTxt.getPreferredSize().height);
+        s_bookTypeNameTxt.setBounds(165, 45, 175, s_bookTypeNameTxt.getPreferredSize().height);
 
         //---- jb_search ----
         jb_search.setText("\u67e5\u8be2");
+        jb_search.setFont(jb_search.getFont().deriveFont(jb_search.getFont().getSize() + 3f));
         jb_search.addActionListener(e -> jb_searchActionPerformed(e));
         contentPane.add(jb_search);
-        jb_search.setBounds(new Rectangle(new Point(330, 35), jb_search.getPreferredSize()));
+        jb_search.setBounds(new Rectangle(new Point(400, 45), jb_search.getPreferredSize()));
 
         //======== scrollPane1 ========
         {
             scrollPane1.setAutoscrolls(true);
-            scrollPane1.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent e) {
-                    scrollPane1MousePressed(e);
-                    scrollPane1MousePressed(e);
-                    scrollPane1MousePressed(e);
-                }
-            });
 
             //---- bookTypeTable ----
             bookTypeTable.setModel(new DefaultTableModel(
@@ -211,29 +203,32 @@ class BookTypeManageInterFrm extends JFrame {
             scrollPane1.setViewportView(bookTypeTable);
         }
         contentPane.add(scrollPane1);
-        scrollPane1.setBounds(20, 85, 455, 220);
+        scrollPane1.setBounds(40, 105, 525, 170);
 
         //---- idTxt ----
         idTxt.setEditable(false);
         contentPane.add(idTxt);
-        idTxt.setBounds(70, 360, 125, idTxt.getPreferredSize().height);
+        idTxt.setBounds(100, 335, 175, idTxt.getPreferredSize().height);
 
         //---- label2 ----
-        label2.setText("\u7f16\u53f7\uff1a");
+        label2.setText("\u7f16\u53f7");
+        label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 3f));
         contentPane.add(label2);
-        label2.setBounds(new Rectangle(new Point(25, 365), label2.getPreferredSize()));
+        label2.setBounds(new Rectangle(new Point(50, 337), label2.getPreferredSize()));
 
         //---- label3 ----
-        label3.setText("\u56fe\u4e66\u7c7b\u522b\u540d\u79f0\uff1a");
+        label3.setText("\u7c7b\u522b\u540d\u79f0");
+        label3.setFont(label3.getFont().deriveFont(label3.getFont().getSize() + 3f));
         contentPane.add(label3);
-        label3.setBounds(new Rectangle(new Point(215, 365), label3.getPreferredSize()));
+        label3.setBounds(new Rectangle(new Point(310, 337), label3.getPreferredSize()));
         contentPane.add(bookTypeNameTxt);
-        bookTypeNameTxt.setBounds(305, 360, 130, bookTypeNameTxt.getPreferredSize().height);
+        bookTypeNameTxt.setBounds(390, 335, 175, bookTypeNameTxt.getPreferredSize().height);
 
         //---- label4 ----
-        label4.setText("\u63cf\u8ff0\uff1a");
+        label4.setText("\u7c7b\u522b\u63cf\u8ff0");
+        label4.setFont(label4.getFont().deriveFont(label4.getFont().getSize() + 3f));
         contentPane.add(label4);
-        label4.setBounds(new Rectangle(new Point(30, 410), label4.getPreferredSize()));
+        label4.setBounds(new Rectangle(new Point(55, 405), label4.getPreferredSize()));
         contentPane.add(textArea1);
         textArea1.setBounds(new Rectangle(new Point(110, 400), textArea1.getPreferredSize()));
 
@@ -246,19 +241,23 @@ class BookTypeManageInterFrm extends JFrame {
             scrollPane2.setViewportView(bookTypeDescTxt);
         }
         contentPane.add(scrollPane2);
-        scrollPane2.setBounds(85, 410, 285, 55);
+        scrollPane2.setBounds(140, 400, 380, 80);
 
         //---- jb_modify ----
         jb_modify.setText("\u4fee\u6539");
+        jb_modify.setFont(jb_modify.getFont().deriveFont(jb_modify.getFont().getSize() + 3f));
         jb_modify.addActionListener(e -> jb_modifyActionPerformed(e));
         contentPane.add(jb_modify);
-        jb_modify.setBounds(new Rectangle(new Point(45, 480), jb_modify.getPreferredSize()));
+        jb_modify.setBounds(new Rectangle(new Point(490, 520), jb_modify.getPreferredSize()));
 
         //---- jb_delete ----
         jb_delete.setText("\u5220\u9664");
+        jb_delete.setFont(jb_delete.getFont().deriveFont(jb_delete.getFont().getSize() + 3f));
         jb_delete.addActionListener(e -> jb_deleteActionPerformed(e));
         contentPane.add(jb_delete);
-        jb_delete.setBounds(new Rectangle(new Point(220, 480), jb_delete.getPreferredSize()));
+        jb_delete.setBounds(new Rectangle(new Point(380, 520), jb_delete.getPreferredSize()));
+        contentPane.add(label5);
+        label5.setBounds(0, 0, 590, 570);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -295,5 +294,6 @@ class BookTypeManageInterFrm extends JFrame {
     private JTextArea bookTypeDescTxt;
     private JButton jb_modify;
     private JButton jb_delete;
+    private JLabel label5;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -68,12 +68,15 @@ class BookTypeInterFrm extends JFrame {
         jb_Add = new JButton();
         jb_Reset = new JButton();
         label1 = new JLabel();
+        label2 = new JLabel();
+        label3 = new JLabel();
 
         //======== this ========
+        setTitle("\u56fe\u4e66\u7c7b\u522b\u6dfb\u52a0");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
         contentPane.add(bookTypeNameTxt);
-        bookTypeNameTxt.setBounds(185, 50, 120, bookTypeNameTxt.getPreferredSize().height);
+        bookTypeNameTxt.setBounds(185, 50, 210, bookTypeNameTxt.getPreferredSize().height);
 
         //======== scrollPane1 ========
         {
@@ -84,25 +87,35 @@ class BookTypeInterFrm extends JFrame {
             scrollPane1.setViewportView(bookTypeDescTxt);
         }
         contentPane.add(scrollPane1);
-        scrollPane1.setBounds(155, 110, 210, 135);
+        scrollPane1.setBounds(185, 125, 210, 90);
 
         //---- jb_Add ----
         jb_Add.setText("\u6dfb\u52a0");
+        jb_Add.setFont(jb_Add.getFont().deriveFont(jb_Add.getFont().getSize() + 3f));
         jb_Add.addActionListener(e -> jb_AddActionPerformed(e));
         contentPane.add(jb_Add);
-        jb_Add.setBounds(new Rectangle(new Point(145, 275), jb_Add.getPreferredSize()));
+        jb_Add.setBounds(new Rectangle(new Point(335, 275), jb_Add.getPreferredSize()));
 
         //---- jb_Reset ----
         jb_Reset.setText("\u91cd\u7f6e");
+        jb_Reset.setFont(jb_Reset.getFont().deriveFont(jb_Reset.getFont().getSize() + 3f));
         jb_Reset.addActionListener(e -> jb_ResetActionPerformed(e));
         contentPane.add(jb_Reset);
-        jb_Reset.setBounds(new Rectangle(new Point(300, 280), jb_Reset.getPreferredSize()));
+        jb_Reset.setBounds(new Rectangle(new Point(240, 275), jb_Reset.getPreferredSize()));
 
         //---- label1 ----
-        label1.setText("text");
-        label1.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u672a\u6807\u9898-1.png")));
+        label1.setText("\u56fe\u4e66\u7c7b\u522b");
+        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 3f));
         contentPane.add(label1);
-        label1.setBounds(0, 0, 500, 350);
+        label1.setBounds(new Rectangle(new Point(80, 52), label1.getPreferredSize()));
+
+        //---- label2 ----
+        label2.setText("\u56fe\u4e66\u7c7b\u522b\u63cf\u8ff0");
+        label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 3f));
+        contentPane.add(label2);
+        label2.setBounds(new Rectangle(new Point(48, 125), label2.getPreferredSize()));
+        contentPane.add(label3);
+        label3.setBounds(0, 0, 500, 350);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -130,5 +143,7 @@ class BookTypeInterFrm extends JFrame {
     private JButton jb_Add;
     private JButton jb_Reset;
     private JLabel label1;
+    private JLabel label2;
+    private JLabel label3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

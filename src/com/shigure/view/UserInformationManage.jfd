@@ -1,0 +1,253 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"title": "用户管理"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "userTable"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "用户ID" )
+						add( "用户名" )
+						add( "姓名" )
+						add( "联系方式" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( false )
+						add( false )
+						add( false )
+						add( false )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "userTableMousePressed", true ) )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 35
+				"y": 25
+				"height": 180
+				"width": 610
+			} )
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "tabbedPane1"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panel1"
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "realNameTxt"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 400
+						"y": 28
+						"width": 180
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "telPhoneTxt"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 105
+						"y": 100
+						"width": 180
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "姓名"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 355
+						"y": 30
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "联系方式"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 25
+						"y": 102
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label6"
+						"text": "用户ID"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 41
+						"y": 30
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "userIdTxt"
+						"editable": false
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 105
+						"y": 28
+						"width": 180
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "jb_userUpdate"
+						"text": "修改"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_userUpdateActionPerformed", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 440
+						"y": 100
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "用户信息更改"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panel2"
+					add( new FormComponent( "javax.swing.JPasswordField" ) {
+						name: "passwordTxt"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 150
+						"y": 30
+						"width": 225
+					} )
+					add( new FormComponent( "javax.swing.JPasswordField" ) {
+						name: "passwordConfTxt"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 150
+						"y": 100
+						"width": 225
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "密码"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 95
+						"y": 34
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "重复密码"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 63
+						"y": 104
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "jb_passwordUpdate"
+						"text": "修改"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_passwordUpdateActionPerformed", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 440
+						"y": 100
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "用户密码更改"
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 35
+				"y": 220
+				"width": 615
+				"height": 185
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane2"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "borrowTable"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "借阅编号" )
+						add( "图书名称" )
+						add( "图书作者" )
+						add( "出版社" )
+						add( "图书类别" )
+						add( "借阅日期" )
+						add( "剩余时长" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( false )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 120, 0, 0, true ) )
+						add( null )
+					} )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "borrowTableMousePressed", true ) )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 35
+				"y": 430
+				"height": 150
+				"width": 615
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jb_borrowDelete"
+				"text": "删除借阅"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_borrowDeleteActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 530
+				"y": 610
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"y": 0
+				"width": 680
+				"height": 670
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 680, 690 )
+		} )
+	}
+}

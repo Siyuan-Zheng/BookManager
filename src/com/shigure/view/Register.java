@@ -110,6 +110,7 @@ public class Register extends JFrame {
         label7 = new JLabel();
 
         //======== this ========
+        setTitle("\u6ce8\u518c");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 

@@ -6,57 +6,137 @@ new FormModel {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
 			"defaultCloseOperation": 3
+			"title": "读者主界面"
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button1"
-				"text": "text"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/Book-1.png" )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"borderPainted": false
+				"contentAreaFilled": false
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 105
-				"y": 95
+				"x": 70
+				"y": 45
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button2"
-				"text": "text"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/Pencil_note.png" )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"borderPainted": false
+				"contentAreaFilled": false
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 405
-				"y": 100
+				"x": 300
+				"y": 45
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button3"
-				"text": "text"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"borderPainted": false
+				"contentAreaFilled": false
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/Flag.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 110
-				"y": 345
+				"x": 70
+				"y": 255
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button4"
-				"text": "text"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/Pen.png" )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"contentAreaFilled": false
+				"borderPainted": false
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button4ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 420
-				"y": 335
+				"x": 300
+				"y": 255
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button5"
-				"text": "text"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"borderPainted": false
+				"contentAreaFilled": false
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/ID-Card.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button5ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 115
-				"y": 530
+				"x": 70
+				"y": 465
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button6"
-				"text": "text"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"borderPainted": false
+				"contentAreaFilled": false
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/Lightbulb.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button6ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 430
-				"y": 545
+				"x": 300
+				"y": 465
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "图书借阅"
+				"font": &Font0 new java.awt.Font( ".SF NS Text", 0, 18 )
+				"foreground": &Color0 new java.awt.Color( 204, 204, 204, 255 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 85
+				"y": 170
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "借阅管理"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 315
+				"y": 170
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "图书荐购"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 85
+				"y": 380
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "建购管理"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 315
+				"y": 380
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "个人信息"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 85
+				"y": 590
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label7"
+				"text": "关于"
+				"font": #Font0
+				"foreground": #Color0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 335
+				"y": 590
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label8"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/未标题-1.png" )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 470
+				"height": 680
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 385, 0 )
-			"size": new java.awt.Dimension( 555, 815 )
+			"location": new java.awt.Point( 135, 0 )
+			"size": new java.awt.Dimension( 470, 700 )
 		} )
 	}
 }

@@ -7,6 +7,11 @@ public class User {
     private String realName;
     private String telPhone;
 
+    public User(String password, int id) {
+        this.id = id;
+        this.password = password;
+    }
+
     public User(int id) {
         super();
         this.id = id;

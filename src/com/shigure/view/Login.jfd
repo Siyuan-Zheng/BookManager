@@ -6,6 +6,7 @@ new FormModel {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
 			"defaultCloseOperation": 3
+			"title": "登录"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "title"
 				"text": "图书信息管理系统"
@@ -60,34 +61,36 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "registerButton"
 				"background": new java.awt.Color( 102, 102, 102, 255 )
-				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 14 )
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 17 )
 				"foreground": new java.awt.Color( 204, 204, 204, 255 )
 				"autoscrolls": true
 				"contentAreaFilled": false
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/s_New.png" )
+				"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"borderPainted": false
+				"text": "注册"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 115
-				"y": 465
+				"y": 415
 				"width": 115
 				"height": 110
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "loginButton"
 				"background": new java.awt.Color( 102, 102, 102, 255 )
-				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 14 )
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 17 )
 				"foreground": new java.awt.Color( 204, 204, 204, 255 )
 				"contentAreaFilled": false
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/s_Rocket.png" )
+				"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"borderPainted": false
+				"text": "登录"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 370
-				"y": 465
+				"x": 365
+				"y": 415
 				"width": 115
 				"height": 110
 			} )
@@ -126,17 +129,17 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "background"
-				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/未标题-1.png" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/LoginBackground.jpg" )
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 0
 				"y": 0
 				"width": 575
-				"height": 640
+				"height": 555
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 50, 130 )
-			"size": new java.awt.Dimension( 575, 660 )
+			"size": new java.awt.Dimension( 575, 575 )
 		} )
 		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
 			name: "buttonGroup1"

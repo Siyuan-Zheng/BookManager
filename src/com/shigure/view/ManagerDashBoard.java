@@ -40,6 +40,10 @@ class ManagerDashBoard extends JFrame {
         new BookAddInterFrm().setVisible(true);
     }
 
+    private void jb_ReaderManagerActionPerformed(ActionEvent e) {
+        new UserInformationManage().setVisible(true);
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -60,6 +64,7 @@ class ManagerDashBoard extends JFrame {
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle("\u7ba1\u7406\u5458\u4e3b\u754c\u9762");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -100,13 +105,14 @@ class ManagerDashBoard extends JFrame {
         jb_ReaderManager.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Myspace.png")));
         jb_ReaderManager.setBorder(null);
         jb_ReaderManager.setContentAreaFilled(false);
+        jb_ReaderManager.addActionListener(e -> jb_ReaderManagerActionPerformed(e));
         contentPane.add(jb_ReaderManager);
         jb_ReaderManager.setBounds(new Rectangle(new Point(70, 465), jb_ReaderManager.getPreferredSize()));
 
         //---- jb_About ----
         jb_About.setContentAreaFilled(false);
         jb_About.setBorder(null);
-        jb_About.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Lightbulb.png")));
+        jb_About.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Flag.png")));
         jb_About.setBorderPainted(false);
         contentPane.add(jb_About);
         jb_About.setBounds(new Rectangle(new Point(300, 465), jb_About.getPreferredSize()));
@@ -114,44 +120,44 @@ class ManagerDashBoard extends JFrame {
         //---- label1 ----
         label1.setText("\u6dfb\u52a0\u56fe\u4e66");
         label1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
-        label1.setForeground(new Color(51, 51, 51));
+        label1.setForeground(new Color(204, 204, 204));
         contentPane.add(label1);
         label1.setBounds(new Rectangle(new Point(85, 170), label1.getPreferredSize()));
 
         //---- label2 ----
-        label2.setText("\u4fee\u6539\u56fe\u4e66\u4fe1\u606f");
+        label2.setText("\u56fe\u4e66\u4fe1\u606f\u4fee\u6539");
         label2.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
-        label2.setForeground(new Color(51, 51, 51));
+        label2.setForeground(new Color(204, 204, 204));
         contentPane.add(label2);
         label2.setBounds(new Rectangle(new Point(300, 170), label2.getPreferredSize()));
 
         //---- label3 ----
-        label3.setText("\u6dfb\u52a0\u56fe\u4e66\u7c7b\u522b");
+        label3.setText("\u56fe\u4e66\u7c7b\u522b\u6dfb\u52a0");
         label3.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
-        label3.setForeground(new Color(51, 51, 51));
+        label3.setForeground(new Color(204, 204, 204));
         contentPane.add(label3);
         label3.setBounds(new Rectangle(new Point(65, 385), label3.getPreferredSize()));
 
         //---- label4 ----
-        label4.setText("\u4fee\u6539\u56fe\u4e66\u7c7b\u522b");
+        label4.setText("\u56fe\u4e66\u7c7b\u522b\u4fee\u6539");
         label4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
-        label4.setForeground(new Color(51, 51, 51));
+        label4.setForeground(new Color(204, 204, 204));
         contentPane.add(label4);
         label4.setBounds(new Rectangle(new Point(295, 385), label4.getPreferredSize()));
 
         //---- label5 ----
-        label5.setText("\u7528\u6237\u7ba1\u7406");
+        label5.setText("\u7528\u6237\u53ca\u501f\u9605\u7ba1\u7406");
         label5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
-        label5.setForeground(new Color(51, 51, 51));
+        label5.setForeground(new Color(204, 204, 204));
         contentPane.add(label5);
-        label5.setBounds(new Rectangle(new Point(85, 590), label5.getPreferredSize()));
+        label5.setBounds(new Rectangle(new Point(60, 590), label5.getPreferredSize()));
 
         //---- label6 ----
-        label6.setText("\u5173\u4e8e");
+        label6.setText("\u5efa\u8d2d\u7ba1\u7406");
         label6.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
-        label6.setForeground(new Color(51, 51, 51));
+        label6.setForeground(new Color(204, 204, 204));
         contentPane.add(label6);
-        label6.setBounds(new Rectangle(new Point(335, 590), label6.getPreferredSize()));
+        label6.setBounds(new Rectangle(new Point(315, 590), label6.getPreferredSize()));
 
         //---- label7 ----
         label7.setText("text");

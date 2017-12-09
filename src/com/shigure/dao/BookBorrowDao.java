@@ -23,7 +23,7 @@ public class BookBorrowDao {
     public ResultSet borrowList(Connection con, User user) throws Exception{
         String  sql = "select * from t_book b,t_user u,t_bookBorrow bb, t_bookType bt where u.id=bb.userId and b.id = bb.bookId and b.bookTypeId=bt.id and bb.userId like ?";
         PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setInt(1, ReaderDashBoard.uid);
+        pstmt.setInt(1, user.getId());
         return pstmt.executeQuery();
     }
 

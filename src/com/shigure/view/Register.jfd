@@ -5,6 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
+			"title": "注册"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "用户名"
@@ -164,4 +165,3 @@ new FormModel {
 		} )
 	}
 }
-

@@ -5,12 +5,13 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
+			"title": "图书类别添加"
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "bookTypeNameTxt"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 185
 				"y": 50
-				"width": 120
+				"width": 210
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
@@ -20,31 +21,47 @@ new FormModel {
 					"lineWrap": true
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 155
-				"y": 110
+				"x": 185
+				"y": 125
 				"width": 210
-				"height": 135
+				"height": 90
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jb_Add"
 				"text": "添加"
+				"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_AddActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 145
+				"x": 335
 				"y": 275
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jb_Reset"
 				"text": "重置"
+				"font": #SwingDerivedFont0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_ResetActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 300
-				"y": 280
+				"x": 240
+				"y": 275
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
-				"text": "text"
-				"icon": new com.jformdesigner.model.SwingIcon( 0, "/com/shigure/material/未标题-1.png" )
+				"text": "图书类别"
+				"font": #SwingDerivedFont0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 80
+				"y": 52
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "图书类别描述"
+				"font": #SwingDerivedFont0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 48
+				"y": 125
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 0
 				"y": 0
@@ -52,7 +69,7 @@ new FormModel {
 				"height": 350
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 470, 210 )
+			"location": new java.awt.Point( 140, 35 )
 			"size": new java.awt.Dimension( 500, 375 )
 		} )
 	}

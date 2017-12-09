@@ -5,6 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
+			"title": "借阅管理"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTable" ) {
@@ -55,22 +56,31 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "borrowTableMousePressed", true ) )
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 50
+				"x": 20
 				"y": 55
-				"width": 520
+				"width": 650
 				"height": 230
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jb_delete"
-				"text": "text"
+				"text": "删除借阅"
+				"font": new java.awt.Font( ".SF NS Text", 0, 16 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_deleteActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 320
-				"y": 340
+				"x": 565
+				"y": 320
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"y": 0
+				"width": 685
+				"height": 395
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 635, 505 )
+			"size": new java.awt.Dimension( 685, 420 )
 		} )
 	}
 }

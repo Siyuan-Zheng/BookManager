@@ -113,8 +113,10 @@ public class ReaderBorrowManage extends JFrame {
         scrollPane1 = new JScrollPane();
         borrowTable = new JTable();
         jb_delete = new JButton();
+        label1 = new JLabel();
 
         //======== this ========
+        setTitle("\u501f\u9605\u7ba1\u7406");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -143,13 +145,16 @@ public class ReaderBorrowManage extends JFrame {
             scrollPane1.setViewportView(borrowTable);
         }
         contentPane.add(scrollPane1);
-        scrollPane1.setBounds(50, 55, 520, 230);
+        scrollPane1.setBounds(20, 55, 650, 230);
 
         //---- jb_delete ----
-        jb_delete.setText("text");
+        jb_delete.setText("\u5220\u9664\u501f\u9605");
+        jb_delete.setFont(new Font(".SF NS Text", Font.PLAIN, 16));
         jb_delete.addActionListener(e -> jb_deleteActionPerformed(e));
         contentPane.add(jb_delete);
-        jb_delete.setBounds(new Rectangle(new Point(320, 340), jb_delete.getPreferredSize()));
+        jb_delete.setBounds(new Rectangle(new Point(565, 320), jb_delete.getPreferredSize()));
+        contentPane.add(label1);
+        label1.setBounds(0, 0, 685, 395);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -173,5 +178,6 @@ public class ReaderBorrowManage extends JFrame {
     private JScrollPane scrollPane1;
     private JTable borrowTable;
     private JButton jb_delete;
+    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

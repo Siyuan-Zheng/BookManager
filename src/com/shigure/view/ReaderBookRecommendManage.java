@@ -97,8 +97,10 @@ public class ReaderBookRecommendManage extends JFrame {
         scrollPane1 = new JScrollPane();
         recommendTable = new JTable();
         jb_delete = new JButton();
+        label1 = new JLabel();
 
         //======== this ========
+        setTitle("\u5efa\u8d2d\u7ba1\u7406");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -124,13 +126,16 @@ public class ReaderBookRecommendManage extends JFrame {
             scrollPane1.setViewportView(recommendTable);
         }
         contentPane.add(scrollPane1);
-        scrollPane1.setBounds(30, 20, 610, 205);
+        scrollPane1.setBounds(30, 40, 645, 205);
 
         //---- jb_delete ----
-        jb_delete.setText("text");
+        jb_delete.setText("\u5220\u9664\u5efa\u8d2d");
+        jb_delete.setFont(jb_delete.getFont().deriveFont(jb_delete.getFont().getSize() + 3f));
         jb_delete.addActionListener(e -> jb_deleteActionPerformed(e));
         contentPane.add(jb_delete);
-        jb_delete.setBounds(new Rectangle(new Point(195, 260), jb_delete.getPreferredSize()));
+        jb_delete.setBounds(new Rectangle(new Point(580, 285), jb_delete.getPreferredSize()));
+        contentPane.add(label1);
+        label1.setBounds(0, 0, 695, 355);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -155,5 +160,6 @@ public class ReaderBookRecommendManage extends JFrame {
     private JScrollPane scrollPane1;
     private JTable recommendTable;
     private JButton jb_delete;
+    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -141,35 +141,41 @@ public class ReaderBookLookUp extends JFrame {
         jb_addBookBorrow = new JButton();
         label4 = new JLabel();
         s_pressNameTxt = new JTextField();
+        label5 = new JLabel();
 
         //======== this ========
+        setTitle("\u56fe\u4e66\u501f\u9605");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
         label1.setText("\u56fe\u4e66\u540d\u79f0");
+        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 3f));
         contentPane.add(label1);
-        label1.setBounds(new Rectangle(new Point(30, 20), label1.getPreferredSize()));
+        label1.setBounds(new Rectangle(new Point(50, 65), label1.getPreferredSize()));
         contentPane.add(s_bookNameTxt);
-        s_bookNameTxt.setBounds(95, 20, 150, s_bookNameTxt.getPreferredSize().height);
+        s_bookNameTxt.setBounds(130, 65, 180, s_bookNameTxt.getPreferredSize().height);
 
         //---- label2 ----
         label2.setText("\u56fe\u4e66\u4f5c\u8005");
+        label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 3f));
         contentPane.add(label2);
-        label2.setBounds(new Rectangle(new Point(295, 25), label2.getPreferredSize()));
+        label2.setBounds(new Rectangle(new Point(375, 65), label2.getPreferredSize()));
         contentPane.add(s_authorTxt);
-        s_authorTxt.setBounds(360, 20, 155, s_authorTxt.getPreferredSize().height);
+        s_authorTxt.setBounds(465, 65, 180, s_authorTxt.getPreferredSize().height);
 
         //---- label3 ----
         label3.setText("\u56fe\u4e66\u7c7b\u522b");
+        label3.setFont(label3.getFont().deriveFont(label3.getFont().getSize() + 3f));
         contentPane.add(label3);
-        label3.setBounds(new Rectangle(new Point(25, 75), label3.getPreferredSize()));
+        label3.setBounds(new Rectangle(new Point(375, 137), label3.getPreferredSize()));
 
         //---- jb_search ----
         jb_search.setText("\u67e5\u8be2");
+        jb_search.setFont(jb_search.getFont().deriveFont(jb_search.getFont().getSize() + 3f));
         jb_search.addActionListener(e -> jb_searchActionPerformed(e));
         contentPane.add(jb_search);
-        jb_search.setBounds(new Rectangle(new Point(480, 70), jb_search.getPreferredSize()));
+        jb_search.setBounds(new Rectangle(new Point(475, 200), jb_search.getPreferredSize()));
 
         //======== scrollPane1 ========
         {
@@ -200,22 +206,26 @@ public class ReaderBookLookUp extends JFrame {
             scrollPane1.setViewportView(bookTable);
         }
         contentPane.add(scrollPane1);
-        scrollPane1.setBounds(20, 135, 550, 220);
+        scrollPane1.setBounds(30, 260, 635, 220);
         contentPane.add(s_jcb_bookType);
-        s_jcb_bookType.setBounds(105, 75, 120, s_jcb_bookType.getPreferredSize().height);
+        s_jcb_bookType.setBounds(465, 135, 180, s_jcb_bookType.getPreferredSize().height);
 
         //---- jb_addBookBorrow ----
-        jb_addBookBorrow.setText("text");
+        jb_addBookBorrow.setText("\u501f\u9605");
+        jb_addBookBorrow.setFont(jb_addBookBorrow.getFont().deriveFont(jb_addBookBorrow.getFont().getSize() + 3f));
         jb_addBookBorrow.addActionListener(e -> jb_addBookBorrowActionPerformed(e));
         contentPane.add(jb_addBookBorrow);
-        jb_addBookBorrow.setBounds(new Rectangle(new Point(225, 435), jb_addBookBorrow.getPreferredSize()));
+        jb_addBookBorrow.setBounds(new Rectangle(new Point(585, 200), jb_addBookBorrow.getPreferredSize()));
 
         //---- label4 ----
         label4.setText("\u51fa\u7248\u793e");
+        label4.setFont(label4.getFont().deriveFont(label4.getFont().getSize() + 3f));
         contentPane.add(label4);
-        label4.setBounds(new Rectangle(new Point(250, 80), label4.getPreferredSize()));
+        label4.setBounds(new Rectangle(new Point(65, 135), label4.getPreferredSize()));
         contentPane.add(s_pressNameTxt);
-        s_pressNameTxt.setBounds(305, 80, 115, s_pressNameTxt.getPreferredSize().height);
+        s_pressNameTxt.setBounds(130, 135, 180, s_pressNameTxt.getPreferredSize().height);
+        contentPane.add(label5);
+        label5.setBounds(0, 0, 695, 540);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -249,5 +259,6 @@ public class ReaderBookLookUp extends JFrame {
     private JButton jb_addBookBorrow;
     private JLabel label4;
     private JTextField s_pressNameTxt;
+    private JLabel label5;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

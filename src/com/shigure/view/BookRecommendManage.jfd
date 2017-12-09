@@ -7,7 +7,7 @@ new FormModel {
 			name: "this"
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 680, 495 )
+			"size": new java.awt.Dimension( 400, 300 )
 		} )
 	}
 }

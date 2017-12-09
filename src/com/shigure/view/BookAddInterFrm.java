@@ -124,110 +124,105 @@ class BookAddInterFrm extends JFrame {
 
         //======== this ========
         setResizable(false);
+        setTitle("\u56fe\u4e66\u6dfb\u52a0");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
         label1.setText("\u56fe\u4e66\u540d\u79f0");
-        label1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label1.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         label1.setForeground(new Color(51, 51, 51));
         contentPane.add(label1);
-        label1.setBounds(new Rectangle(new Point(45, 65), label1.getPreferredSize()));
+        label1.setBounds(new Rectangle(new Point(29, 65), label1.getPreferredSize()));
 
         //---- bookNameTxt ----
-        bookNameTxt.setBorder(null);
-        bookNameTxt.setBackground(new Color(204, 204, 204));
+        bookNameTxt.setBackground(Color.white);
         bookNameTxt.setForeground(new Color(51, 51, 51));
         contentPane.add(bookNameTxt);
-        bookNameTxt.setBounds(115, 60, 145, 25);
+        bookNameTxt.setBounds(120, 63, 170, bookNameTxt.getPreferredSize().height);
 
         //---- label2 ----
         label2.setText("\u56fe\u4e66\u4f5c\u8005");
-        label2.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label2.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         label2.setForeground(new Color(51, 51, 51));
         contentPane.add(label2);
         label2.setBounds(new Rectangle(new Point(320, 65), label2.getPreferredSize()));
 
         //---- authorTxt ----
-        authorTxt.setBorder(null);
-        authorTxt.setBackground(new Color(204, 204, 204));
+        authorTxt.setBackground(Color.white);
         authorTxt.setForeground(new Color(51, 51, 51));
         contentPane.add(authorTxt);
-        authorTxt.setBounds(395, 60, 145, 25);
+        authorTxt.setBounds(410, 65, 170, 24);
 
         //---- label4 ----
         label4.setText("\u51fa\u7248\u793e");
-        label4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label4.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         label4.setForeground(new Color(51, 51, 51));
         contentPane.add(label4);
-        label4.setBounds(new Rectangle(new Point(45, 150), label4.getPreferredSize()));
+        label4.setBounds(new Rectangle(new Point(45, 147), label4.getPreferredSize()));
 
         //---- pressNameTxt ----
-        pressNameTxt.setBorder(null);
-        pressNameTxt.setBackground(new Color(204, 204, 204));
+        pressNameTxt.setBackground(Color.white);
         pressNameTxt.setForeground(new Color(51, 51, 51));
         contentPane.add(pressNameTxt);
-        pressNameTxt.setBounds(115, 145, 145, 25);
+        pressNameTxt.setBounds(120, 145, 170, 24);
 
         //---- label5 ----
         label5.setText("\u56fe\u4e66\u7c7b\u522b");
-        label5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label5.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         label5.setForeground(new Color(51, 51, 51));
         contentPane.add(label5);
-        label5.setBounds(320, 150, label5.getPreferredSize().width, 17);
+        label5.setBounds(320, 149, label5.getPreferredSize().width, 17);
 
         //---- jcb_BookType ----
-        jcb_BookType.setBackground(new Color(204, 204, 204));
+        jcb_BookType.setBackground(Color.white);
         jcb_BookType.setForeground(new Color(51, 51, 51));
         jcb_BookType.setBorder(null);
         contentPane.add(jcb_BookType);
-        jcb_BookType.setBounds(395, 145, 145, 25);
+        jcb_BookType.setBounds(410, 145, 170, 24);
 
         //---- label6 ----
         label6.setText("\u56fe\u4e66\u63cf\u8ff0");
-        label6.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        label6.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         label6.setForeground(new Color(51, 51, 51));
         contentPane.add(label6);
-        label6.setBounds(new Rectangle(new Point(45, 225), label6.getPreferredSize()));
+        label6.setBounds(new Rectangle(new Point(35, 230), label6.getPreferredSize()));
 
         //---- jb_add ----
         jb_add.setText("\u6dfb\u52a0");
         jb_add.setContentAreaFilled(false);
-        jb_add.setBorder(null);
         jb_add.setForeground(new Color(51, 51, 51));
-        jb_add.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+        jb_add.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         jb_add.addActionListener(e -> button1ActionPerformed(e));
         contentPane.add(jb_add);
-        jb_add.setBounds(450, 375, 90, 35);
+        jb_add.setBounds(new Rectangle(new Point(515, 390), jb_add.getPreferredSize()));
 
         //---- jb_reset ----
         jb_reset.setText("\u91cd\u7f6e");
-        jb_reset.setBorder(null);
         jb_reset.setContentAreaFilled(false);
         jb_reset.setForeground(new Color(51, 51, 51));
-        jb_reset.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+        jb_reset.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 16));
         jb_reset.addActionListener(e -> button2ActionPerformed(e));
         contentPane.add(jb_reset);
-        jb_reset.setBounds(115, 375, 90, 35);
+        jb_reset.setBounds(new Rectangle(new Point(415, 390), jb_reset.getPreferredSize()));
 
         //======== scrollPane1 ========
         {
             scrollPane1.setBorder(null);
 
             //---- bookDescTxt ----
-            bookDescTxt.setBorder(null);
             bookDescTxt.setForeground(new Color(51, 51, 51));
-            bookDescTxt.setBackground(new Color(204, 204, 204));
+            bookDescTxt.setBackground(Color.white);
             bookDescTxt.setLineWrap(true);
             scrollPane1.setViewportView(bookDescTxt);
         }
         contentPane.add(scrollPane1);
-        scrollPane1.setBounds(120, 210, 400, 120);
+        scrollPane1.setBounds(120, 225, 460, 120);
 
         //---- label3 ----
-        label3.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u672a\u6807\u9898-1.png")));
+        label3.setIcon(null);
         contentPane.add(label3);
-        label3.setBounds(0, 0, 585, 470);
+        label3.setBounds(0, 0, 620, 480);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();

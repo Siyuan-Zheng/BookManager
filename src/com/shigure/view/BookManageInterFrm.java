@@ -241,8 +241,11 @@ public class BookManageInterFrm extends JFrame {
         jb_delete = new JButton();
         label10 = new JLabel();
         s_pressNameTxt = new JTextField();
+        label11 = new JLabel();
 
         //======== this ========
+        setTitle("\u56fe\u4e66\u7ba1\u7406");
+        setResizable(false);
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -276,77 +279,87 @@ public class BookManageInterFrm extends JFrame {
             scrollPane1.setViewportView(bookTable);
         }
         contentPane.add(scrollPane1);
-        scrollPane1.setBounds(25, 175, 502, 140);
+        scrollPane1.setBounds(35, 180, 595, 140);
 
         //---- label1 ----
         label1.setText("\u56fe\u4e66\u540d\u79f0");
+        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 3f));
         contentPane.add(label1);
-        label1.setBounds(new Rectangle(new Point(35, 25), label1.getPreferredSize()));
+        label1.setBounds(new Rectangle(new Point(29, 47), label1.getPreferredSize()));
         contentPane.add(s_bookNameTxt);
-        s_bookNameTxt.setBounds(100, 20, 140, s_bookNameTxt.getPreferredSize().height);
+        s_bookNameTxt.setBounds(115, 45, 170, s_bookNameTxt.getPreferredSize().height);
 
         //---- label4 ----
         label4.setText("\u56fe\u4e66\u4f5c\u8005");
+        label4.setFont(label4.getFont().deriveFont(label4.getFont().getSize() + 3f));
         contentPane.add(label4);
-        label4.setBounds(new Rectangle(new Point(285, 20), label4.getPreferredSize()));
+        label4.setBounds(new Rectangle(new Point(360, 47), label4.getPreferredSize()));
         contentPane.add(s_authorTxt);
-        s_authorTxt.setBounds(355, 15, 145, s_authorTxt.getPreferredSize().height);
+        s_authorTxt.setBounds(450, 45, 170, s_authorTxt.getPreferredSize().height);
 
         //---- label5 ----
         label5.setText("\u56fe\u4e66\u7c7b\u522b");
+        label5.setFont(label5.getFont().deriveFont(label5.getFont().getSize() + 3f));
         contentPane.add(label5);
-        label5.setBounds(new Rectangle(new Point(40, 105), label5.getPreferredSize()));
+        label5.setBounds(new Rectangle(new Point(360, 120), label5.getPreferredSize()));
         contentPane.add(s_jcb_bookType);
-        s_jcb_bookType.setBounds(105, 100, 100, s_jcb_bookType.getPreferredSize().height);
+        s_jcb_bookType.setBounds(450, 117, 120, s_jcb_bookType.getPreferredSize().height);
 
         //---- jb_search ----
         jb_search.setText("\u67e5\u8be2");
+        jb_search.setFont(jb_search.getFont().deriveFont(jb_search.getFont().getSize() + 3f));
         jb_search.addActionListener(e -> jb_searchActionPerformed(e));
         contentPane.add(jb_search);
-        jb_search.setBounds(new Rectangle(new Point(470, 100), jb_search.getPreferredSize()));
+        jb_search.setBounds(new Rectangle(new Point(570, 115), jb_search.getPreferredSize()));
 
         //---- label2 ----
         label2.setText("\u7f16\u53f7");
+        label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 3f));
         contentPane.add(label2);
-        label2.setBounds(new Rectangle(new Point(40, 340), label2.getPreferredSize()));
+        label2.setBounds(new Rectangle(new Point(61, 347), label2.getPreferredSize()));
 
         //---- idTxt ----
         idTxt.setEditable(false);
         contentPane.add(idTxt);
-        idTxt.setBounds(80, 335, 150, idTxt.getPreferredSize().height);
+        idTxt.setBounds(115, 345, 170, idTxt.getPreferredSize().height);
 
         //---- label3 ----
         label3.setText("\u51fa\u7248\u793e");
+        label3.setFont(label3.getFont().deriveFont(label3.getFont().getSize() + 3f));
         contentPane.add(label3);
-        label3.setBounds(new Rectangle(new Point(40, 410), label3.getPreferredSize()));
+        label3.setBounds(new Rectangle(new Point(45, 415), label3.getPreferredSize()));
         contentPane.add(pressNameTxt);
-        pressNameTxt.setBounds(85, 410, 150, pressNameTxt.getPreferredSize().height);
+        pressNameTxt.setBounds(115, 413, 170, pressNameTxt.getPreferredSize().height);
 
         //---- label6 ----
         label6.setText("\u56fe\u4e66\u540d\u79f0");
+        label6.setFont(label6.getFont().deriveFont(label6.getFont().getSize() + 3f));
         contentPane.add(label6);
-        label6.setBounds(new Rectangle(new Point(260, 340), label6.getPreferredSize()));
+        label6.setBounds(new Rectangle(new Point(360, 347), label6.getPreferredSize()));
         contentPane.add(bookNameTxt);
-        bookNameTxt.setBounds(325, 340, 160, bookNameTxt.getPreferredSize().height);
+        bookNameTxt.setBounds(450, 345, 170, bookNameTxt.getPreferredSize().height);
 
         //---- label7 ----
         label7.setText("\u56fe\u4e66\u4f5c\u8005");
+        label7.setFont(label7.getFont().deriveFont(label7.getFont().getSize() + 3f));
         contentPane.add(label7);
-        label7.setBounds(new Rectangle(new Point(260, 415), label7.getPreferredSize()));
+        label7.setBounds(new Rectangle(new Point(360, 415), label7.getPreferredSize()));
         contentPane.add(authorTxt);
-        authorTxt.setBounds(325, 415, 165, authorTxt.getPreferredSize().height);
+        authorTxt.setBounds(450, 413, 170, authorTxt.getPreferredSize().height);
 
         //---- label8 ----
         label8.setText("\u56fe\u4e66\u7c7b\u522b");
+        label8.setFont(label8.getFont().deriveFont(label8.getFont().getSize() + 3f));
         contentPane.add(label8);
-        label8.setBounds(new Rectangle(new Point(30, 510), label8.getPreferredSize()));
+        label8.setBounds(new Rectangle(new Point(29, 480), label8.getPreferredSize()));
         contentPane.add(jcb_bookType);
-        jcb_bookType.setBounds(95, 505, 115, jcb_bookType.getPreferredSize().height);
+        jcb_bookType.setBounds(115, 477, 170, jcb_bookType.getPreferredSize().height);
 
         //---- label9 ----
         label9.setText("\u56fe\u4e66\u63cf\u8ff0");
+        label9.setFont(label9.getFont().deriveFont(label9.getFont().getSize() + 3f));
         contentPane.add(label9);
-        label9.setBounds(new Rectangle(new Point(260, 495), label9.getPreferredSize()));
+        label9.setBounds(new Rectangle(new Point(360, 480), label9.getPreferredSize()));
 
         //======== scrollPane2 ========
         {
@@ -357,26 +370,31 @@ public class BookManageInterFrm extends JFrame {
             scrollPane2.setViewportView(bookDescTxt);
         }
         contentPane.add(scrollPane2);
-        scrollPane2.setBounds(330, 490, 165, 85);
+        scrollPane2.setBounds(450, 480, 170, 100);
 
         //---- jb_modify ----
         jb_modify.setText("\u4fee\u6539");
+        jb_modify.setFont(jb_modify.getFont().deriveFont(jb_modify.getFont().getSize() + 3f));
         jb_modify.addActionListener(e -> jb_modifyActionPerformed(e));
         contentPane.add(jb_modify);
-        jb_modify.setBounds(new Rectangle(new Point(35, 565), jb_modify.getPreferredSize()));
+        jb_modify.setBounds(new Rectangle(new Point(45, 550), jb_modify.getPreferredSize()));
 
         //---- jb_delete ----
         jb_delete.setText("\u5220\u9664");
+        jb_delete.setFont(jb_delete.getFont().deriveFont(jb_delete.getFont().getSize() + 3f));
         jb_delete.addActionListener(e -> jb_deleteActionPerformed(e));
         contentPane.add(jb_delete);
-        jb_delete.setBounds(new Rectangle(new Point(135, 565), jb_delete.getPreferredSize()));
+        jb_delete.setBounds(new Rectangle(new Point(165, 550), jb_delete.getPreferredSize()));
 
         //---- label10 ----
         label10.setText("\u51fa\u7248\u793e");
+        label10.setFont(label10.getFont().deriveFont(label10.getFont().getSize() + 3f));
         contentPane.add(label10);
-        label10.setBounds(new Rectangle(new Point(220, 105), label10.getPreferredSize()));
+        label10.setBounds(new Rectangle(new Point(45, 120), label10.getPreferredSize()));
         contentPane.add(s_pressNameTxt);
-        s_pressNameTxt.setBounds(285, 100, 135, s_pressNameTxt.getPreferredSize().height);
+        s_pressNameTxt.setBounds(115, 118, 170, s_pressNameTxt.getPreferredSize().height);
+        contentPane.add(label11);
+        label11.setBounds(0, 0, 680, 620);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -424,5 +442,6 @@ public class BookManageInterFrm extends JFrame {
     private JButton jb_delete;
     private JLabel label10;
     private JTextField s_pressNameTxt;
+    private JLabel label11;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

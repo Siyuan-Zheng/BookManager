@@ -113,6 +113,7 @@ public class Login extends JFrame {
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle("\u767b\u5f55");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -154,31 +155,33 @@ public class Login extends JFrame {
 
         //---- registerButton ----
         registerButton.setBackground(new Color(102, 102, 102));
-        registerButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        registerButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 17));
         registerButton.setForeground(new Color(204, 204, 204));
         registerButton.setAutoscrolls(true);
         registerButton.setContentAreaFilled(false);
         registerButton.setBorder(null);
-        registerButton.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/s_New.png")));
+        registerButton.setIcon(null);
         registerButton.setBorderPainted(false);
+        registerButton.setText("\u6ce8\u518c");
         registerButton.addActionListener(e -> {
 			button1ActionPerformed(e);
 			button1ActionPerformed(e);
 		});
         contentPane.add(registerButton);
-        registerButton.setBounds(115, 465, 115, 110);
+        registerButton.setBounds(115, 415, 115, 110);
 
         //---- loginButton ----
         loginButton.setBackground(new Color(102, 102, 102));
-        loginButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
+        loginButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 17));
         loginButton.setForeground(new Color(204, 204, 204));
         loginButton.setContentAreaFilled(false);
         loginButton.setBorder(null);
-        loginButton.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/s_Rocket.png")));
+        loginButton.setIcon(null);
         loginButton.setBorderPainted(false);
+        loginButton.setText("\u767b\u5f55");
         loginButton.addActionListener(e -> button2ActionPerformed(e));
         contentPane.add(loginButton);
-        loginButton.setBounds(370, 465, 115, 110);
+        loginButton.setBounds(365, 415, 115, 110);
 
         //---- readerCheck ----
         readerCheck.setText("\u8bfb\u8005");
@@ -206,10 +209,10 @@ public class Login extends JFrame {
         titleIcon.setBounds(new Rectangle(new Point(120, 70), titleIcon.getPreferredSize()));
 
         //---- background ----
-        background.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u672a\u6807\u9898-1.png")));
+        background.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/LoginBackground.jpg")));
         background.setBorder(null);
         contentPane.add(background);
-        background.setBounds(0, 0, 575, 640);
+        background.setBounds(0, 0, 575, 555);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();

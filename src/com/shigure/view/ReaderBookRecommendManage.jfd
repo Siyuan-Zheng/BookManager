@@ -5,6 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
+			"title": "建购管理"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTable" ) {
@@ -65,21 +66,30 @@ new FormModel {
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 30
-				"y": 20
-				"width": 610
+				"y": 40
+				"width": 645
 				"height": 205
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jb_delete"
-				"text": "text"
+				"text": "删除建购"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_deleteActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 195
-				"y": 260
+				"x": 580
+				"y": 285
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"y": 0
+				"width": 695
+				"height": 355
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 675, 495 )
+			"size": new java.awt.Dimension( 695, 375 )
 		} )
 	}
 }

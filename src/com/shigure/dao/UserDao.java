@@ -59,12 +59,25 @@ public class UserDao {
     }
 
     public static int userUpdate(Connection con, User user) throws Exception{
-        String sql = "update t_user set realName=? , telPhone=? ,password=? where id=?";
+        String sql = "update t_user set realName=? , telPhone=?  where id=?";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1,user.getRealName());
         pstmt.setString(2,user.getTelPhone());
-        pstmt.setString(3,user.getPassword());
-        pstmt.setInt(4,user.getId());
+        pstmt.setInt(3,user.getId());
         return pstmt.executeUpdate();
+    }
+
+    public static int passwordUpdate(Connection con, User user) throws Exception{
+        String sql = "update t_user set password=?  where id=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1,user.getPassword());
+        pstmt.setInt(2,user.getId());
+        return pstmt.executeUpdate();
+    }
+
+    public ResultSet userList(Connection con) throws Exception{
+        String  sql = "select * from t_user ";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        return pstmt.executeQuery();
     }
 }

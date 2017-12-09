@@ -5,35 +5,34 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
-			"title": "图书类别维护"
+			"title": "图书类别修改"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
-				"text": "图书类别名称："
+				"text": "图书类别名称"
+				"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 40
-				"y": 40
+				"x": 45
+				"y": 47
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "s_bookTypeNameTxt"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 160
-				"y": 35
-				"width": 130
+				"x": 165
+				"y": 45
+				"width": 175
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jb_search"
 				"text": "查询"
+				"font": #SwingDerivedFont0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_searchActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 330
-				"y": 35
+				"x": 400
+				"y": 45
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				"autoscrolls": true
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "scrollPane1MousePressed", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "scrollPane1MousePressed", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "scrollPane1MousePressed", true ) )
 				add( new FormComponent( "javax.swing.JTable" ) {
 					name: "bookTypeTable"
 					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector, new java.util.Vector {
@@ -56,46 +55,49 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "bookTypeTableMousePressed", true ) )
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 20
-				"y": 85
-				"width": 455
-				"height": 220
+				"x": 40
+				"y": 105
+				"width": 525
+				"height": 170
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "idTxt"
 				"editable": false
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 70
-				"y": 360
-				"width": 125
+				"x": 100
+				"y": 335
+				"width": 175
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
-				"text": "编号："
+				"text": "编号"
+				"font": #SwingDerivedFont0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 25
-				"y": 365
+				"x": 50
+				"y": 337
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
-				"text": "图书类别名称："
+				"text": "类别名称"
+				"font": #SwingDerivedFont0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 215
-				"y": 365
+				"x": 310
+				"y": 337
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "bookTypeNameTxt"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 305
-				"y": 360
-				"width": 130
+				"x": 390
+				"y": 335
+				"width": 175
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label4"
-				"text": "描述："
+				"text": "类别描述"
+				"font": #SwingDerivedFont0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 30
-				"y": 410
+				"x": 55
+				"y": 405
 			} )
 			add( new FormComponent( "javax.swing.JTextArea" ) {
 				name: "textArea1"
@@ -111,30 +113,40 @@ new FormModel {
 					"lineWrap": true
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 85
-				"y": 410
-				"width": 285
-				"height": 55
+				"x": 140
+				"y": 400
+				"width": 380
+				"height": 80
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jb_modify"
 				"text": "修改"
+				"font": #SwingDerivedFont0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_modifyActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 45
-				"y": 480
+				"x": 490
+				"y": 520
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jb_delete"
 				"text": "删除"
+				"font": #SwingDerivedFont0
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_deleteActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 220
-				"y": 480
+				"x": 380
+				"y": 520
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"y": 0
+				"width": 590
+				"height": 570
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 370, 75 )
-			"size": new java.awt.Dimension( 525, 590 )
+			"location": new java.awt.Point( 305, 75 )
+			"size": new java.awt.Dimension( 590, 590 )
 		} )
 	}
 }

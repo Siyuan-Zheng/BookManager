@@ -113,56 +113,66 @@ public class ReaderBookRecommend extends JFrame {
         scrollPane1 = new JScrollPane();
         bookDescTxt = new JTextArea();
         jb_recommendAdd = new JButton();
+        label6 = new JLabel();
 
         //======== this ========
+        setTitle("\u56fe\u4e66\u8350\u8d2d");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
         label1.setText("\u56fe\u4e66\u540d\u79f0");
+        label1.setFont(label1.getFont().deriveFont(label1.getFont().getSize() + 3f));
         contentPane.add(label1);
-        label1.setBounds(new Rectangle(new Point(20, 25), label1.getPreferredSize()));
+        label1.setBounds(new Rectangle(new Point(30, 70), label1.getPreferredSize()));
         contentPane.add(bookNameTxt);
-        bookNameTxt.setBounds(90, 25, 100, bookNameTxt.getPreferredSize().height);
+        bookNameTxt.setBounds(125, 68, 160, bookNameTxt.getPreferredSize().height);
 
         //---- label2 ----
         label2.setText("\u4f5c\u8005");
+        label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 3f));
         contentPane.add(label2);
-        label2.setBounds(new Rectangle(new Point(310, 25), label2.getPreferredSize()));
+        label2.setBounds(new Rectangle(new Point(370, 70), label2.getPreferredSize()));
         contentPane.add(authorTxt);
-        authorTxt.setBounds(350, 20, 115, authorTxt.getPreferredSize().height);
+        authorTxt.setBounds(435, 68, 160, authorTxt.getPreferredSize().height);
 
         //---- label3 ----
         label3.setText("\u51fa\u7248\u793e");
+        label3.setFont(label3.getFont().deriveFont(label3.getFont().getSize() + 3f));
         contentPane.add(label3);
-        label3.setBounds(new Rectangle(new Point(20, 85), label3.getPreferredSize()));
+        label3.setBounds(new Rectangle(new Point(45, 130), label3.getPreferredSize()));
         contentPane.add(pressNameTxt);
-        pressNameTxt.setBounds(95, 80, 105, pressNameTxt.getPreferredSize().height);
+        pressNameTxt.setBounds(125, 130, 160, pressNameTxt.getPreferredSize().height);
 
         //---- label4 ----
         label4.setText("\u56fe\u4e66\u7c7b\u522b");
+        label4.setFont(label4.getFont().deriveFont(label4.getFont().getSize() + 3f));
         contentPane.add(label4);
-        label4.setBounds(new Rectangle(new Point(255, 85), label4.getPreferredSize()));
+        label4.setBounds(new Rectangle(new Point(345, 130), label4.getPreferredSize()));
         contentPane.add(jcb_BookType);
-        jcb_BookType.setBounds(new Rectangle(new Point(365, 85), jcb_BookType.getPreferredSize()));
+        jcb_BookType.setBounds(435, 130, 160, jcb_BookType.getPreferredSize().height);
 
         //---- label5 ----
         label5.setText("\u56fe\u4e66\u63cf\u8ff0");
+        label5.setFont(label5.getFont().deriveFont(label5.getFont().getSize() + 3f));
         contentPane.add(label5);
-        label5.setBounds(new Rectangle(new Point(50, 190), label5.getPreferredSize()));
+        label5.setBounds(new Rectangle(new Point(35, 200), label5.getPreferredSize()));
 
         //======== scrollPane1 ========
         {
             scrollPane1.setViewportView(bookDescTxt);
         }
         contentPane.add(scrollPane1);
-        scrollPane1.setBounds(125, 195, 175, 160);
+        scrollPane1.setBounds(125, 195, 475, 115);
 
         //---- jb_recommendAdd ----
-        jb_recommendAdd.setText("text");
+        jb_recommendAdd.setText("\u6dfb\u52a0\u5efa\u8d2d");
+        jb_recommendAdd.setFont(jb_recommendAdd.getFont().deriveFont(jb_recommendAdd.getFont().getSize() + 3f));
         jb_recommendAdd.addActionListener(e -> jb_recommendAddActionPerformed(e));
         contentPane.add(jb_recommendAdd);
-        jb_recommendAdd.setBounds(new Rectangle(new Point(350, 215), jb_recommendAdd.getPreferredSize()));
+        jb_recommendAdd.setBounds(new Rectangle(new Point(505, 350), jb_recommendAdd.getPreferredSize()));
+        contentPane.add(label6);
+        label6.setBounds(0, 0, 660, 435);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -196,5 +206,6 @@ public class ReaderBookRecommend extends JFrame {
     private JScrollPane scrollPane1;
     private JTextArea bookDescTxt;
     private JButton jb_recommendAdd;
+    private JLabel label6;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
