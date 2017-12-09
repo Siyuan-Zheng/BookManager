@@ -7,6 +7,19 @@ public class User {
     private String realName;
     private String telPhone;
 
+    public User(int id) {
+        super();
+        this.id = id;
+    }
+
+    public User(String realName,  String telPhone, String password, int id) {
+        super();
+        this.id = id;
+        this.realName = realName;
+        this.telPhone = telPhone;
+        this.password = password;
+    }
+
     public String getRealName() {
         return realName;
     }

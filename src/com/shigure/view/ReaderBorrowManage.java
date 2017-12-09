@@ -8,11 +8,14 @@ import java.awt.event.*;
 import com.shigure.dao.BookBorrowDao;
 import com.shigure.model.Book;
 import com.shigure.model.BookBorrow;
+import com.shigure.model.User;
 import com.shigure.util.StringUtil;
 
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.*;
@@ -31,14 +34,24 @@ public class ReaderBorrowManage extends JFrame {
         this.fillTable(new BookBorrow());
     }
 
+    public static int differentDaysByMillisecond(Date date1,Date date2)
+    {
+        int days = (int) ((date2.getTime() - date1.getTime()) / (1000*3600*24));
+        return days;
+    }
+
     private void fillTable(BookBorrow bookBorrow){
         int userId = ReaderDashBoard.uid;
+        User user = new User(userId);
+        Date date = new Date();
+        SimpleDateFormat matter=new SimpleDateFormat("yyyy-MM-dd");
+
         DefaultTableModel dtm = (DefaultTableModel) borrowTable.getModel();
         dtm.setRowCount(0);
         Connection con = null;
         try {
             con = getConnection();
-            ResultSet rs = bookBorrowDao.borrowList(con,bookBorrow);
+            ResultSet rs = bookBorrowDao.borrowList(con,user);
             while(rs.next()){
                 Vector v = new Vector<>();
                 v.add(rs.getInt("borrowId"));
@@ -47,6 +60,10 @@ public class ReaderBorrowManage extends JFrame {
                 v.add(rs.getString("pressName"));
                 v.add(rs.getString("bookTypeName"));
                 v.add(rs.getString("borrowTime"));
+                String db_BorrowTime = rs.getString("borrowTime");
+                Date borrowTime = matter.parse(db_BorrowTime);
+                int time = differentDaysByMillisecond(borrowTime,date);
+                v.add(time);
                 dtm.addRow(v);
             }
         } catch (Exception e) {
@@ -107,15 +124,15 @@ public class ReaderBorrowManage extends JFrame {
             //---- borrowTable ----
             borrowTable.setModel(new DefaultTableModel(
                 new Object[][] {
-                    {null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null},
                 },
                 new String[] {
-                    "\u501f\u9605\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u51fa\u7248\u793e", "\u56fe\u4e66\u7c7b\u522b", "\u501f\u9605\u65e5\u671f"
+                    "\u501f\u9605\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u51fa\u7248\u793e", "\u56fe\u4e66\u7c7b\u522b", "\u501f\u9605\u65e5\u671f", "\u5df2\u501f\u65f6\u957f"
                 }
             ));
             {
                 TableColumnModel cm = borrowTable.getColumnModel();
-                cm.getColumn(5).setPreferredWidth(160);
+                cm.getColumn(5).setPreferredWidth(120);
             }
             borrowTable.addMouseListener(new MouseAdapter() {
                 @Override

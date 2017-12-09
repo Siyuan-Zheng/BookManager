@@ -3,6 +3,7 @@ package com.shigure.dao;
 import com.shigure.model.Manager;
 import com.shigure.model.User;
 import com.shigure.util.StringUtil;
+import com.shigure.view.ReaderDashBoard;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,7 +38,7 @@ public class UserDao {
         return pstmt.executeUpdate();
     }
 
-    public static User userTypeList(Connection con, User user) throws Exception{
+    public static User getUserId(Connection con, User user) throws Exception{
         ResultSet rs = null;
         String sql = "select * from t_user where userName=?";
         PreparedStatement pstmt = con.prepareStatement(sql);
@@ -48,5 +49,22 @@ public class UserDao {
             user.setId(rs.getInt("id"));
         }
         return user;
+    }
+
+    public ResultSet userList(Connection con, User user) throws Exception{
+        String  sql = "select * from t_user where id like ?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setInt(1, user.getId());
+        return pstmt.executeQuery();
+    }
+
+    public static int userUpdate(Connection con, User user) throws Exception{
+        String sql = "update t_user set realName=? , telPhone=? ,password=? where id=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1,user.getRealName());
+        pstmt.setString(2,user.getTelPhone());
+        pstmt.setString(3,user.getPassword());
+        pstmt.setInt(4,user.getId());
+        return pstmt.executeUpdate();
     }
 }

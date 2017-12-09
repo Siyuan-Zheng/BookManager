@@ -41,6 +41,14 @@ public class ReaderDashBoard extends JFrame {
         new ReaderBookRecommendManage().setVisible(true);
     }
 
+    private void button5ActionPerformed(ActionEvent e) {
+        new ReaderSelfimformationManage().setVisible(true);
+    }
+
+    private void button6ActionPerformed(ActionEvent e) {
+        new About().setVisible(true);
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -49,6 +57,8 @@ public class ReaderDashBoard extends JFrame {
         button2 = new JButton();
         button3 = new JButton();
         button4 = new JButton();
+        button5 = new JButton();
+        button6 = new JButton();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -77,7 +87,19 @@ public class ReaderDashBoard extends JFrame {
         button4.setText("text");
         button4.addActionListener(e -> button4ActionPerformed(e));
         contentPane.add(button4);
-        button4.setBounds(new Rectangle(new Point(420, 360), button4.getPreferredSize()));
+        button4.setBounds(new Rectangle(new Point(420, 335), button4.getPreferredSize()));
+
+        //---- button5 ----
+        button5.setText("text");
+        button5.addActionListener(e -> button5ActionPerformed(e));
+        contentPane.add(button5);
+        button5.setBounds(new Rectangle(new Point(115, 530), button5.getPreferredSize()));
+
+        //---- button6 ----
+        button6.setText("text");
+        button6.addActionListener(e -> button6ActionPerformed(e));
+        contentPane.add(button6);
+        button6.setBounds(new Rectangle(new Point(430, 545), button6.getPreferredSize()));
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -103,5 +125,7 @@ public class ReaderDashBoard extends JFrame {
     private JButton button2;
     private JButton button3;
     private JButton button4;
+    private JButton button5;
+    private JButton button6;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

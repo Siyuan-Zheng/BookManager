@@ -76,7 +76,7 @@ public class Login extends JFrame {
             try {
                 con = getConnection();
                 User currentUser =userDao.login(con,user);      //进行登陆
-                User id = userDao.userTypeList(con,user);
+                User id = userDao.getUserId(con,user);
                 readerDashBoard.getUserId(id);
                     if(currentUser !=null) {
                     this.dispose();
