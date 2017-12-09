@@ -2,6 +2,7 @@ package com.shigure.dao;
 
 import com.shigure.model.BookBorrow;
 import com.shigure.model.BookRecommend;
+import com.shigure.model.User;
 import com.shigure.view.ReaderDashBoard;
 
 import java.sql.Connection;
@@ -23,17 +24,31 @@ public class BookRecommendDao {
         return pstmt.executeUpdate();
     }
 
-    public ResultSet recommendList(Connection con, BookRecommend bookRecommend) throws Exception{
+    public ResultSet recommendList(Connection con, BookRecommend bookRecommend,User user) throws Exception{
         String  sql = "select * from t_bookRecommend br, t_booktype bt where br.bookTypeId=bt.id and userId like ?";
         PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setInt(1, ReaderDashBoard.uid);
+        pstmt.setInt(1, user.getId());
         return pstmt.executeQuery();
     }
 
-    public int borrowDelete(Connection con,int recommendId) throws Exception{
+    public int recommendDelete(Connection con,int recommendId) throws Exception{
         String sql = "delete from t_bookRecommend where recommendId=?";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1, String.valueOf(recommendId));
+        return pstmt.executeUpdate();
+    }
+
+    public ResultSet recommendList(Connection con, BookRecommend bookRecommend) throws Exception{
+        String  sql = "select * from t_bookRecommend br, t_booktype bt, t_user u where br.bookTypeId=bt.id and br.userId=u.id";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        return pstmt.executeQuery();
+    }
+
+    public int recommendUpdate(Connection con, BookRecommend bookRecommend) throws Exception{
+        String sql = "update t_bookRecommend set recommendStatus=? where recommendId=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1,bookRecommend.getRecommendStatus());
+        pstmt.setInt(2,bookRecommend.getRecommendId());
         return pstmt.executeUpdate();
     }
 }

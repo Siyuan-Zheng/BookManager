@@ -10,7 +10,12 @@ public class BookRecommend {
     private String bookDesc;
     private int bookTypeId;
 
-    public BookRecommend(int userId, String bookName, String author,String recommendStatus, String pressName, String bookDesc, int bookTypeId) {
+    public BookRecommend(int recommendId, String recommendStatus) {
+        this.recommendId = recommendId;
+        this.recommendStatus = recommendStatus;
+    }
+
+    public BookRecommend(int userId, String bookName, String author, String recommendStatus, String pressName, String bookDesc, int bookTypeId) {
         this.userId = userId;
         this.bookName = bookName;
         this.author = author;

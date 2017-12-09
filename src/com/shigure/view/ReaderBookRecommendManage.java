@@ -8,6 +8,7 @@ import java.awt.event.*;
 import com.shigure.dao.BookRecommendDao;
 import com.shigure.model.BookBorrow;
 import com.shigure.model.BookRecommend;
+import com.shigure.model.User;
 
 import java.awt.*;
 import java.sql.Connection;
@@ -33,12 +34,13 @@ public class ReaderBookRecommendManage extends JFrame {
 
     private void fillTable(BookRecommend bookRecommend){
         int userId = ReaderDashBoard.uid;
+        User user = new User(userId);
         DefaultTableModel dtm = (DefaultTableModel) recommendTable.getModel();
         dtm.setRowCount(0);
         Connection con = null;
         try {
             con = getConnection();
-            ResultSet rs = bookRecommendDao.recommendList(con,bookRecommend);
+            ResultSet rs = bookRecommendDao.recommendList(con,bookRecommend,user);
             while(rs.next()){
                 Vector v = new Vector<>();
                 v.add(rs.getInt("recommendId"));
@@ -68,7 +70,7 @@ public class ReaderBookRecommendManage extends JFrame {
             Connection con = null;
             try {
                 con= getConnection();
-                int deleteNum = bookRecommendDao.borrowDelete(con,recommendId);
+                int deleteNum = bookRecommendDao.recommendDelete(con,recommendId);
                 if(deleteNum == 1){
                     JOptionPane.showMessageDialog(null,"删除成功");
                     this.fillTable(new BookRecommend());

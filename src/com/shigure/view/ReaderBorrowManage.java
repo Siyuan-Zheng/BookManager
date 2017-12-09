@@ -62,7 +62,7 @@ public class ReaderBorrowManage extends JFrame {
                 v.add(rs.getString("borrowTime"));
                 String db_BorrowTime = rs.getString("borrowTime");
                 Date borrowTime = matter.parse(db_BorrowTime);
-                int time = differentDaysByMillisecond(borrowTime,date);
+                int time = 30 - differentDaysByMillisecond(borrowTime,date);
                 v.add(time);
                 dtm.addRow(v);
             }
@@ -129,7 +129,7 @@ public class ReaderBorrowManage extends JFrame {
                     {null, null, null, null, null, null, null},
                 },
                 new String[] {
-                    "\u501f\u9605\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u51fa\u7248\u793e", "\u56fe\u4e66\u7c7b\u522b", "\u501f\u9605\u65e5\u671f", "\u5df2\u501f\u65f6\u957f"
+                    "\u501f\u9605\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u51fa\u7248\u793e", "\u56fe\u4e66\u7c7b\u522b", "\u501f\u9605\u65e5\u671f", "\u5269\u4f59\u65f6\u957f"
                 }
             ));
             {

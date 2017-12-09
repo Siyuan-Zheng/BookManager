@@ -10,6 +10,14 @@ public class Book {
     private int bookTypeId = -1;
     private String BookTypeName;
 
+    public Book(String bookName, String author, String pressName, String bookDesc, String bookTypeName) {
+        this.bookName = bookName;
+        this.author = author;
+        this.pressName = pressName;
+        this.bookDesc = bookDesc;
+        BookTypeName = bookTypeName;
+    }
+
     public Book(int id, String bookName, String author, String pressName, String bookDesc, int bookTypeId) {
         this.id = id;
         this.bookName = bookName;

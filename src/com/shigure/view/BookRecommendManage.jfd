@@ -5,9 +5,107 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
+			"title": "建购管理"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "recommendTable"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "建购编号" )
+						add( "建购者" )
+						add( "图书名称" )
+						add( "图书作者" )
+						add( "出版社" )
+						add( "图书描述" )
+						add( "图书类型" )
+						add( "建购状态" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "recommendTableMousePressed", true ) )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 25
+				"y": 65
+				"height": 240
+				"width": 630
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jb_adopt"
+				"text": "通过"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_adoptActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 155
+				"y": 355
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jb_reject"
+				"text": "拒绝"
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_rejectActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 440
+				"y": 355
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "text"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"y": 0
+				"width": 680
+				"height": 450
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 680, 470 )
 		} )
 	}
 }

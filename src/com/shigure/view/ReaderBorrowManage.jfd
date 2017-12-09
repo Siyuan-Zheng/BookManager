@@ -27,7 +27,7 @@ new FormModel {
 						add( "出版社" )
 						add( "图书类别" )
 						add( "借阅日期" )
-						add( "已借时长" )
+						add( "剩余时长" )
 					}, new java.util.Vector {
 						add( null )
 						add( null )

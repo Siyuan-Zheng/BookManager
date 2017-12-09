@@ -44,6 +44,10 @@ class ManagerDashBoard extends JFrame {
         new UserInformationManage().setVisible(true);
     }
 
+    private void jb_AboutActionPerformed(ActionEvent e) {
+        new BookRecommendManage().setVisible(true);
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -114,6 +118,7 @@ class ManagerDashBoard extends JFrame {
         jb_About.setBorder(null);
         jb_About.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/Flag.png")));
         jb_About.setBorderPainted(false);
+        jb_About.addActionListener(e -> jb_AboutActionPerformed(e));
         contentPane.add(jb_About);
         jb_About.setBounds(new Rectangle(new Point(300, 465), jb_About.getPreferredSize()));
 
