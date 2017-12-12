@@ -126,7 +126,6 @@ class UserInformationManage extends JFrame {
         String realName = this.realNameTxt.getText();
         String telPhone = this.telPhoneTxt.getText();
         String password = String.valueOf(this.passwordTxt.getPassword());
-        String passwordConf = String.valueOf(this.passwordConfTxt.getPassword());
         if(StringUtil.isEmpty(realName)){
             JOptionPane.showMessageDialog(null,"请输入要修改的姓名");
             return;
