@@ -9,6 +9,7 @@ import javax.swing.table.*;
 
 import com.shigure.dao.BookBorrowDao;
 import com.shigure.dao.UserDao;
+import com.shigure.model.BookBorrow;
 import com.shigure.model.User;
 import com.shigure.util.StringUtil;
 
@@ -29,6 +30,8 @@ import static com.shigure.util.DbUtil.getConnection;
  * @author siyuan zheng
  */
 class UserInformationManage extends JFrame {
+    static int uid = 0;
+    static Date originalTime = null;
     private UserDao userDao = new UserDao();
     private BookBorrowDao bookBorrowDao = new BookBorrowDao();
     private static int borrowId = 0;
@@ -86,10 +89,20 @@ class UserInformationManage extends JFrame {
                 v.add(rs.getString("pressName"));
                 v.add(rs.getString("bookTypeName"));
                 v.add(rs.getString("borrowTime"));
+
                 String db_BorrowTime = rs.getString("borrowTime");
+                String db_OriginalTime = rs.getString("originalTime");
                 Date borrowTime = matter.parse(db_BorrowTime);
-                int time = 30 - differentDaysByMillisecond(borrowTime,date);
+                originalTime = matter.parse(db_OriginalTime);
+                int time = differentDaysByMillisecond(borrowTime,originalTime);
                 v.add(time);
+
+                String returnTime = rs.getString("returnTime");
+                if(StringUtil.isEmpty(returnTime)){
+                    v.add("借阅中");
+                }else {
+                    v.add("已归还");
+                }
                 dtm.addRow(v);
             }
         } catch (Exception e) {
@@ -197,26 +210,29 @@ class UserInformationManage extends JFrame {
 
     private void jb_borrowDeleteActionPerformed(ActionEvent e) {
         int borrowId = UserInformationManage.borrowId;
+        java.util.Date date = new java.util.Date();
+        java.sql.Date returnTime = new java.sql.Date(date.getTime());
         if(borrowId == 0){
-            JOptionPane.showMessageDialog(null,"请选择要删除的记录");
+            JOptionPane.showMessageDialog(null,"请选择归还的图书");
             return;
         }
-        int n = JOptionPane.showConfirmDialog(null,"确定要删除这条记录吗");
+        int n = JOptionPane.showConfirmDialog(null,"确定要归还该图书吗");
         if(n==0){
+            BookBorrow bookBorrow = new BookBorrow(borrowId,uid,returnTime);
             Connection con = null;
             try {
                 con= getConnection();
-                int deleteNum = bookBorrowDao.borrowDelete(con,borrowId);
+                int deleteNum = bookBorrowDao.returnTimeUpdate(con,bookBorrow);
                 if(deleteNum == 1){
-                    JOptionPane.showMessageDialog(null,"删除成功");
+                    JOptionPane.showMessageDialog(null,"归还成功");
                     this.fillBorrowTable();
                 }else {
-                    JOptionPane.showMessageDialog(null, "删除失败");
+                    JOptionPane.showMessageDialog(null, "归还失败");
                 }
 
             } catch (Exception e1) {
                 e1.printStackTrace();
-                JOptionPane.showMessageDialog(null,"删除失败");
+                JOptionPane.showMessageDialog(null,"归还失败");
             }finally {
                 free(con);
             }
@@ -295,6 +311,14 @@ class UserInformationManage extends JFrame {
 
             //======== panel1 ========
             {
+
+                // JFormDesigner evaluation mark
+                panel1.setBorder(new javax.swing.border.CompoundBorder(
+                    new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                        java.awt.Color.red), panel1.getBorder())); panel1.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
+
                 panel1.setLayout(null);
                 panel1.add(realNameTxt);
                 realNameTxt.setBounds(400, 28, 180, realNameTxt.getPreferredSize().height);
@@ -399,15 +423,15 @@ class UserInformationManage extends JFrame {
             //---- borrowTable ----
             borrowTable.setModel(new DefaultTableModel(
                 new Object[][] {
-                    {null, null, null, null, null, null, null},
-                    {null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null},
                 },
                 new String[] {
-                    "\u501f\u9605\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u51fa\u7248\u793e", "\u56fe\u4e66\u7c7b\u522b", "\u501f\u9605\u65e5\u671f", "\u5269\u4f59\u65f6\u957f"
+                    "\u501f\u9605\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u51fa\u7248\u793e", "\u56fe\u4e66\u7c7b\u522b", "\u501f\u9605\u65e5\u671f", "\u5269\u4f59\u65f6\u957f", "\u501f\u9605\u72b6\u6001"
                 }
             ) {
                 boolean[] columnEditable = new boolean[] {
-                    false, true, true, true, true, true, true
+                    false, true, true, true, true, true, true, true
                 };
                 @Override
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -430,7 +454,7 @@ class UserInformationManage extends JFrame {
         scrollPane2.setBounds(35, 430, 615, 150);
 
         //---- jb_borrowDelete ----
-        jb_borrowDelete.setText("\u5220\u9664\u501f\u9605");
+        jb_borrowDelete.setText("\u56fe\u4e66\u5f52\u8fd8");
         jb_borrowDelete.setFont(jb_borrowDelete.getFont().deriveFont(jb_borrowDelete.getFont().getSize() + 3f));
         jb_borrowDelete.addActionListener(e -> jb_borrowDeleteActionPerformed(e));
         contentPane.add(jb_borrowDelete);

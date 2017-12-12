@@ -19,6 +19,7 @@ new FormModel {
 							add( null )
 							add( null )
 							add( null )
+							add( null )
 						} )
 					}, new java.util.Vector {
 						add( "借阅编号" )
@@ -26,6 +27,7 @@ new FormModel {
 						add( "图书作者" )
 						add( "出版社" )
 						add( "图书类别" )
+						add( "借阅状态" )
 						add( "借阅日期" )
 						add( "剩余时长" )
 					}, new java.util.Vector {
@@ -36,15 +38,18 @@ new FormModel {
 						add( null )
 						add( null )
 						add( null )
-					}, new java.util.Vector {
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
-						add( null )
 						add( null )
 					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
 						add( null )
 						add( null )
 						add( null )
@@ -63,7 +68,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jb_delete"
-				"text": "删除借阅"
+				"text": "图书续借"
 				"font": new java.awt.Font( ".SF NS Text", 0, 16 )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jb_deleteActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {

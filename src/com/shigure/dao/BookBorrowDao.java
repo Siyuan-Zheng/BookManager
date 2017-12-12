@@ -11,11 +11,13 @@ import java.sql.*;
 public class BookBorrowDao {
 
     public int borrowAdd(Connection con, BookBorrow bookBorrow) throws Exception{
-        String sql = "insert into t_bookBorrow values(null,?,?,?)";
+        String sql = "insert into t_bookBorrow values(null,?,?,?,?,?)";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setInt(1,bookBorrow.getUserId());
         pstmt.setInt(2,bookBorrow.getBookId());
         pstmt.setDate(3, (Date) bookBorrow.getBorrowTime());
+        pstmt.setDate(4, (Date) bookBorrow.getOriginalTime());
+        pstmt.setDate(5, (Date) bookBorrow.getReturnTime());
         //pstmt.setTimestamp(3,new Timestamp(bookBorrow.getBorrowTime().getTime()));
         return pstmt.executeUpdate();
     }
@@ -31,6 +33,22 @@ public class BookBorrowDao {
         String sql = "delete from t_bookBorrow where borrowId=?";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1, String.valueOf(borrowId));
+        return pstmt.executeUpdate();
+    }
+
+    public int originalTimeUpdate(Connection con,BookBorrow bookBorrow) throws Exception{
+        String sql = "update t_bookBorrow set originalTime=? where borrowId=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setDate(1, (Date) bookBorrow.getOriginalTime());
+        pstmt.setInt(2,bookBorrow.getId());
+        return pstmt.executeUpdate();
+    }
+
+    public int returnTimeUpdate(Connection con,BookBorrow bookBorrow) throws Exception{
+        String sql = "update t_bookBorrow set returnTime=? where borrowId=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setDate(1, (Date) bookBorrow.getReturnTime());
+        pstmt.setInt(2,bookBorrow.getId());
         return pstmt.executeUpdate();
     }
 }

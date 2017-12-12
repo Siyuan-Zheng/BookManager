@@ -146,28 +146,28 @@ public class ReaderDashBoard extends JFrame {
         label4.setFont(new Font(".SF NS Text", Font.PLAIN, 18));
         label4.setForeground(new Color(204, 204, 204));
         contentPane.add(label4);
-        label4.setBounds(new Rectangle(new Point(85, 380), label4.getPreferredSize()));
+        label4.setBounds(new Rectangle(new Point(90, 380), label4.getPreferredSize()));
 
         //---- label5 ----
-        label5.setText("\u5efa\u8d2d\u7ba1\u7406");
+        label5.setText("\u8350\u8d2d\u7ba1\u7406");
         label5.setFont(new Font(".SF NS Text", Font.PLAIN, 18));
         label5.setForeground(new Color(204, 204, 204));
         contentPane.add(label5);
-        label5.setBounds(new Rectangle(new Point(315, 380), label5.getPreferredSize()));
+        label5.setBounds(new Rectangle(new Point(320, 380), label5.getPreferredSize()));
 
         //---- label6 ----
         label6.setText("\u4e2a\u4eba\u4fe1\u606f");
         label6.setFont(new Font(".SF NS Text", Font.PLAIN, 18));
         label6.setForeground(new Color(204, 204, 204));
         contentPane.add(label6);
-        label6.setBounds(new Rectangle(new Point(85, 590), label6.getPreferredSize()));
+        label6.setBounds(new Rectangle(new Point(90, 590), label6.getPreferredSize()));
 
         //---- label7 ----
         label7.setText("\u5173\u4e8e");
         label7.setFont(new Font(".SF NS Text", Font.PLAIN, 18));
         label7.setForeground(new Color(204, 204, 204));
         contentPane.add(label7);
-        label7.setBounds(new Rectangle(new Point(335, 590), label7.getPreferredSize()));
+        label7.setBounds(new Rectangle(new Point(340, 590), label7.getPreferredSize()));
 
         //---- label8 ----
         label8.setIcon(new ImageIcon(getClass().getResource("/com/shigure/material/\u672a\u6807\u9898-1.png")));

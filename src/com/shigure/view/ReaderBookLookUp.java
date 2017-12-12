@@ -15,6 +15,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.*;
@@ -67,7 +69,7 @@ public class ReaderBookLookUp extends JFrame {
             con = getConnection();
             ResultSet rs = bookDao.bookList(con, book);
             while(rs.next()){
-                Vector v = new Vector<>();
+                Vector<Object> v = new Vector<>();
                 v.add(rs.getInt("id"));
                 v.add(rs.getString("bookName"));
                 v.add(rs.getString("author"));
@@ -99,9 +101,14 @@ public class ReaderBookLookUp extends JFrame {
         int userId = ReaderDashBoard.uid;
         int bookId = ReaderBookLookUp.bookId;
         java.util.Date date = new java.util.Date();
+        Calendar calendar = new GregorianCalendar();
         java.sql.Date borrowTime = new java.sql.Date(date.getTime());
+        calendar.setTime(date);
+        calendar.add(calendar.DATE,30);
+        date = calendar.getTime();
+        java.sql.Date originalTime = new java.sql.Date(date.getTime());
 
-        BookBorrow bookBorrow = new BookBorrow(userId,bookId,borrowTime);
+        BookBorrow bookBorrow = new BookBorrow(userId,bookId,borrowTime,originalTime,null);
 
         Connection con = null;
 
@@ -137,7 +144,7 @@ public class ReaderBookLookUp extends JFrame {
         jb_search = new JButton();
         scrollPane1 = new JScrollPane();
         bookTable = new JTable();
-        s_jcb_bookType = new JComboBox();
+        s_jcb_bookType = new JComboBox<>();
         jb_addBookBorrow = new JButton();
         label4 = new JLabel();
         s_pressNameTxt = new JTextField();
@@ -255,7 +262,7 @@ public class ReaderBookLookUp extends JFrame {
     private JButton jb_search;
     private JScrollPane scrollPane1;
     private JTable bookTable;
-    private JComboBox s_jcb_bookType;
+    private JComboBox<BookType> s_jcb_bookType;
     private JButton jb_addBookBorrow;
     private JLabel label4;
     private JTextField s_pressNameTxt;

@@ -158,11 +158,11 @@ class ManagerDashBoard extends JFrame {
         label5.setBounds(new Rectangle(new Point(60, 590), label5.getPreferredSize()));
 
         //---- label6 ----
-        label6.setText("\u5efa\u8d2d\u7ba1\u7406");
+        label6.setText("\u8350\u8d2d\u7ba1\u7406");
         label6.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 18));
         label6.setForeground(new Color(204, 204, 204));
         contentPane.add(label6);
-        label6.setBounds(new Rectangle(new Point(315, 590), label6.getPreferredSize()));
+        label6.setBounds(new Rectangle(new Point(320, 590), label6.getPreferredSize()));
 
         //---- label7 ----
         label7.setText("text");

@@ -97,16 +97,16 @@ new FormModel {
 				"font": #Font0
 				"foreground": #Color0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 85
+				"x": 90
 				"y": 380
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label5"
-				"text": "建购管理"
+				"text": "荐购管理"
 				"font": #Font0
 				"foreground": #Color0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 315
+				"x": 320
 				"y": 380
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -115,7 +115,7 @@ new FormModel {
 				"font": #Font0
 				"foreground": #Color0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 85
+				"x": 90
 				"y": 590
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -124,7 +124,7 @@ new FormModel {
 				"font": #Font0
 				"foreground": #Color0
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 335
+				"x": 340
 				"y": 590
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {

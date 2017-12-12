@@ -102,7 +102,7 @@ public class ReaderBookRecommendManage extends JFrame {
         label1 = new JLabel();
 
         //======== this ========
-        setTitle("\u5efa\u8d2d\u7ba1\u7406");
+        setTitle("\u8350\u8d2d\u7ba1\u7406");
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -116,7 +116,7 @@ public class ReaderBookRecommendManage extends JFrame {
                     {null, null, null, null, null, null, null},
                 },
                 new String[] {
-                    "\u5efa\u8d2d\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u51fa\u7248\u793e", "\u56fe\u4e66\u7c7b\u578b", "\u56fe\u4e66\u63cf\u8ff0", "\u5efa\u8d2d\u72b6\u6001"
+                    "\u8350\u8d2d\u7f16\u53f7", "\u56fe\u4e66\u540d\u79f0", "\u56fe\u4e66\u4f5c\u8005", "\u51fa\u7248\u793e", "\u56fe\u4e66\u7c7b\u578b", "\u56fe\u4e66\u63cf\u8ff0", "\u8350\u8d2d\u72b6\u6001"
                 }
             ));
             recommendTable.addMouseListener(new MouseAdapter() {
@@ -131,7 +131,7 @@ public class ReaderBookRecommendManage extends JFrame {
         scrollPane1.setBounds(30, 40, 645, 205);
 
         //---- jb_delete ----
-        jb_delete.setText("\u5220\u9664\u5efa\u8d2d");
+        jb_delete.setText("\u5220\u9664\u8350\u8d2d");
         jb_delete.setFont(jb_delete.getFont().deriveFont(jb_delete.getFont().getSize() + 3f));
         jb_delete.addActionListener(e -> jb_deleteActionPerformed(e));
         contentPane.add(jb_delete);
