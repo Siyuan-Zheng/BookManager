@@ -69,7 +69,7 @@ new FormModel {
 				"height": 350
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 140, 35 )
+			"location": new java.awt.Point( 100, 55 )
 			"size": new java.awt.Dimension( 500, 375 )
 		} )
 	}

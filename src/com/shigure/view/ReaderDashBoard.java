@@ -21,8 +21,8 @@ public class ReaderDashBoard extends JFrame {
         initComponents();
     }
 
-    public void getUserId(User id){
-        ReaderDashBoard.uid = id.getId();
+    public void getUserId(User userId){
+        ReaderDashBoard.uid = userId.getUserId();
     }
 
     private void button1ActionPerformed(ActionEvent e) {
@@ -42,7 +42,7 @@ public class ReaderDashBoard extends JFrame {
     }
 
     private void button5ActionPerformed(ActionEvent e) {
-        new ReaderSelfimformationManage().setVisible(true);
+        new ReaderSelfInformationManage().setVisible(true);
     }
 
     private void button6ActionPerformed(ActionEvent e) {

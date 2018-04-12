@@ -46,7 +46,7 @@ public class UserDao {
         rs = pstmt.executeQuery();
         while (rs.next()){
             user = new User();
-            user.setId(rs.getInt("id"));
+            user.setUserId(rs.getInt("id"));
         }
         return user;
     }
@@ -54,7 +54,7 @@ public class UserDao {
     public ResultSet userList(Connection con, User user) throws Exception{
         String  sql = "select * from t_user where id like ?";
         PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setInt(1, user.getId());
+        pstmt.setInt(1, user.getUserId());
         return pstmt.executeQuery();
     }
 
@@ -63,7 +63,7 @@ public class UserDao {
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1,user.getRealName());
         pstmt.setString(2,user.getTelPhone());
-        pstmt.setInt(3,user.getId());
+        pstmt.setInt(3,user.getUserId());
         return pstmt.executeUpdate();
     }
 
@@ -71,7 +71,7 @@ public class UserDao {
         String sql = "update t_user set password=?  where id=?";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1,user.getPassword());
-        pstmt.setInt(2,user.getId());
+        pstmt.setInt(2,user.getUserId());
         return pstmt.executeUpdate();
     }
 

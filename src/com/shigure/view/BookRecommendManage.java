@@ -4,22 +4,22 @@
 
 package com.shigure.view;
 
-import java.awt.event.*;
-
 import com.shigure.dao.BookDao;
 import com.shigure.dao.BookRecommendDao;
 import com.shigure.model.Book;
 import com.shigure.model.BookRecommend;
-import com.shigure.model.BookType;
 import com.shigure.model.User;
-import com.shigure.util.StringUtil;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Vector;
-import javax.swing.*;
-import javax.swing.table.*;
 
 import static com.shigure.util.DbUtil.free;
 import static com.shigure.util.DbUtil.getConnection;
@@ -27,25 +27,23 @@ import static com.shigure.util.DbUtil.getConnection;
 /**
  * @author siyuan zheng
  */
-public class BookRecommendManage extends JFrame {
-    BookDao bookDao = new BookDao();
-    BookRecommendDao bookRecommendDao = new BookRecommendDao();
-    static int recommendId = 0;
-    static String bookName = null;
+class BookRecommendManage extends JFrame {
+    private BookDao bookDao = new BookDao();
+    private BookRecommendDao bookRecommendDao = new BookRecommendDao();
+    private static int recommendId = 0;
+    private static String bookName = null;
     static String author = null;
-    static String pressName = null;
-    static String bookDesc = null;
+    private static String pressName = null;
+    private static String bookDesc = null;
     static String bookTypeName = null;
-    static int bookTypeId = 0;
-    public BookRecommendManage() {
+    private static int bookTypeId = 0;
+    BookRecommendManage() {
         initComponents();
         fillTable();
     }
 
     private void fillTable(){
-        int userId = ReaderDashBoard.uid;
         BookRecommend bookRecommend = new BookRecommend();
-        User user = new User(userId);
         DefaultTableModel dtm = (DefaultTableModel) recommendTable.getModel();
         dtm.setRowCount(0);
         Connection con = null;
@@ -53,16 +51,16 @@ public class BookRecommendManage extends JFrame {
             con = getConnection();
             ResultSet rs = bookRecommendDao.recommendList(con,bookRecommend);
             while(rs.next()){
-                Vector v = new Vector<>();
-                v.add(rs.getInt("recommendId"));
-                v.add(rs.getString("userName"));
-                v.add(rs.getString("bookName"));
-                v.add(rs.getString("author"));
-                v.add(rs.getString("pressName"));
-                v.add(rs.getString("bookDesc"));
-                v.add(rs.getString("bookTypeName"));
-                v.add(rs.getString("recommendStatus"));
-                dtm.addRow(v);
+                ArrayList<Object> arrayList = new ArrayList<>();
+                arrayList.add(rs.getInt("recommendId"));
+                arrayList.add(rs.getString("userName"));
+                arrayList.add(rs.getString("bookName"));
+                arrayList.add(rs.getString("author"));
+                arrayList.add(rs.getString("pressName"));
+                arrayList.add(rs.getString("bookDesc"));
+                arrayList.add(rs.getString("bookTypeName"));
+                arrayList.add(rs.getString("recommendStatus"));
+                dtm.addRow(arrayList.toArray());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -147,7 +145,6 @@ public class BookRecommendManage extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - siyuan zheng
         scrollPane1 = new JScrollPane();
         recommendTable = new JTable();
         jb_adopt = new JButton();
@@ -218,7 +215,6 @@ public class BookRecommendManage extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - siyuan zheng
     private JScrollPane scrollPane1;
     private JTable recommendTable;
     private JButton jb_adopt;

@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Vector;
@@ -27,12 +28,12 @@ import static com.shigure.util.DbUtil.getConnection;
 /**
  * @author siyuan zheng
  */
-public class ReaderBookLookUp extends JFrame {
-    BookDao bookDao = new BookDao();
-    BookBorrowDao bookBorrowDao = new BookBorrowDao();
-    static int bookId = 0;
+class ReaderBookLookUp extends JFrame {
+    private BookDao bookDao = new BookDao();
+    private BookBorrowDao bookBorrowDao = new BookBorrowDao();
+    private static int bookId = 0;
 
-    public ReaderBookLookUp() {
+    ReaderBookLookUp() {
         initComponents();
         this.fillTable(new Book());
         this.fillBookType();
@@ -40,17 +41,17 @@ public class ReaderBookLookUp extends JFrame {
 
     private void fillBookType(){
         Connection con = null;
-        BookType bookType = null;
+        BookType bookType;
         try {
             con = getConnection();
             ResultSet rs = BookTypeDao.bookTypeList(con,new BookType());
                 bookType = new BookType();
                 bookType.setBookTypeName("请选择...");
-                bookType.setId(-1);
+                bookType.setBookTypeId(-1);
                 this.s_jcb_bookType.addItem(bookType);
             while(rs.next()){
                 bookType = new BookType();
-                bookType.setId(rs.getInt("id"));
+                bookType.setBookTypeId(rs.getInt("id"));
                 bookType.setBookTypeName(rs.getString("bookTypeName"));
                 this.s_jcb_bookType.addItem(bookType);
             }
@@ -69,14 +70,14 @@ public class ReaderBookLookUp extends JFrame {
             con = getConnection();
             ResultSet rs = bookDao.bookList(con, book);
             while(rs.next()){
-                Vector<Object> v = new Vector<>();
-                v.add(rs.getInt("id"));
-                v.add(rs.getString("bookName"));
-                v.add(rs.getString("author"));
-                v.add(rs.getString("pressName"));
-                v.add(rs.getString("bookDesc"));
-                v.add(rs.getString("bookTypeName"));
-                dtm.addRow(v);
+                ArrayList<Object> arrayList = new ArrayList<>();
+                arrayList.add(rs.getInt("id"));
+                arrayList.add(rs.getString("bookName"));
+                arrayList.add(rs.getString("author"));
+                arrayList.add(rs.getString("pressName"));
+                arrayList.add(rs.getString("bookDesc"));
+                arrayList.add(rs.getString("bookTypeName"));
+                dtm.addRow(arrayList.toArray());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -90,7 +91,8 @@ public class ReaderBookLookUp extends JFrame {
         String author = this.s_authorTxt.getText();
         String pressName = this.s_pressNameTxt.getText();
         BookType bookType = (BookType)this.s_jcb_bookType.getSelectedItem();
-        int bookTypeId = bookType.getId();
+        assert bookType != null;
+        int bookTypeId = bookType.getBookTypeId();
 
         Book book = new Book(bookName, author, bookTypeId,pressName);
 
@@ -101,14 +103,11 @@ public class ReaderBookLookUp extends JFrame {
         int userId = ReaderDashBoard.uid;
         int bookId = ReaderBookLookUp.bookId;
         java.util.Date date = new java.util.Date();
-        Calendar calendar = new GregorianCalendar();
-        java.sql.Date borrowTime = new java.sql.Date(date.getTime());
-        calendar.setTime(date);
-        calendar.add(calendar.DATE,30);
-        date = calendar.getTime();
-        java.sql.Date originalTime = new java.sql.Date(date.getTime());
 
-        BookBorrow bookBorrow = new BookBorrow(userId,bookId,borrowTime,originalTime,null);
+        java.util.Date originalTime = new java.util.Date();
+        originalTime.setTime(date.getTime()+2592000000L);
+//        System.out.println(originalTime.getTime());
+        BookBorrow bookBorrow = new BookBorrow(userId,bookId,date.getTime(),originalTime.getTime(),0L);
 
         Connection con = null;
 
@@ -135,7 +134,6 @@ public class ReaderBookLookUp extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - siyuan zheng
         label1 = new JLabel();
         s_bookNameTxt = new JTextField();
         label2 = new JLabel();
@@ -253,7 +251,6 @@ public class ReaderBookLookUp extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - siyuan zheng
     private JLabel label1;
     private JTextField s_bookNameTxt;
     private JLabel label2;

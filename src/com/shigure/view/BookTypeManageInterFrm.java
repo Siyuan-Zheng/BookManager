@@ -10,7 +10,6 @@ import com.shigure.model.BookType;
 import com.shigure.util.StringUtil;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +27,7 @@ import static com.shigure.util.DbUtil.getConnection;
  */
 class BookTypeManageInterFrm extends JFrame {
     private BookTypeDao bookTypeDao = new BookTypeDao();
-    BookDao bookDao = new BookDao();
+    private BookDao bookDao = new BookDao();
     BookTypeManageInterFrm() {
         initComponents();
         this.fillTable(new BookType());
@@ -40,7 +39,7 @@ class BookTypeManageInterFrm extends JFrame {
         Connection con = null;
         try {
             con = getConnection();
-            ResultSet rs = bookTypeDao.bookTypeList(con,bookType);
+            ResultSet rs = BookTypeDao.bookTypeList(con,bookType);
             while(rs.next()){
                 Vector<String> v = new Vector<>();
                 v.add(rs.getString("id"));
@@ -103,14 +102,14 @@ class BookTypeManageInterFrm extends JFrame {
     }
 
     private void jb_modifyActionPerformed(ActionEvent e) {
-        String id = this.idTxt.getText();
+        String bookTypeId = this.idTxt.getText();
         String bookTypeName = this.bookTypeNameTxt.getText();
         String bookTypeDesc = this.bookTypeDescTxt.getText();
-        if(StringUtil.isEmpty(id)){
+        if(StringUtil.isEmpty(bookTypeId)){
             JOptionPane.showMessageDialog(null,"请选择要修改的记录");
             return;
         }
-        BookType bookType = new BookType(Integer.parseInt(id),bookTypeName,bookTypeDesc);
+        BookType bookType = new BookType(Integer.parseInt(bookTypeId),bookTypeName,bookTypeDesc);
         Connection con = null;
         try {
             con= getConnection();

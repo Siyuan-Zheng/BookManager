@@ -20,7 +20,7 @@ public class BookDao {
     }
 
     public ResultSet bookList(Connection con,Book book) throws Exception{
-        StringBuffer sb = new StringBuffer("select * from t_book b,t_booktype bt where b.bookTypeId=bt.id");
+        StringBuilder sb = new StringBuilder("select * from t_book b,t_bookType bt where b.bookTypeId=bt.id");
         if(StringUtil.isNotEmpty(book.getBookName())){
             sb.append(" and b.bookName like '%").append(book.getBookName()).append("%'");
         }
@@ -52,7 +52,7 @@ public class BookDao {
         pstmt.setString(3,book.getPressName());
         pstmt.setString(4,book.getBookDesc());
         pstmt.setInt(5,book.getBookTypeId());
-        pstmt.setInt(6,book.getId());
+        pstmt.setInt(6,book.getBookId());
         return pstmt.executeUpdate();
     }
 

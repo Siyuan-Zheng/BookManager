@@ -9,7 +9,6 @@ import com.shigure.dao.BookDao;
 import com.shigure.dao.BookTypeDao;
 import com.shigure.model.Book;
 import com.shigure.model.BookType;
-import com.shigure.util.DbUtil;
 import com.shigure.util.StringUtil;
 
 import java.awt.*;
@@ -25,11 +24,10 @@ import static com.shigure.util.DbUtil.getConnection;
 /**
  * @author siyuan zheng
  */
-public class BookManageInterFrm extends JFrame {
-    BookTypeDao bookTypeDao = new BookTypeDao();
-    BookDao bookDao = new BookDao();
+class BookManageInterFrm extends JFrame {
+    private BookDao bookDao = new BookDao();
 
-    public BookManageInterFrm() {
+    BookManageInterFrm() {
         initComponents();
         this.fillTable(new Book());
         this.fillBookType("search");
@@ -50,19 +48,19 @@ public class BookManageInterFrm extends JFrame {
 
     private void fillBookType(String type){
         Connection con = null;
-        BookType bookType = null;
+        BookType bookType;
         try {
             con = getConnection();
             ResultSet rs = BookTypeDao.bookTypeList(con,new BookType());
             if("search".equals(type)){
                 bookType = new BookType();
                 bookType.setBookTypeName("请选择...");
-                bookType.setId(-1);
+                bookType.setBookTypeId(-1);
                 this.s_jcb_bookType.addItem(bookType);
             }
             while(rs.next()){
                 bookType = new BookType();
-                bookType.setId(rs.getInt("id"));
+                bookType.setBookTypeId(rs.getInt("id"));
                 bookType.setBookTypeName(rs.getString("bookTypeName"));
                 if("search".equals(type)){
                     this.s_jcb_bookType.addItem(bookType);
@@ -85,7 +83,7 @@ public class BookManageInterFrm extends JFrame {
             con = getConnection();
             ResultSet rs = bookDao.bookList(con, book);
             while(rs.next()){
-                Vector v = new Vector<>();
+                Vector<Object> v = new Vector<>();
                 v.add(rs.getInt("id"));
                 v.add(rs.getString("bookName"));
                 v.add(rs.getString("author"));
@@ -106,7 +104,8 @@ public class BookManageInterFrm extends JFrame {
         String author = this.s_authorTxt.getText();
         String pressName = this.s_pressNameTxt.getText();
         BookType bookType = (BookType)this.s_jcb_bookType.getSelectedItem();
-        int bookTypeId = bookType.getId();
+        assert bookType != null;
+        int bookTypeId = bookType.getBookTypeId();
 
         Book book = new Book(bookName, author, bookTypeId,pressName);
 
@@ -116,7 +115,7 @@ public class BookManageInterFrm extends JFrame {
 
     private void bookTableMousePressed(MouseEvent e) {
         int row = this.bookTable.getSelectedRow();
-        this.idTxt.setText((Integer)bookTable.getValueAt(row,0)+"");
+        this.idTxt.setText(bookTable.getValueAt(row,0) +"");
         this.bookNameTxt.setText((String)bookTable.getValueAt(row,1));
         this.authorTxt.setText((String)bookTable.getValueAt(row,2));
         this.pressNameTxt.setText((String)bookTable.getValueAt(row,3));
@@ -124,7 +123,7 @@ public class BookManageInterFrm extends JFrame {
         String bookTypeName = (String)bookTable.getValueAt(row,5);
         int n = this.jcb_bookType.getItemCount();
         for(int i = 0; i<n; i++){
-            BookType item = (BookType)this.jcb_bookType.getItemAt(i);
+            BookType item = this.jcb_bookType.getItemAt(i);
             if(item.getBookTypeName().equals((bookTypeName))){
                 this.jcb_bookType.setSelectedIndex(i);
             }
@@ -161,8 +160,8 @@ public class BookManageInterFrm extends JFrame {
     }
 
     private void jb_modifyActionPerformed(ActionEvent e) {
-        String id = this.idTxt.getText();
-        if(StringUtil.isEmpty(id)){
+        String bookId = this.idTxt.getText();
+        if(StringUtil.isEmpty(bookId)){
             JOptionPane.showMessageDialog(null,"请选择要修改的记录");
             return;
         }
@@ -186,11 +185,12 @@ public class BookManageInterFrm extends JFrame {
         }
 
         BookType bookType = (BookType) this.jcb_bookType.getSelectedItem();
-        int bookTypeId = bookType.getId();
+        assert bookType != null;
+        int bookTypeId = bookType.getBookTypeId();
 
 
 
-        Book book = new Book(Integer.parseInt(id), bookName, author, pressName, bookDesc, bookTypeId);
+        Book book = new Book(Integer.parseInt(bookId), bookName, author, pressName, bookDesc, bookTypeId);
         Connection con = null;
         try {
             con= getConnection();
@@ -222,7 +222,7 @@ public class BookManageInterFrm extends JFrame {
         label4 = new JLabel();
         s_authorTxt = new JTextField();
         label5 = new JLabel();
-        s_jcb_bookType = new JComboBox();
+        s_jcb_bookType = new JComboBox<>();
         jb_search = new JButton();
         label2 = new JLabel();
         idTxt = new JTextField();
@@ -233,7 +233,7 @@ public class BookManageInterFrm extends JFrame {
         label7 = new JLabel();
         authorTxt = new JTextField();
         label8 = new JLabel();
-        jcb_bookType = new JComboBox();
+        jcb_bookType = new JComboBox<BookType>();
         label9 = new JLabel();
         scrollPane2 = new JScrollPane();
         bookDescTxt = new JTextArea();
@@ -423,7 +423,7 @@ public class BookManageInterFrm extends JFrame {
     private JLabel label4;
     private JTextField s_authorTxt;
     private JLabel label5;
-    private JComboBox s_jcb_bookType;
+    private JComboBox<BookType> s_jcb_bookType;
     private JButton jb_search;
     private JLabel label2;
     private JTextField idTxt;
@@ -434,7 +434,7 @@ public class BookManageInterFrm extends JFrame {
     private JLabel label7;
     private JTextField authorTxt;
     private JLabel label8;
-    private JComboBox jcb_bookType;
+    private JComboBox<BookType> jcb_bookType;
     private JLabel label9;
     private JScrollPane scrollPane2;
     private JTextArea bookDescTxt;

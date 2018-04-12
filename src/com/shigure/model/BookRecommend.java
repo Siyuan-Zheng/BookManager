@@ -26,7 +26,7 @@ public class BookRecommend {
     }
 
     public BookRecommend() {
-        super();
+
     }
 
     public BookRecommend(int recommendId, int userId, String bookName, String author, String recommendStatus, String pressName, String bookDesc, int bookTypeId) {

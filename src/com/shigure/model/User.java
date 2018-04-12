@@ -1,28 +1,32 @@
 package com.shigure.model;
 
 public class User {
-    private int id;
+    private int userId;
     private String userName;
     private String password;
     private String realName;
     private String telPhone;
 
-    public User(String password, int id) {
-        this.id = id;
+    public User(String password, int userId) {
+        this.userId = userId;
         this.password = password;
     }
 
-    public User(int id) {
-        super();
-        this.id = id;
+    public User(int userId) {
+        this.userId = userId;
     }
 
-    public User(String realName,  String telPhone, String password, int id) {
-        super();
-        this.id = id;
+    public User(String realName,  String telPhone, String password, int userId) {
+        this.userId = userId;
         this.realName = realName;
         this.telPhone = telPhone;
         this.password = password;
+    }
+
+    public User(String realName,  String telPhone, int userId) {
+        this.userId = userId;
+        this.realName = realName;
+        this.telPhone = telPhone;
     }
 
     public String getRealName() {
@@ -50,15 +54,15 @@ public class User {
     }
 
     public User() {
-        super();
+
     }
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {

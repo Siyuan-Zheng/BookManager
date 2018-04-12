@@ -2,13 +2,10 @@ package com.shigure.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 public class DbUtil {
-
-    public DbUtil() {
-
-    }
 
     static {
         try {
@@ -20,9 +17,9 @@ public class DbUtil {
     }
 
     //连接数据库
-    public static Connection getConnection() throws Exception {
-        String url = "jdbc:mysql://localhost:3306/db_book" + "?useUnicode=true&characterEncoding=utf-8&useSSL=false";
-        String user = "root";
+    public static Connection getConnection() throws SQLException {
+        String url = "jdbc:mysql://115.159.202.192:3306/db_book" + "?useUnicode=true&characterEncoding=utf-8";
+        String user = "shigure";
         String password = "zhengsiyuan4399";
         return DriverManager.getConnection(url, user, password);
     }

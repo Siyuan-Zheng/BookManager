@@ -39,11 +39,11 @@ public class ReaderBookRecommend extends JFrame {
             ResultSet rs = BookTypeDao.bookTypeList(con,new BookType());
             bookType = new BookType();
             bookType.setBookTypeName("请选择...");
-            bookType.setId(-1);                             //将索引为-1的选项设为“请选择...”
+            bookType.setBookTypeId(-1);                             //将索引为-1的选项设为“请选择...”
             this.jcb_BookType.addItem(bookType);
             while(rs.next()){
                 bookType = new BookType();
-                bookType.setId(rs.getInt("id"));
+                bookType.setBookTypeId(rs.getInt("id"));
                 bookType.setBookTypeName(rs.getString("bookTypeName"));
                 this.jcb_BookType.addItem(bookType);
             }
@@ -76,7 +76,7 @@ public class ReaderBookRecommend extends JFrame {
         }
 
         BookType bookType = (BookType) this.jcb_BookType.getSelectedItem();     //获取选择框中的内容
-        int bookTypeId = bookType.getId();                                      //获取bookTypeId
+        int bookTypeId = bookType.getBookTypeId();                                      //获取bookTypeId
 
         BookRecommend bookRecommend = new BookRecommend(userId,bookName,author,"待处理",pressName,bookDesc,bookTypeId);
 

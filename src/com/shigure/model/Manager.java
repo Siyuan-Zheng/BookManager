@@ -1,8 +1,8 @@
 package com.shigure.model;
 
-public class Manager {
+public class Manager{
 
-    private int id;
+    private int managerId;
     private String userName;
     private String password;
 
@@ -14,15 +14,15 @@ public class Manager {
     }
 
     public Manager() {
-        super();
+
     }
 
-    public int getId() {
-        return id;
+    public int getManagerId() {
+        return managerId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setManagerId(int managerId) {
+        this.managerId = managerId;
     }
 
     public String getUserName() {

@@ -3,45 +3,53 @@ package com.shigure.model;
 import java.util.Date;
 
 public class BookBorrow {
-    private int id;
+    private int borrowId;
     private int userId;
     private int bookId;
-    private Date borrowTime;
-    private Date originalTime;
-    private Date returnTime;
+    private Long borrowTime;
+    private Long originalTime;
+    private Long returnTime;
+    private int reStatus;
 
-    public BookBorrow(int id, int userId, Date returnTime) {
-        this.id = id;
+    public int getReStatus() {
+        return reStatus;
+    }
+
+    public void setReStatus(int reStatus) {
+        this.reStatus = reStatus;
+    }
+
+    public BookBorrow(int borrowId, int userId, Long returnTime) {
+        this.borrowId = borrowId;
         this.userId = userId;
         this.returnTime = returnTime;
     }
 
-    public BookBorrow(int id, Date originalTime) {
-        this.id = id;
+    public BookBorrow(int borrowId, Long originalTime) {
+        this.borrowId = borrowId;
         this.originalTime = originalTime;
     }
 
-    public Date getOriginalTime() {
+    public Long getOriginalTime() {
         return originalTime;
     }
 
-    public void setOriginalTime(Date originalTime) {
+    public void setOriginalTime(Long originalTime) {
         this.originalTime = originalTime;
     }
 
-    public Date getReturnTime() {
+    public Long getReturnTime() {
         return returnTime;
     }
 
-    public void setReturnTime(Date returnTime) {
+    public void setReturnTime(Long returnTime) {
         this.returnTime = returnTime;
     }
 
     public BookBorrow() {
-        super();
     }
 
-    public BookBorrow(int userId, int bookId, Date borrowTime, Date originalTime, Date returnTime) {
+    public BookBorrow(int userId, int bookId, Long borrowTime, Long originalTime, Long returnTime) {
         this.userId = userId;
         this.bookId = bookId;
         this.borrowTime = borrowTime;
@@ -49,20 +57,20 @@ public class BookBorrow {
         this.returnTime = returnTime;
     }
 
-    public BookBorrow(int id, int userId, int bookId, Date borrowTime) {
+    public BookBorrow(int borrowId, int userId, int bookId, Long borrowTime) {
         super();
-        this.id = id;
+        this.borrowId = borrowId;
         this.userId = userId;
         this.bookId = bookId;
         this.borrowTime = borrowTime;
     }
 
-    public int getId() {
-        return id;
+    public int getBorrowId() {
+        return borrowId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBorrowId(int borrowId) {
+        this.borrowId = borrowId;
     }
 
     public int getUserId() {
@@ -81,11 +89,11 @@ public class BookBorrow {
         this.bookId = bookId;
     }
 
-    public Date getBorrowTime() {
+    public Long getBorrowTime() {
         return borrowTime;
     }
 
-    public void setBorrowTime(Date borrowTime) {
+    public void setBorrowTime(Long borrowTime) {
         this.borrowTime = borrowTime;
     }
 }

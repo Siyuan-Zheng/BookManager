@@ -2,7 +2,7 @@ package com.shigure.model;
 
 public class Book {
 
-    private int id;
+    private int bookId;
     private String bookName;
     private String author;
     private String pressName;
@@ -18,8 +18,8 @@ public class Book {
         BookTypeName = bookTypeName;
     }
 
-    public Book(int id, String bookName, String author, String pressName, String bookDesc, int bookTypeId) {
-        this.id = id;
+    public Book(int bookId, String bookName, String author, String pressName, String bookDesc, int bookTypeId) {
+        this.bookId = bookId;
         this.bookName = bookName;
         this.author = author;
         this.pressName = pressName;
@@ -55,12 +55,12 @@ public class Book {
         this.bookTypeId = bookTypeId;
     }
 
-    public int getId() {
-        return id;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     public String getBookName() {

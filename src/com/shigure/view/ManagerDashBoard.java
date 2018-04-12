@@ -51,7 +51,6 @@ class ManagerDashBoard extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - siyuan zheng
         jb_AddBook = new JButton();
         jb_BookTypeUpdate = new JButton();
         jb_BookUpdate = new JButton();
@@ -189,7 +188,6 @@ class ManagerDashBoard extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - siyuan zheng
     private JButton jb_AddBook;
     private JButton jb_BookTypeUpdate;
     private JButton jb_BookUpdate;

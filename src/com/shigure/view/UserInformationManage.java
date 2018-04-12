@@ -30,8 +30,6 @@ import static com.shigure.util.DbUtil.getConnection;
  * @author siyuan zheng
  */
 class UserInformationManage extends JFrame {
-    static int uid = 0;
-    static Date originalTime = null;
     private UserDao userDao = new UserDao();
     private BookBorrowDao bookBorrowDao = new BookBorrowDao();
     private static int borrowId = 0;
@@ -72,7 +70,7 @@ class UserInformationManage extends JFrame {
     private void fillBorrowTable(){
         int userId = Integer.parseInt(this.userIdTxt.getText());
         User user = new User(userId);
-        Date date = new Date();
+        
         SimpleDateFormat matter=new SimpleDateFormat("yyyy-MM-dd");
 
         DefaultTableModel dtm = (DefaultTableModel) borrowTable.getModel();
@@ -88,17 +86,21 @@ class UserInformationManage extends JFrame {
                 v.add(rs.getString("author"));
                 v.add(rs.getString("pressName"));
                 v.add(rs.getString("bookTypeName"));
-                v.add(rs.getString("borrowTime"));
 
-                String db_BorrowTime = rs.getString("borrowTime");
-                String db_OriginalTime = rs.getString("originalTime");
-                Date borrowTime = matter.parse(db_BorrowTime);
-                originalTime = matter.parse(db_OriginalTime);
-                int time = differentDaysByMillisecond(borrowTime,originalTime);
+
+                Long db_BorrowTime = rs.getLong("borrowTime");
+                Long db_OriginalTime = rs.getLong("originalTime");
+                Date borrowTime = new Date();
+                borrowTime.setTime(db_BorrowTime);
+                v.add(matter.format(borrowTime));
+
+                Date originalTime = new Date();
+                originalTime.setTime(db_OriginalTime);
+                int time = differentDaysByMillisecond(borrowTime, originalTime);
                 v.add(time);
 
-                String returnTime = rs.getString("returnTime");
-                if(StringUtil.isEmpty(returnTime)){
+                Long returnTime = rs.getLong("returnTime");
+                if(returnTime == 0L){
                     v.add("借阅中");
                 }else {
                     v.add("已归还");
@@ -208,16 +210,17 @@ class UserInformationManage extends JFrame {
     }
 
     private void jb_borrowDeleteActionPerformed(ActionEvent e) {
+        int uid = 0;
         int borrowId = UserInformationManage.borrowId;
         java.util.Date date = new java.util.Date();
-        java.sql.Date returnTime = new java.sql.Date(date.getTime());
+//        java.sql.Date returnTime = new java.sql.Date(date.getTime());
         if(borrowId == 0){
             JOptionPane.showMessageDialog(null,"请选择归还的图书");
             return;
         }
         int n = JOptionPane.showConfirmDialog(null,"确定要归还该图书吗");
         if(n==0){
-            BookBorrow bookBorrow = new BookBorrow(borrowId,uid,returnTime);
+            BookBorrow bookBorrow = new BookBorrow(borrowId,uid,date.getTime());
             Connection con = null;
             try {
                 con= getConnection();
@@ -245,10 +248,15 @@ class UserInformationManage extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - siyuan zheng
         scrollPane1 = new JScrollPane();
         userTable = new JTable();
         tabbedPane1 = new JTabbedPane();
+        panel2 = new JPanel();
+        passwordTxt = new JPasswordField();
+        passwordConfTxt = new JPasswordField();
+        label4 = new JLabel();
+        label5 = new JLabel();
+        jb_passwordUpdate = new JButton();
         panel1 = new JPanel();
         realNameTxt = new JTextField();
         telPhoneTxt = new JTextField();
@@ -257,12 +265,6 @@ class UserInformationManage extends JFrame {
         label6 = new JLabel();
         userIdTxt = new JTextField();
         jb_userUpdate = new JButton();
-        panel2 = new JPanel();
-        passwordTxt = new JPasswordField();
-        passwordConfTxt = new JPasswordField();
-        label4 = new JLabel();
-        label5 = new JLabel();
-        jb_passwordUpdate = new JButton();
         scrollPane2 = new JScrollPane();
         borrowTable = new JTable();
         jb_borrowDelete = new JButton();
@@ -308,68 +310,6 @@ class UserInformationManage extends JFrame {
         //======== tabbedPane1 ========
         {
 
-            //======== panel1 ========
-            {
-
-                // JFormDesigner evaluation mark
-                panel1.setBorder(new javax.swing.border.CompoundBorder(
-                    new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), panel1.getBorder())); panel1.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
-
-                panel1.setLayout(null);
-                panel1.add(realNameTxt);
-                realNameTxt.setBounds(400, 28, 180, realNameTxt.getPreferredSize().height);
-                panel1.add(telPhoneTxt);
-                telPhoneTxt.setBounds(105, 100, 180, telPhoneTxt.getPreferredSize().height);
-
-                //---- label2 ----
-                label2.setText("\u59d3\u540d");
-                label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 3f));
-                panel1.add(label2);
-                label2.setBounds(new Rectangle(new Point(355, 30), label2.getPreferredSize()));
-
-                //---- label3 ----
-                label3.setText("\u8054\u7cfb\u65b9\u5f0f");
-                label3.setFont(label3.getFont().deriveFont(label3.getFont().getSize() + 3f));
-                panel1.add(label3);
-                label3.setBounds(new Rectangle(new Point(25, 102), label3.getPreferredSize()));
-
-                //---- label6 ----
-                label6.setText("\u7528\u6237ID");
-                label6.setFont(label6.getFont().deriveFont(label6.getFont().getSize() + 3f));
-                panel1.add(label6);
-                label6.setBounds(new Rectangle(new Point(41, 30), label6.getPreferredSize()));
-
-                //---- userIdTxt ----
-                userIdTxt.setEditable(false);
-                panel1.add(userIdTxt);
-                userIdTxt.setBounds(105, 28, 180, userIdTxt.getPreferredSize().height);
-
-                //---- jb_userUpdate ----
-                jb_userUpdate.setText("\u4fee\u6539");
-                jb_userUpdate.setFont(jb_userUpdate.getFont().deriveFont(jb_userUpdate.getFont().getSize() + 3f));
-                jb_userUpdate.addActionListener(e -> jb_userUpdateActionPerformed(e));
-                panel1.add(jb_userUpdate);
-                jb_userUpdate.setBounds(new Rectangle(new Point(440, 100), jb_userUpdate.getPreferredSize()));
-
-                { // compute preferred size
-                    Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < panel1.getComponentCount(); i++) {
-                        Rectangle bounds = panel1.getComponent(i).getBounds();
-                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                    }
-                    Insets insets = panel1.getInsets();
-                    preferredSize.width += insets.right;
-                    preferredSize.height += insets.bottom;
-                    panel1.setMinimumSize(preferredSize);
-                    panel1.setPreferredSize(preferredSize);
-                }
-            }
-            tabbedPane1.addTab("\u7528\u6237\u4fe1\u606f\u66f4\u6539", panel1);
-
             //======== panel2 ========
             {
                 panel2.setLayout(null);
@@ -412,6 +352,60 @@ class UserInformationManage extends JFrame {
                 }
             }
             tabbedPane1.addTab("\u7528\u6237\u5bc6\u7801\u66f4\u6539", panel2);
+
+            //======== panel1 ========
+            {
+                panel1.setLayout(null);
+                panel1.add(realNameTxt);
+                realNameTxt.setBounds(400, 28, 180, realNameTxt.getPreferredSize().height);
+                panel1.add(telPhoneTxt);
+                telPhoneTxt.setBounds(105, 100, 180, telPhoneTxt.getPreferredSize().height);
+
+                //---- label2 ----
+                label2.setText("\u59d3\u540d");
+                label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 3f));
+                panel1.add(label2);
+                label2.setBounds(new Rectangle(new Point(355, 30), label2.getPreferredSize()));
+
+                //---- label3 ----
+                label3.setText("\u8054\u7cfb\u65b9\u5f0f");
+                label3.setFont(label3.getFont().deriveFont(label3.getFont().getSize() + 3f));
+                panel1.add(label3);
+                label3.setBounds(new Rectangle(new Point(25, 102), label3.getPreferredSize()));
+
+                //---- label6 ----
+                label6.setText("\u7528\u6237ID");
+                label6.setFont(label6.getFont().deriveFont(label6.getFont().getSize() + 3f));
+                panel1.add(label6);
+                label6.setBounds(new Rectangle(new Point(41, 30), label6.getPreferredSize()));
+
+                //---- userIdTxt ----
+                userIdTxt.setEditable(false);
+                panel1.add(userIdTxt);
+                userIdTxt.setBounds(105, 28, 180, userIdTxt.getPreferredSize().height);
+
+                //---- jb_userUpdate ----
+                jb_userUpdate.setText("\u4fee\u6539");
+                jb_userUpdate.setFont(jb_userUpdate.getFont().deriveFont(jb_userUpdate.getFont().getSize() + 3f));
+                jb_userUpdate.addActionListener(e -> jb_userUpdateActionPerformed(e));
+                panel1.add(jb_userUpdate);
+                jb_userUpdate.setBounds(new Rectangle(new Point(430, 100), jb_userUpdate.getPreferredSize()));
+
+                { // compute preferred size
+                    Dimension preferredSize = new Dimension();
+                    for(int i = 0; i < panel1.getComponentCount(); i++) {
+                        Rectangle bounds = panel1.getComponent(i).getBounds();
+                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                    }
+                    Insets insets = panel1.getInsets();
+                    preferredSize.width += insets.right;
+                    preferredSize.height += insets.bottom;
+                    panel1.setMinimumSize(preferredSize);
+                    panel1.setPreferredSize(preferredSize);
+                }
+            }
+            tabbedPane1.addTab("\u7528\u6237\u4fe1\u606f\u66f4\u6539", panel1);
         }
         contentPane.add(tabbedPane1);
         tabbedPane1.setBounds(35, 220, 615, 185);
@@ -450,7 +444,7 @@ class UserInformationManage extends JFrame {
             scrollPane2.setViewportView(borrowTable);
         }
         contentPane.add(scrollPane2);
-        scrollPane2.setBounds(35, 430, 615, 150);
+        scrollPane2.setBounds(35, 440, 615, 150);
 
         //---- jb_borrowDelete ----
         jb_borrowDelete.setText("\u56fe\u4e66\u5f52\u8fd8");
@@ -480,10 +474,15 @@ class UserInformationManage extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - siyuan zheng
     private JScrollPane scrollPane1;
     private JTable userTable;
     private JTabbedPane tabbedPane1;
+    private JPanel panel2;
+    private JPasswordField passwordTxt;
+    private JPasswordField passwordConfTxt;
+    private JLabel label4;
+    private JLabel label5;
+    private JButton jb_passwordUpdate;
     private JPanel panel1;
     private JTextField realNameTxt;
     private JTextField telPhoneTxt;
@@ -492,12 +491,6 @@ class UserInformationManage extends JFrame {
     private JLabel label6;
     private JTextField userIdTxt;
     private JButton jb_userUpdate;
-    private JPanel panel2;
-    private JPasswordField passwordTxt;
-    private JPasswordField passwordConfTxt;
-    private JLabel label4;
-    private JLabel label5;
-    private JButton jb_passwordUpdate;
     private JScrollPane scrollPane2;
     private JTable borrowTable;
     private JButton jb_borrowDelete;

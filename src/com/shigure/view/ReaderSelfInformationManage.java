@@ -26,9 +26,9 @@ import static com.shigure.util.DbUtil.getConnection;
 /**
  * @author siyuan zheng
  */
-public class ReaderSelfimformationManage extends JFrame {
+public class ReaderSelfInformationManage extends JFrame {
     UserDao userDao = new UserDao();
-    public ReaderSelfimformationManage() {
+    public ReaderSelfInformationManage() {
         initComponents();
         this.fillTxt();
     }
@@ -57,8 +57,8 @@ public class ReaderSelfimformationManage extends JFrame {
         int userId = ReaderDashBoard.uid;
         String realName = this.realNameUpdateTxt.getText();
         String telPhone = this.telPhoneUpdateTxt.getText();
-        String password = String.valueOf(this.passwordUpdateTxt.getPassword());
-        String passwordConf = String.valueOf(this.passwordConfTxt.getPassword());
+//        String password = String.valueOf(this.passwordUpdateTxt.getPassword());
+//        String passwordConf = String.valueOf(this.passwordConfTxt.getPassword());
         if(StringUtil.isEmpty(realName)){
             JOptionPane.showMessageDialog(null,"请输入要修改的姓名");
             return;
@@ -67,21 +67,21 @@ public class ReaderSelfimformationManage extends JFrame {
             JOptionPane.showMessageDialog(null,"请输入要修改的联系方式");
             return;
         }
-        if(StringUtil.isEmpty(password)){
-            JOptionPane.showMessageDialog(null,"请输入要修改的密码");
-            return;
-        }
-        if(StringUtil.isEmpty(passwordConf)){
-            JOptionPane.showMessageDialog(null,"确认密码不能为空");
-            return;
-        }
-        if(!Objects.equals(password, passwordConf)){
-            JOptionPane.showMessageDialog(null,"两次密码输入不一致");
-            return;
-        }
+//        if(StringUtil.isEmpty(password)){
+//            JOptionPane.showMessageDialog(null,"请输入要修改的密码");
+//            return;
+//        }
+//        if(StringUtil.isEmpty(passwordConf)){
+//            JOptionPane.showMessageDialog(null,"确认密码不能为空");
+//            return;
+//        }
+//        if(!Objects.equals(password, passwordConf)){
+//            JOptionPane.showMessageDialog(null,"两次密码输入不一致");
+//            return;
+//        }
 
 
-        User user = new User(realName, telPhone, password, userId);
+        User user = new User(realName, telPhone, userId);
         Connection con = null;
         try {
             con= getConnection();
@@ -142,7 +142,6 @@ public class ReaderSelfimformationManage extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - siyuan zheng
         tabbedPane1 = new JTabbedPane();
         panel1 = new JPanel();
         telPhoneUpdateTxt = new JTextField();
@@ -173,8 +172,6 @@ public class ReaderSelfimformationManage extends JFrame {
 
             //======== panel1 ========
             {
-
-
                 panel1.setLayout(null);
                 panel1.add(telPhoneUpdateTxt);
                 telPhoneUpdateTxt.setBounds(105, 135, 215, telPhoneUpdateTxt.getPreferredSize().height);
@@ -298,7 +295,6 @@ public class ReaderSelfimformationManage extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - siyuan zheng
     private JTabbedPane tabbedPane1;
     private JPanel panel1;
     private JTextField telPhoneUpdateTxt;

@@ -24,18 +24,21 @@ import static com.shigure.util.DbUtil.*;
 public class Login extends JFrame {
     private ManagerDao managerDao = new ManagerDao();
     private UserDao userDao = new UserDao();
-    ReaderDashBoard readerDashBoard = new ReaderDashBoard();
+    private ReaderDashBoard readerDashBoard = new ReaderDashBoard();
+    private ActionEvent e;
+
     public Login() {
         initComponents();
     }
 
     //调用注册窗口
-    private void button1ActionPerformed(ActionEvent e) {
+    private void button1ActionPerformed() {
         new Register().setVisible(true);
     }
 
     //登陆
     private void button2ActionPerformed(ActionEvent e) {
+        this.e = e;
 
         boolean managerFlag = this.managerCheck.isSelected();           //判断管理员选框是否被选中
         boolean readerFlag = this.readerCheck.isSelected();             //判断读者选框是否被选中
@@ -76,8 +79,8 @@ public class Login extends JFrame {
             try {
                 con = getConnection();
                 User currentUser =userDao.login(con,user);      //进行登陆
-                User id = userDao.getUserId(con,user);
-                readerDashBoard.getUserId(id);
+                User userId = UserDao.getUserId(con,user);
+                readerDashBoard.getUserId(userId);
                     if(currentUser !=null) {
                     this.dispose();
                     new ReaderDashBoard().setVisible(true);     //当读者选项被选中是关闭登陆窗口，调用管理员主菜单
@@ -164,8 +167,8 @@ public class Login extends JFrame {
         registerButton.setBorderPainted(false);
         registerButton.setText("\u6ce8\u518c");
         registerButton.addActionListener(e -> {
-			button1ActionPerformed(e);
-			button1ActionPerformed(e);
+			button1ActionPerformed();
+			button1ActionPerformed();
 		});
         contentPane.add(registerButton);
         registerButton.setBounds(115, 415, 115, 110);
@@ -179,7 +182,7 @@ public class Login extends JFrame {
         loginButton.setIcon(null);
         loginButton.setBorderPainted(false);
         loginButton.setText("\u767b\u5f55");
-        loginButton.addActionListener(e -> button2ActionPerformed(e));
+        loginButton.addActionListener(this::button2ActionPerformed);
         contentPane.add(loginButton);
         loginButton.setBounds(365, 415, 115, 110);
 

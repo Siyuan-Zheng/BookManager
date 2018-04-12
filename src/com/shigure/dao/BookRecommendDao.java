@@ -25,9 +25,9 @@ public class BookRecommendDao {
     }
 
     public ResultSet recommendList(Connection con, BookRecommend bookRecommend,User user) throws Exception{
-        String  sql = "select * from t_bookRecommend br, t_booktype bt where br.bookTypeId=bt.id and userId like ?";
+        String  sql = "select * from t_bookRecommend br, t_bookType bt where br.bookTypeId=bt.id and userId like ?";
         PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setInt(1, user.getId());
+        pstmt.setInt(1, user.getUserId());
         return pstmt.executeQuery();
     }
 
@@ -39,7 +39,7 @@ public class BookRecommendDao {
     }
 
     public ResultSet recommendList(Connection con, BookRecommend bookRecommend) throws Exception{
-        String  sql = "select * from t_bookRecommend br, t_booktype bt, t_user u where br.bookTypeId=bt.id and br.userId=u.id";
+        String  sql = "select * from t_bookRecommend br, t_bookType bt, t_user u where br.bookTypeId=bt.id and br.userId=u.id";
         PreparedStatement pstmt = con.prepareStatement(sql);
         return pstmt.executeQuery();
     }

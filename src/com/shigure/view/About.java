@@ -10,8 +10,8 @@ import javax.swing.*;
 /**
  * @author siyuan zheng
  */
-public class About extends JFrame {
-    public About() {
+class About extends JFrame {
+    About() {
         initComponents();
     }
 

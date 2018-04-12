@@ -61,7 +61,6 @@ class BookTypeInterFrm extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - siyuan zheng
         bookTypeNameTxt = new JTextField();
         scrollPane1 = new JScrollPane();
         bookTypeDescTxt = new JTextArea();
@@ -136,7 +135,6 @@ class BookTypeInterFrm extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - siyuan zheng
     private JTextField bookTypeNameTxt;
     private JScrollPane scrollPane1;
     private JTextArea bookTypeDescTxt;
